@@ -1,36 +1,29 @@
 var postsData = require('../data/stubs/posts');
-var auth = require('./auth');
+var u = require('../util');
 
 exports.configure = function(app) {
-    app.get('/posts', auth.ensureAuthenticated, requestHelper(getAll));
-    app.get('/posts/:id', auth.ensureAuthenticated, requestHelper(getOne));
-    app.post('/posts/', auth.ensureAuthenticated, requestHelper(save));
-    app.delete('/posts/:id', auth.ensureAuthenticated, requestHelper(remove));
-    app.put('/posts/:id', auth.ensureAuthenticated, requestHelper(update));
+    app.get('/posts', u.requestHelper(getAll));
+    app.get('/posts/:id', u.requestHelper(getOne));
+    app.post('/posts/', u.requestHelper(save));
+    app.delete('/posts/:id', u.requestHelper(remove));
+    app.put('/posts/:id', u.requestHelper(update));
 };
 
-function requestHelper(func) {
-    return function(req, res) {
-        return func(req).then(function(data) { res.send(data); }, function(err) { res.send(err) });
-    };
-}
-
-
-function getAll(){
+function getAll() {
    return postsData.getAll();
 }
 
-function getOne(req){
+function getOne(req) {
     var id = req.params.id;
     return postsData.getOne(id);
 }
 
-function save(req){
+function save(req) {
     var post = req.body;
     return postsData.save(post);
 }
 
-function update(req){
+function update(req) {
     var id = req.params.id;
     var post = {
         id: id,
@@ -40,7 +33,7 @@ function update(req){
     return postsData.update(post);
 }
 
-function remove(req){
+function remove(req) {
     var id = req.params.id;
     return postsData.remove(id);
 };

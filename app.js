@@ -7,6 +7,7 @@ var passport = require('passport');
 var auth = require('./routes/auth');
 var posts = require('./routes/posts');
 var profiles = require('./routes/profiles');
+var session = require('./session');
 
 var app = express();
 
@@ -22,7 +23,9 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+session.configure();
 auth.configure(app);
+app.all('*', session.ensureAuthenticated);
 posts.configure(app);
 profiles.configure(app);
 

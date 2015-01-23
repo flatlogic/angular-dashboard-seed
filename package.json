@@ -1,9 +1,9 @@
 {
     "name": "angular-dashboard-demo",
-    "description": "REST CRUD Example Node.js & Mysql",
+    "description": "Angular dashboard demo with REST integration",
     "version": "0.0.1",
     "private": true,
-    "main": "server.js",
+    "main": "app.js",
     "dependencies": {
         "body-parser": "1.9.0",
         "express": "4.9.5",

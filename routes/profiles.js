@@ -1,17 +1,10 @@
 var usersData = require('../data/stubs/users');
-var auth = require('./auth');
-
+var u = require('../util');
 
 exports.configure = function(app) {
-    app.get('/profile/', auth.ensureAuthenticated, requestHelper(getOne));
-    app.put('/profile/', auth.ensureAuthenticated, requestHelper(update));
+    app.get('/profile/', u.requestHelper(getOne));
+    app.put('/profile/', u.requestHelper(update));
 };
-
-function requestHelper(func) {
-    return function(req, res) {
-        return func(req).then(function(data) { res.send(data); }, function(err) { res.send(err) });
-    };
-}
 
 function getOne(req){
     var id = req.user.id;
