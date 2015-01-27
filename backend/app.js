@@ -23,6 +23,11 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static('../frontend')); //TODO: just a stub for experiments, should be changed later
+app.get('/', function(req,res) {
+  res.sendfile('../frontend/index.html');
+});
+
 session.configure();
 auth.configure(app);
 app.all('*', session.ensureAuthenticated);
