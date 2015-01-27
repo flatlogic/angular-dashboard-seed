@@ -1,6 +1,7 @@
 var LocalStrategy = require('passport-local');
 var usersData = require('./data/stubs/users');
 var passport = require('passport');
+var u = require('./util');
 
 exports.configure = function() {
     passport.serializeUser(_serializeUser);
@@ -17,7 +18,8 @@ var localStrategy = new LocalStrategy(
                 if (!user || user.password != password) {
                     return done(null, false, {message: 'Invalid username or password'});
                 } else {
-                    return done(null, user);
+                    var noPassUser = u.hidePassword(user);
+                    return done(null, noPassUser);
                 }
             }, function(err) {
                 return done(err);

@@ -17,7 +17,7 @@ function _login(req, res, next) {
             if (err) {
                 return next(err);
             }
-            return res.send(req.user); //TODO: password is sent along with the other information
+            return res.send(req.user);
         });
     })(req, res, next);
 }
