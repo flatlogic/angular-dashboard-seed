@@ -1,5 +1,5 @@
 var LocalStrategy = require('passport-local');
-var usersData = require('./data/stubs/users');
+var usersData = require('./data')('users');
 var passport = require('passport');
 var u = require('./util');
 

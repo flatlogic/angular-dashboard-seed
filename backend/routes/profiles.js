@@ -1,4 +1,4 @@
-var usersData = require('../data/stubs/users');
+var usersData = require('../data')('users');;
 var u = require('../util');
 
 exports.configure = function(app) {

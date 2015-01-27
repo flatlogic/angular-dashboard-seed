@@ -1,4 +1,4 @@
-var postsData = require('../data/stubs/posts');
+var postsData = require('../data')('posts');
 var u = require('../util');
 
 exports.configure = function(app) {
