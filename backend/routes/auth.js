@@ -11,7 +11,7 @@ function _login(req, res, next) {
             return next(err)
         }
         if (!user) {
-            return res.send({message: info.message});
+            return res.status(401).send({message: info.message});
         }
         req.logIn(user, function (err) {
             if (err) {

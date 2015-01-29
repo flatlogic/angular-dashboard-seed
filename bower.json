@@ -7,6 +7,7 @@
     "angular-route": "~1.3.11",
     "angular-loader": "~1.3.11",
     "angular-mocks": "~1.3.11",
-    "html5-boilerplate": "~4.3.0"
+    "html5-boilerplate": "~4.3.0",
+    "angular-ui-router": "~0.2.13"
   }
 }
