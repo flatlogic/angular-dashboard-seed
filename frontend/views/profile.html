@@ -1,3 +1,22 @@
-<div>
-    I am a profile page!
+<div class="profile-container">
+    <h2>Profile</h2>
+    <form name="ProfileForm">
+        <label>
+            Username
+            <input type="text" name="username" value="{{vm.user.username}}"/>
+        </label>
+        <label>
+            Email
+            <input type="email" name="email" value="{{vm.user.email}}"/>
+        </label>
+        <label>
+            Old password
+            <input type="password" />
+        </label>
+        <label>
+            New password
+            <input type="password" />
+        </label>
+        <input type="submit" value="Edit">
+    </form>
 </div>
