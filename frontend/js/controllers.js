@@ -32,7 +32,26 @@
   }]);
 
   app.controller('ProfileController', ['$http', '$scope', function($http, $scope) {
-    this.user = $scope.getCurrentUser();
+    var user = $scope.getCurrentUser();
+    this.setDefaultProfileInfo = function() {
+      this.profileInfo = {
+        email: user.email,
+        username: user.username,
+        password: '',
+        newPassword: ''
+      };
+    }
+    this.save = function() {
+      $http.put('/profile', this.profileInfo)
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+    }
+    
+    this.setDefaultProfileInfo();
   }]);
 
 

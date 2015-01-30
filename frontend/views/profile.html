@@ -1,22 +1,23 @@
 <div class="profile-container">
     <h2>Profile</h2>
-    <form name="ProfileForm">
+    <form name="ProfileForm" ng-submit="vm.save()">
         <label>
             Username
-            <input type="text" name="username" value="{{vm.user.username}}"/>
+            <input type="text" name="username" ng-model="vm.profileInfo.username" />
         </label>
         <label>
             Email
-            <input type="email" name="email" value="{{vm.user.email}}"/>
+            <input type="email" name="email" ng-model="vm.profileInfo.email"/>
         </label>
         <label>
-            Old password
-            <input type="password" />
+            Password
+            <input type="password" ng-model="vm.profileInfo.password" />
         </label>
         <label>
             New password
-            <input type="password" />
+            <input type="password" ng-model="vm.profileInfo.newPassword" />
         </label>
-        <input type="submit" value="Edit">
+        <button type="submit">Save</button>
+        <button type="button" ng-click="vm.setDefaultProfileInfo()">Cancel</button>
     </form>
 </div>
