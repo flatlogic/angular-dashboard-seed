@@ -1,22 +1,28 @@
 (function() {
   var app = angular.module('angular-dashboard-demo-controllers', []);
 
-  app.controller('ApplicationController', ['$scope', function($scope) {
+  app.controller('ApplicationController', ['$scope', '$http', function($scope, $http) {
+    $scope.currentUser = null;
+
     $scope.setCurrentUser = function(user) {
       $scope.currentUser = user;
     }
 
-    $scope.getCurrentUser = function() {
-      return $scope.currentUser;
-    }
+    $http.get('/profile')
+      .success(function(user) {
+        $scope.setCurrentUser(user);
+      })
+      .error(function(err) {
+        console.log(err);
+      })
+
   }]);
 
-  app.controller('LoginController', ['$http', '$state', '$scope', 'Session',
+  app.controller('LoginController', ['$http', '$state', '$scope',
     function(
     $http,
     $state,
-    $scope,
-    Session
+    $scope
     ) {
     this.user = {};
     this.login = function() {
@@ -32,7 +38,7 @@
   }]);
 
   app.controller('ProfileController', ['$http', '$scope', function($http, $scope) {
-    var user = $scope.getCurrentUser();
+    var user = $scope.currentUser;
     this.setDefaultProfileInfo = function() {
       this.profileInfo = {
         email: user.email,
@@ -41,6 +47,7 @@
         newPassword: ''
       };
     }
+
     this.save = function() {
       $http.put('/profile', this.profileInfo)
         .success(function(data) {
@@ -50,7 +57,7 @@
           console.log(err);
         });
     }
-    
+
     this.setDefaultProfileInfo();
   }]);
 

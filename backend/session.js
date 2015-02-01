@@ -42,5 +42,5 @@ function _deserializeUser(id, done) {
 
 function _ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
-    res.redirect('/');
+    res.status(401).send({message: 'Please, login first'});
 }
