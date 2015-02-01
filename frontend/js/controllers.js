@@ -61,5 +61,9 @@
     this.setDefaultProfileInfo();
   }]);
 
+  app.controller('PostsController', ['Post', function(Post) {
+    this.posts = Post.query();
+  }])
+
 
 })();

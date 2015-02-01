@@ -1,12 +1,14 @@
 (function() {
 
-  var app = angular.module('angular-dashboard-demo', ['ui.router',
+  var app = angular.module('angular-dashboard-demo', [
+    'ui.router',
+    'ngResource',
     'angular-dashboard-demo-controllers',
     'angular-dashboard-demo-services'
   ]);
 
   app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/landing');
+    $urlRouterProvider.otherwise('/posts');
 
     $stateProvider
       .state('login', {
@@ -31,10 +33,11 @@
         templateUrl: 'views/profile.html',
         controller: 'ProfileController as vm'
       })
-      .state('landing', {
-        url: '/landing',
-        templateUrl: 'views/landing.html'
-      });
+      .state('posts', {
+        url: '/posts',
+        templateUrl: 'views/posts.html',
+        controller: 'PostsController as vm'
+      })
   }]);
 
 })();

@@ -13,4 +13,8 @@
 //    return this;
 //  })
 
+  app.factory('Post', function($resource) {
+    return $resource('/posts/:id');
+  });
+
 })()
