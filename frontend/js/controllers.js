@@ -6,7 +6,7 @@
 
     $scope.setCurrentUser = function(user) {
       $scope.currentUser = user;
-    }
+    };
 
     $http.get('/profile')
       .success(function(user) {
@@ -46,7 +46,7 @@
         password: '',
         newPassword: ''
       };
-    }
+    };
 
     this.save = function() {
       $http.put('/profile', this.profileInfo)
@@ -56,14 +56,39 @@
         .error(function(err) {
           console.log(err);
         });
-    }
+    };
 
     this.setDefaultProfileInfo();
   }]);
 
   app.controller('PostsController', ['Post', function(Post) {
     this.posts = Post.query();
-  }])
+  }]);
 
+  app.controller('PostController', ['data', 'Post', '$state', function(data, Post, $state) {
+    var defaultPost = JSON.parse(JSON.stringify(data));
+    this.post = data;
+
+    this.update = function() {
+      Post.update(this.post);
+      defaultPost = JSON.parse(JSON.stringify(this.post));
+    }
+
+    this.cancel = function() {
+      this.post = JSON.parse(JSON.stringify(defaultPost));
+    }
+
+    this.delete = function() {
+      Post.delete(this.post, function() {
+        $state.go('posts')
+      })
+    }
+
+    this.save = function() {
+      Post.save(this.post, function(savedPost) {
+        $state.go('post', {id: savedPost.id});
+      })
+    }
+  }]);
 
 })();

@@ -38,6 +38,24 @@
         templateUrl: 'views/posts.html',
         controller: 'PostsController as vm'
       })
+      .state('post', {
+        url: '/posts/:id',
+        templateUrl: 'views/post.html',
+        resolve: {
+          data: ['$stateParams', 'Post', function($stateParams, Post){
+            return Post.get({id: $stateParams.id}).$promise;
+          }]
+        },
+        controller: 'PostController as vm'
+      })
+      .state('createPost', {
+        url: '/posts/create',
+        templateUrl: 'views/create_post.html',
+        resolve: {
+          data: function() { return {}; }
+        },
+        controller: 'PostController as vm'
+      })
   }]);
 
 })();
