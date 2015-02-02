@@ -21,7 +21,7 @@
         onEnter: ['$http', '$state', function($http, $state) {
           $http.get('/logout', this.user)
             .success(function(data) {
-              $state.go('landing');
+              $state.go('login');
             })
             .error(function(err) {
               console.log(err);

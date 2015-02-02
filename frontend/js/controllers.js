@@ -38,27 +38,21 @@
   }]);
 
   app.controller('ProfileController', ['$http', '$scope', function($http, $scope) {
-    var user = $scope.currentUser;
-    this.setDefaultProfileInfo = function() {
-      this.profileInfo = {
-        email: user.email,
-        username: user.username,
-        password: '',
-        newPassword: ''
-      };
-    };
+    this.user = JSON.parse(JSON.stringify($scope.currentUser));
 
-    this.save = function() {
-      $http.put('/profile', this.profileInfo)
+    this.update = function() {
+      $http.put('/profile', this.user)
         .success(function(data) {
-          console.log(data);
+          $scope.setCurrentUser(data);
         })
         .error(function(err) {
           console.log(err);
         });
     };
 
-    this.setDefaultProfileInfo();
+    this.cancel = function() {
+      this.user = JSON.parse(JSON.stringify($scope.currentUser));
+    }
   }]);
 
   app.controller('PostsController', ['Post', function(Post) {
