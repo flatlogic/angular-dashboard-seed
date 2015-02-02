@@ -14,7 +14,7 @@
       })
       .error(function(err) {
         console.log(err);
-      })
+      });
 
   }]);
 
@@ -34,7 +34,7 @@
         .error(function(err) {
           console.log(err);
         });
-    }
+    };
   }]);
 
   app.controller('ProfileController', ['$http', '$scope', function($http, $scope) {
@@ -52,7 +52,7 @@
 
     this.cancel = function() {
       this.user = JSON.parse(JSON.stringify($scope.currentUser));
-    }
+    };
   }]);
 
   app.controller('PostsController', ['Post', function(Post) {
@@ -66,23 +66,23 @@
     this.update = function() {
       Post.update(this.post);
       defaultPost = JSON.parse(JSON.stringify(this.post));
-    }
+    };
 
     this.cancel = function() {
       this.post = JSON.parse(JSON.stringify(defaultPost));
-    }
+    };
 
     this.delete = function() {
       Post.delete(this.post, function() {
-        $state.go('posts')
-      })
-    }
+        $state.go('posts');
+      });
+    };
 
     this.save = function() {
       Post.save(this.post, function(savedPost) {
         $state.go('post', {id: savedPost.id});
-      })
-    }
+      });
+    };
   }]);
 
 })();
