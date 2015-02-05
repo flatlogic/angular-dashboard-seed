@@ -1,0 +1,23 @@
+<div class="profile-container">
+    <h2>Profile</h2>
+    <form name="ProfileForm" ng-submit="vm.update()">
+        <label>
+            Username
+            <input type="text" name="username" ng-model="vm.user.username" />
+        </label>
+        <label>
+            Email
+            <input type="email" name="email" ng-model="vm.user.email"/>
+        </label>
+        <label>
+            Password
+            <input type="password" ng-model="vm.user.password" />
+        </label>
+        <label>
+            New password
+            <input type="password" ng-model="vm.user.newPassword" />
+        </label>
+        <button type="submit">Save</button>
+        <button type="button" ng-click="vm.cancel()">Cancel</button>
+    </form>
+</div>

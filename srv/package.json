@@ -1,0 +1,7 @@
+{
+  "name": "angular-dashboard-demo-srv-node",
+  "description": "Angular dashboard demo with REST integration",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js"
+}

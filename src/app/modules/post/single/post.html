@@ -1,0 +1,16 @@
+<div class="post-container" ng-submit="vm.update()">
+    <h2>Profile</h2>
+    <form name="PostForm" >
+        <label>
+            Title
+            <input type="text" name="username" ng-model="vm.post.title" />
+        </label>
+        <label>
+            Description
+            <input type="text" name="email" ng-model="vm.post.description"/>
+        </label>
+        <button type="submit">Edit</button>
+        <button type="button" ng-click="vm.cancel()">Cancel</button>
+        <button type="button" ng-click="vm.delete()">Delete</button>
+    </form>
+</div>

@@ -1,0 +1,7 @@
+<div class="posts-container">
+    <h2>Posts</h2>
+    <div class="post" ng-repeat="post in vm.posts">
+        <a ui-sref="root.post({id: post.id})">{{post.title}}</a>
+    </div>
+    <button type="button" ui-sref="root.createPost">Create new post</button>
+</div>
