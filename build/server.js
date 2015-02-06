@@ -54,7 +54,7 @@ gulp.task('api', function() { //TODO: todo ;)
   });
 });
 
-gulp.task('serve:dist', ['build'], function () {
+gulp.task('serve:dist', ['build', 'api'], function () {
   browserSyncInit('dist');
 });
 

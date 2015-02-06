@@ -103,7 +103,7 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     var cssFilter = $.filter('**/*.css');
     var assets;
 
-    return; gulp.src('src/*.html')
+    return gulp.src('src/*.html')
         .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
             starttag: '<!-- inject:partials -->',
             ignorePath: '.tmp',
