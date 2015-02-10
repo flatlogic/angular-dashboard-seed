@@ -9,12 +9,12 @@
 
   function appConfig($stateProvider) {
     $stateProvider
-      .state('root.posts', {
+      .state('app.posts', {
         url: '/posts',
         templateUrl: 'app/modules/post/list/posts.html',
         controller: 'PostListController as vm'
       })
-      .state('root.post', {
+      .state('app.post', {
         url: '/posts/:id',
         templateUrl: 'app/modules/post/single/post.html',
         resolve: {
@@ -24,7 +24,7 @@
         },
         controller: 'PostController as vm'
       })
-      .state('root.createPost', {
+      .state('app.createPost', {
         url: '/posts/create',
         templateUrl: 'app/modules/post/single/create_post.html',
         resolve: {

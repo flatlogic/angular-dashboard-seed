@@ -19,8 +19,8 @@
   appConfig.$inject = ['$stateProvider'];
   function appConfig($stateProvider) {
     $stateProvider
-      .state('root', {
-        url: '',
+      .state('app', {
+        url: '/app',
         abstract: true,
         template: '<div ui-view></div>'
       });

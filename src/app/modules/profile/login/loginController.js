@@ -16,7 +16,7 @@
       $http.post('/api/login', this.user)
         .success(function(data) {
           $scope.setCurrentUser(data);
-          $state.go('root.profile');
+          $state.go('app.profile');
         })
         .error(function(err) {
           console.log(err);

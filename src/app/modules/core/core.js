@@ -20,7 +20,7 @@
     };
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-      $scope.loginPage = toState.name == 'root.login';
+      $scope.loginPage = toState.name == 'login';
       $(document).trigger('sn:loaded', [event, toState, toParams, fromState, fromParams]);
     })
 

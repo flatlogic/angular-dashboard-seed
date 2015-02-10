@@ -9,24 +9,24 @@
 
   function appConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('root.login', {
+      .state('login', {
         url: '/login',
         templateUrl: 'app/modules/profile/login/login.html',
         controller: 'LoginController as vm'
       })
-      .state('root.logout', {
+      .state('logout', {
         url: '/logout',
         onEnter: ['$http', '$state', function($http, $state) {
           $http.get('/api/logout', this.user)
             .success(function(data) {
-              $state.go('root.login');
+              $state.go('login');
             })
             .error(function(err) {
               console.log(err);
             });
         }]
       })
-      .state('root.profile', {
+      .state('app.profile', {
         url: '/profile',
         templateUrl: 'app/modules/profile/profile/profile.html',
         controller: 'ProfileController as vm'

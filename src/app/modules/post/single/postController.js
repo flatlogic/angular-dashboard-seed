@@ -22,13 +22,13 @@
 
     this.delete = function() {
       postResource.delete(this.post, function() {
-        $state.go('root.posts');
+        $state.go('app.posts');
       });
     };
 
     this.save = function() {
       postResource.save(this.post, function(savedPost) {
-        $state.go('root.post', {id: savedPost.id});
+        $state.go('app.post', {id: savedPost.id});
       });
     };
   }
