@@ -1,0 +1,32 @@
+.login-page{
+  background-color: $gray-semi-lighter;
+}
+
+.widget-login-container{
+  padding-top: 10%;
+  header {
+    color: $text-muted;
+  }
+}
+
+.widget-login{
+  padding: 30px;
+}
+
+.widget-login-info{
+  font-size: $font-size-mini;
+  color: #888;
+  margin-top: 1px;
+  margin-bottom: 0;
+}
+
+.login-form{
+  .form-control{
+    font-size: $font-size-mini;
+    border: none;
+    background-color: $gray-lighter;
+    &:focus{
+      background-color: $gray-semi-lighter;
+    }
+  }
+}

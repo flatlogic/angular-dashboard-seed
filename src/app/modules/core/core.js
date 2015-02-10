@@ -19,6 +19,11 @@
       $scope.currentUser = user;
     };
 
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+      $scope.loginPage = toState.name == 'root.login';
+      $(document).trigger('sn:loaded', [event, toState, toParams, fromState, fromParams]);
+    })
+
     activate();
 
     function activate() {

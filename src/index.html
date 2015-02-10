@@ -25,21 +25,9 @@
   <!-- endinject -->
   <!-- endbuild -->
 </head>
-<body data-ng-controller="App as vm">
+<body data-ng-controller="App as vm" data-ng-class="{'login-page': loginPage}">
 
-<div id="app">
-
-    <header>
-        <navbar>
-            <a ui-sref="root.login">Login</a>
-            <a ui-sref="root.logout">Logout</a>
-        </navbar>
-    </header>
-
-    <div ui-view class="main-container">
-
-    </div>
-</div>
+<div class="app" class="app"  data-ui-view></div>
 
 
 <!-- build:js scripts/vendor.js -->
@@ -69,6 +57,7 @@
 <script src="../bower_components/lodash/dist/lodash.compat.js"></script>
 <script src="../bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
 <script src="../bower_components/angular-moment/angular-moment.js"></script>
+<script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
 <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
