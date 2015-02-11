@@ -1,0 +1,15 @@
+<!--
+  Main sidebar seen on the left. may be static or collapsing depending on selected state.
+
+    * Collapsing - navigation automatically collapse when mouse leaves it and expand when enters.
+    * Static - stays always open.
+-->
+<nav id="sidebar" class="sidebar" role="navigation" data-ng-include="'app/modules/core/partials/sidebar.html'"> </nav>
+<!-- This is the white navigation bar seen on the top. A bit enhanced BS navbar. See .page-controls in _base.scss. -->
+<nav class="page-controls navbar navbar-default" data-ng-include="'views/partials/navbar.html'"></nav>
+
+<div class="content-wrap">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
+    <main id="content" class="content view-animate fade-up" role="main" data-ui-view>
+    </main>
+</div>

@@ -16,3 +16,31 @@ html, body {
   background: #fff;
   border-radius: 3px;
 }
+
+
+.content-wrap{
+  position: relative;
+  z-index: 0;
+  height: 100%;
+}
+
+.page-controls, .content-wrap {
+//  left: $sidebar-width;
+//  @media (min-width: $screen-sm-min) {
+//    margin-left: $sidebar-icon-state-width;
+//    left: $sidebar-width - $sidebar-icon-state-width;
+//  }
+  margin-left: $sidebar-width;
+}
+
+.content{
+  min-height: 100%;
+  padding: $content-padding-top $content-padding-horizontal $content-padding-vertical;
+  background-color: $body-bg;
+
+  @media (max-width: $screen-xs-max) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+

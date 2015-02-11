@@ -1,0 +1,91 @@
+.sidebar{
+  position: fixed;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $sidebar-width;
+  background-color: $sidebar-bg-color;
+  color: $sidebar-color;
+}
+
+.logo {
+  margin: 10px 0 20px;
+  height: $navbar-height;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-large;
+
+  a{
+    color: $white;
+    text-decoration: none;
+  }
+
+}
+
+.sidebar-nav{
+  padding: 10px 0;
+  font-size: 14px;
+  @media (min-width: $screen-md-min) and (min-height: $screen-md-height), (max-width: $screen-xs-max){
+    font-size: 16px;
+  }
+
+  li a{
+    display: block;
+    color: $sidebar-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  > li > a{
+    position: relative;
+    border-top: 1px solid $sidebar-item-border-color;
+    padding-left: 15px;
+    line-height: 35px;
+
+    &:hover{
+      background-color: $sidebar-item-hover-bg-color;
+    }
+
+    @media (min-width: $screen-md-min) and (min-height: $screen-md-height), (max-width: $screen-xs-max){
+      line-height: 44px;
+    }
+
+    .toggle{
+      line-height: 35px;
+      @media (min-width: $screen-md-min) and (min-height: $screen-md-height), (max-width: $screen-xs-max){
+        line-height: 44px;
+      }
+    }
+
+  }
+
+  > li:last-child > a{
+    border-bottom: 1px solid $sidebar-item-border-color;
+  }
+  /*
+   * Sub menus
+   */
+
+  > li ul{
+    padding: 0;
+    font-size: 13px;
+    background-color: lighten($sidebar-bg-color, 5%);
+    list-style: none;
+
+    @media (min-width: $screen-md-min) and (min-height: $screen-md-height), (max-width: $screen-xs-max){
+      font-size: 14px;
+    }
+
+    > li{
+      > a{
+        padding: 5px 0 5px 40px;
+        &:hover{
+          background-color: lighten($sidebar-item-hover-bg-color, 5%);
+        }
+      }
+    }
+  }
+}

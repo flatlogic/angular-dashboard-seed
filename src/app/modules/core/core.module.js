@@ -22,7 +22,7 @@
       .state('app', {
         url: '/app',
         abstract: true,
-        template: '<div ui-view></div>'
+        templateUrl: 'app/modules/core/app.html'
       });
   }
 })();
