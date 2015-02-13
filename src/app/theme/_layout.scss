@@ -25,12 +25,16 @@ html, body {
 }
 
 .content-wrap {
-//  left: $sidebar-width;
-//  @media (min-width: $screen-sm-min) {
-//    margin-left: $sidebar-icon-state-width;
-//    left: $sidebar-width - $sidebar-icon-state-width;
-//  }
-  margin-left: $sidebar-width;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 1;
+  left: 0;
+  @media (min-width: $screen-sm) {
+    left: $sidebar-width;
+  }
+  .nav-shown & {
+    left: $sidebar-width;
+  }
 }
 
 .content{
