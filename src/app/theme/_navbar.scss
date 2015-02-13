@@ -1,0 +1,54 @@
+.page-controls{
+  @include transition(
+          left $sidebar-transition-time ease-in-out,
+          right $sidebar-transition-time ease-in-out
+          !important /* add important! to override inline transition styles added by angular animate */
+  );
+}
+
+.page-controls{
+  z-index: 1;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 16px;
+
+    .navbar-brand{
+      position: absolute;
+      left: 0;
+      right: 0;
+      font-weight: $font-weight-bold;
+      text-align: center;
+    }
+
+    .navbar-nav{
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+
+}
+
+
+//
+//.page-controls, .content-wrap, .loader-wrap{
+//  left: $sidebar-width;
+//  @include transition(left $sidebar-transition-time ease-in-out);
+//
+//  @media (min-width: $screen-sm-min) {
+//    margin-left: $sidebar-icon-state-width;
+//    left: $sidebar-width - $sidebar-icon-state-width;
+//  }
+//
+//  .nav-collapsed &{
+//    left: 0
+//  }
+//
+//  .nav-static & {
+//    @media (min-width: $screen-md-min) {
+//      @include transition(none);
+//      left: 0;
+//      margin-left: $sidebar-width;
+//    }
+//  }
+//}
