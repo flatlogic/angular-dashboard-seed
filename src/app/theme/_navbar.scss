@@ -30,27 +30,3 @@
     background-color: red;
   }
 }
-
-
-//
-//.page-controls, .content-wrap, .loader-wrap{
-//  left: $sidebar-width;
-//  @include transition(left $sidebar-transition-time ease-in-out);
-//
-//  @media (min-width: $screen-sm-min) {
-//    margin-left: $sidebar-icon-state-width;
-//    left: $sidebar-width - $sidebar-icon-state-width;
-//  }
-//
-//  .nav-collapsed &{
-//    left: 0
-//  }
-//
-//  .nav-static & {
-//    @media (min-width: $screen-md-min) {
-//      @include transition(none);
-//      left: 0;
-//      margin-left: $sidebar-width;
-//    }
-//  }
-//}

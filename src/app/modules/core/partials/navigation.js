@@ -3,7 +3,8 @@
 
   var app = angular.module('app.core');
 
-  app.directive('navAction', navActions);
+  app.directive('navAction', navActions)
+     .directive('navDropdown', navDropdown);
 
   function navActions() {
     var navActions = {
@@ -28,6 +29,25 @@
         }
       }
     }
+  }
+
+  function navDropdown() {
+    return {
+      restrict: 'EA',
+      link: function(scope, $el, attrs) {
+        console.log(attrs);
+        scope.getTemplate = function() {
+          return attrs.dropdownTemplate;
+        };
+
+        scope.linkTitle = attrs.linkTitle || attrs.linkTitleTemplate;
+
+        $el.on('click', function(){
+          $el.find('.nav-dropdown-item').toggleClass('hidden');
+        });
+      },
+      templateUrl: 'app/modules/core/partials/dropDownLink.html'
+    };
   }
 
 })();

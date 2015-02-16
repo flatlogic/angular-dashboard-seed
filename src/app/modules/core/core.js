@@ -23,7 +23,7 @@
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
       $scope.loginPage = toState.name == 'login';
       $(document).trigger('sn:loaded', [event, toState, toParams, fromState, fromParams]);
-    })
+    });
 
     activate();
 
@@ -50,7 +50,7 @@
 
     this.isScreen = function(size){
       var screenPx = window.innerWidth;
-      return (screenPx >=screens[size + '-min'] || size == 'xs') && (screenPx <= screens[size + '-max'] || size == 'lg');
+      return (screenPx >= screens[size + '-min'] || size == 'xs') && (screenPx <= screens[size + '-max'] || size == 'lg');
     };
 
     this.getScreenSize = function(){

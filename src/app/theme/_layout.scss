@@ -49,3 +49,10 @@ html, body {
   }
 }
 
+.dropdown-link-container {
+  position: relative;
+  .nav-dropdown-item {
+    position: absolute;
+  }
+}
+
