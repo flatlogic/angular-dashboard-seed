@@ -30,6 +30,7 @@ html, body {
   z-index: 1;
   left: 0;
   @media (min-width: $screen-sm) {
+    width: calc(100% - #{$sidebar-width});
     left: $sidebar-width;
   }
   .nav-shown & {

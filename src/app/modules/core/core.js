@@ -3,9 +3,10 @@
 
   angular
     .module('app.core')
-    .controller('App', AppController);
+    .controller('App', AppController)
+    .service('ScreenUtils', ScreenUtils);
 
-  AppController.$inject = ['config', '$scope', '$http'];
+  AppController.$inject = ['config', '$scope', '$http', 'ScreenUtils'];
 
   function AppController(config, $scope, $http) {
     /*jshint validthis: true */
@@ -34,6 +35,30 @@
         .error(function(err) {
           console.log(err);
         });
+    }
+  }
+
+  function ScreenUtils() {
+    var screens = {
+      'xs-max': 767,
+        'sm-min': 768,
+        'sm-max': 991,
+        'md-min': 992,
+        'md-max': 1199,
+        'lg-min': 1200
+    };
+
+    this.isScreen = function(size){
+      var screenPx = window.innerWidth;
+      return (screenPx >=screens[size + '-min'] || size == 'xs') && (screenPx <= screens[size + '-max'] || size == 'lg');
+    };
+
+    this.getScreenSize = function(){
+      var screenPx = window.innerWidth;
+      if (screenPx <= screens['xs-max']) return 'xs';
+      if ((screenPx >= screens['sm-min']) && (screenPx <= screens['sm-max'])) return 'sm';
+      if ((screenPx >= screens['md-min']) && (screenPx <= screens['md-max'])) return 'md';
+      if (screenPx >= screens['lg-min']) return 'lg';
     }
   }
 })();
