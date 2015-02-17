@@ -1,21 +1,10 @@
 .page-controls{
-  @include transition(
-          left $sidebar-transition-time ease-in-out,
-          right $sidebar-transition-time ease-in-out
-          !important /* add important! to override inline transition styles added by angular animate */
-  );
-}
-
-.page-controls{
   z-index: 1;
 
   @media (max-width: $screen-xs-max) {
     font-size: 16px;
 
     .navbar-brand{
-      position: absolute;
-      left: 0;
-      right: 0;
       font-weight: $font-weight-bold;
       text-align: center;
     }
@@ -26,7 +15,4 @@
     }
   }
 
-  .toggle-navigation-collapse {
-    background-color: red;
-  }
 }
