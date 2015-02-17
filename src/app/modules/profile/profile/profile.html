@@ -1,23 +1,35 @@
-<div class="profile-container">
-    <h2>Profile</h2>
-    <form name="ProfileForm" ng-submit="vm.update()">
-        <label>
-            Username
-            <input type="text" name="username" ng-model="vm.user.username" />
-        </label>
-        <label>
-            Email
-            <input type="email" name="email" ng-model="vm.user.email"/>
-        </label>
-        <label>
-            Password
-            <input type="password" ng-model="vm.user.password" />
-        </label>
-        <label>
-            New password
-            <input type="password" ng-model="vm.user.newPassword" />
-        </label>
-        <button type="submit">Save</button>
-        <button type="button" ng-click="vm.cancel()">Cancel</button>
-    </form>
+<div class="row">
+    <div class="col-md-6">
+        <div class="widget">
+            <h2>Profile</h2>
+            <form role="form" name="ProfileForm" ng-submit="vm.update()">
+                <div class="form-group">
+                    <label class="control-label">
+                        Username
+                        <input type="text" class="form-control" name="username" ng-model="vm.user.username" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Email
+                        <input type="email" class="form-control" name="email" ng-model="vm.user.email"/>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Password
+                        <input type="password" class="form-control" ng-model="vm.user.password" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        New password
+                        <input type="password" class="form-control" ng-model="vm.user.newPassword" />
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn .btn-warning" ng-click="vm.cancel()">Cancel</button>
+            </form>
+        </div>
+    </div>
 </div>

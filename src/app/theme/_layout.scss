@@ -26,7 +26,7 @@ html, body {
 
 .content-wrap {
   position: absolute;
-  background-color: #ffffff;
+  background-color: #CFD8DC;
   z-index: 1;
   left: 0;
   @media (min-width: $screen-sm) {
@@ -38,15 +38,9 @@ html, body {
   }
 }
 
-.content{
+.content {
   min-height: 100%;
-  padding: $content-padding-top $content-padding-horizontal $content-padding-vertical;
-  background-color: $body-bg;
-
-  @media (max-width: $screen-xs-max) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  padding: 20px;
 }
 
 .dropdown-link-container {
