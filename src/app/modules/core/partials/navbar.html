@@ -23,11 +23,18 @@
             <li>
                 <a data-ui-sref="logout">logout</a>
             </li>
-            <li>
-                <a href class="dropdown-toggle dropdown-toggle-notifications" id="notifications-dropdown-toggle">
+            <li class="dropdown">
+                <a href class="dropdown-toggle dropdown-toggle-notifications" data-toggle="dropdown" id="notifications-dropdown-toggle">
                     Philip <strong>Smith</strong>&nbsp;
                     <b class="caret"></b>
                 </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a></li>
+                </ul>
             </li>
         </ul>
     </div>

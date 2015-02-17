@@ -5,12 +5,7 @@
     /*
      * Angular modules
      */
-    'ngAnimate',
-    'ngCookies',
-    'ngTouch',
-    'ngSanitize',
     'ngResource',
-    'ui.bootstrap',
     'ui.router'
   ]);
 
