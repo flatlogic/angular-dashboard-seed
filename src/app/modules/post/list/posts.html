@@ -1,7 +1,13 @@
-<div class="posts-container">
-    <h2>Posts</h2>
-    <div class="post" ng-repeat="post in vm.posts">
-        <a ui-sref="app.post({id: post.id})">{{post.title}}</a>
+<div class="row">
+    <div class="col-md-6">
+        <div class="widget posts-list">
+            <h2>Posts</h2>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="post in vm.posts">
+                    <a ui-sref="app.post({id: post.id})">{{post.title}}</a>
+                </li>
+            </ul>
+            <button type="button" class="btn" ui-sref="app.createPost">Create new post</button>
+        </div>
     </div>
-    <button type="button" ui-sref="app.createPost">Create new post</button>
 </div>

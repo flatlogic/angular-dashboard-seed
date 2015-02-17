@@ -1,34 +1,26 @@
 <div class="row">
     <div class="col-md-6">
-        <div class="widget">
+        <div class="widget edit-profile">
             <h2>Profile</h2>
             <form role="form" name="ProfileForm" ng-submit="vm.update()">
                 <div class="form-group">
-                    <label class="control-label">
-                        Username
-                        <input type="text" class="form-control" name="username" ng-model="vm.user.username" />
-                    </label>
+                    <label class="control-label" for="profile-username">Username</label>
+                    <input type="text" class="form-control" id="profile-username" name="username" ng-model="vm.user.username" />
                 </div>
                 <div class="form-group">
-                    <label class="control-label">
-                        Email
-                        <input type="email" class="form-control" name="email" ng-model="vm.user.email"/>
-                    </label>
+                    <label class="control-label" for="profile-email">Email</label>
+                    <input type="email" class="form-control" id="profile-email" name="email" ng-model="vm.user.email"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">
-                        Password
-                        <input type="password" class="form-control" ng-model="vm.user.password" />
-                    </label>
+                    <label class="control-label" for="profile-password">Password</label>
+                    <input type="password" id="profile-password" class="form-control" ng-model="vm.user.password" />
                 </div>
                 <div class="form-group">
-                    <label class="control-label">
-                        New password
-                        <input type="password" class="form-control" ng-model="vm.user.newPassword" />
-                    </label>
+                    <label class="control-label" for="new-profile-password">New password</label>
+                    <input type="password" id="new-profile-password" class="form-control" ng-model="vm.user.newPassword" />
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="button" class="btn .btn-warning" ng-click="vm.cancel()">Cancel</button>
+                <button type="button" class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
             </form>
         </div>
     </div>
