@@ -1,3 +1,22 @@
+.page-controls{
+  z-index: 1;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 16px;
+
+    .navbar-brand{
+      font-weight: $font-weight-bold;
+      text-align: center;
+    }
+
+    .navbar-nav{
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+}
+
 .sidebar{
   position: fixed;
   z-index: 0;
