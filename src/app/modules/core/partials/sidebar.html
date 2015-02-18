@@ -4,29 +4,17 @@
     </header>
     <ul class="sidebar-nav">
         <li>
+            <a ui-sref="app.profile">Profile</a>
+        </li>
+        <li>
             <a class="collapsed" data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="fa fa-desktop"></i>
-                    </span>
-                Dashboard
-                <i class="toggle fa fa-angle-down"></i>
+                Posts
+                <b class="caret"></b>
             </a>
             <ul id="sidebar-dashboard" class="collapse">
-                <li>
-                    <a>Dashboard</a>
-                </li>
-                <li><a>Widgets</a></li>
+                <li><a ui-sref="app.posts">Show all</a></li>
+                <li><a ui-sref="app.createPost">Create new</a></li>
             </ul>
-        </li>
-        <li>
-            <a>
-                Email
-            </a>
-        </li>
-        <li>
-            <a>
-                Charts
-            </a>
         </li>
     </ul>
 

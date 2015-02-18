@@ -5,9 +5,16 @@
         .module('app.post')
         .controller('PostListController', postListController);
 
-    postListController.$inject = ['postResource']
+    postListController.$inject = ['postResource'];
 
     function postListController(postResource) {
-      this.posts = postResource.query();
+      var vm = this;
+      vm.delete = function(post) {
+        postResource.delete(post, function() {
+          var index = vm.posts.indexOf(post);
+          vm.posts.splice(index,1);
+        });
+      };
+      vm.posts = postResource.query();
     }
 })();
