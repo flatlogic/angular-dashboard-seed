@@ -3,32 +3,38 @@ var stubs = [
     {
         id: 1,
         title: 'post1',
-        description: 'post 1 description'
+        description: 'post 1 description',
+        date: "2015-01-19T14:01:36.022Z"
     },
     {
         id: 2,
         title: 'post2',
-        description: 'post 2 description'
+        description: 'post 2 description',
+        date: "2015-01-19T14:01:36.022Z"
     },
     {
         id: 3,
         title: 'post3',
-        description: 'post 3 description'
+        description: 'post 3 description',
+        date: "2015-01-19T14:01:36.022Z"
     },
     {
         id: 4,
         title: 'post4',
-        description: 'post 4 description'
+        description: 'post 4 description',
+        date: "2015-02-18T14:01:36.022Z"
     },
     {
         id: 5,
         title: 'post5',
-        description: 'post 5 description'
+        description: 'post 5 description',
+        date: "2015-02-19T14:01:36.022Z"
     },
     {
         id: 6,
         title: 'post6',
-        description: 'post 6 description'
+        description: 'post 6 description',
+        date: "2015-02-19T14:01:36.022Z"
     }
 ];
 

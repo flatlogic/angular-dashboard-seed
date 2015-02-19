@@ -11,8 +11,8 @@
     $stateProvider
       .state('app.dashboard', {
         url: '/dashboard',
-        templateUrl: 'app/modules/dashboard/dashboard.html'
-//        controller: 'DashboardController as vm'
+        templateUrl: 'app/modules/dashboard/dashboard.html',
+        controller: 'DashboardController as vm'
       })
   }
 })();

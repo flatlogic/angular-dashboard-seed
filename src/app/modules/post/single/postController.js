@@ -27,6 +27,7 @@
     };
 
     this.save = function() {
+      this.post.date = (new Date()).toISOString();
       postResource.save(this.post, function(savedPost) {
         $state.go('app.post', {id: savedPost.id});
       });
