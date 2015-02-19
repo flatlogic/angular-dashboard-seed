@@ -1,0 +1,26 @@
+.dash-widget{
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  .widget-icon {
+    position: absolute;
+    font-size: 4em;
+  }
+  .widget-info {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  .widget-text {
+    margin-left: 80px;
+  }
+  .huge {
+    font-size: 30px;
+  }
+  &.total-posts {
+    background-color: #337ab7;
+  }
+}
