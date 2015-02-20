@@ -8,7 +8,7 @@
   profileController.$inject = ['$http', '$scope'];
 
   function profileController($http, $scope) {
-    this.user = JSON.parse(JSON.stringify($scope.currentUser));
+    this.user = $.extend(true, {}, $scope.currentUser);
 
     this.update = function() {
       $http.put('/api/profile', this.user)
@@ -21,7 +21,7 @@
     };
 
     this.cancel = function() {
-      this.user = JSON.parse(JSON.stringify($scope.currentUser));
+      this.user = $.extend(true, {}, $scope.currentUser);
     };
   }
 

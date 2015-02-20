@@ -14,23 +14,15 @@
         templateUrl: 'app/modules/post/list/posts.html',
         controller: 'PostListController as vm'
       })
-      .state('app.post', {
-        url: '/posts/:id',
-        templateUrl: 'app/modules/post/single/post.html',
+      .state('app.editPost', {
+        url: '/posts/edit/:id',
+        templateUrl: 'app/modules/post/edit/edit.html',
         resolve: {
           data: ['$stateParams', 'postResource', function($stateParams, postResource){
-            return postResource.get({id: $stateParams.id}).$promise;
+            return $stateParams.id ? postResource.get({id: $stateParams.id}).$promise : {};
           }]
         },
         controller: 'PostController as vm'
-      })
-      .state('app.createPost', {
-        url: '/posts/create',
-        templateUrl: 'app/modules/post/single/create_post.html',
-        resolve: {
-          data: function() { return {}; }
-        },
-        controller: 'PostController as vm'
-      })
+      });
   }
 })();

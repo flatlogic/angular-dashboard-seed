@@ -8,16 +8,16 @@
   postController.$inject = ['data', 'postResource', '$state'];
 
   function postController(data, postResource, $state) {
-    var defaultPost = JSON.parse(JSON.stringify(data));
+    var defaultPost = $.extend(true, {}, data);
     this.post = data;
 
     this.update = function() {
       postResource.update(this.post);
-      defaultPost = JSON.parse(JSON.stringify(this.post));
+      defaultPost = $.extend(true, {}, this.post);
     };
 
     this.cancel = function() {
-      this.post = JSON.parse(JSON.stringify(defaultPost));
+      this.post = $.extend(true, {}, defaultPost);
     };
 
     this.delete = function() {

@@ -2,7 +2,7 @@
     <h2>Today's posts</h2>
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="post in vm.posts">
-            <a ui-sref="app.post({id: post.id})">{{post.title}}</a>
+            <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
             <span class="pull-right">
                 <button type="button" class="close" aria-label="Close" ng-click="vm.delete(post)">
                     <span aria-hidden="true">&times;</span>

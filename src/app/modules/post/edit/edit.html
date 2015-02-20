@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-6">
         <div class="widget edit-post">
-            <h2>Edit post</h2>
-            <form role="form" name="PostForm" ng-submit="vm.save()" >
+            <h2>{{vm.post.id ? 'Edit' : 'Create new'}} post</h2>
+            <form role="form" name="PostForm" ng-submit="vm.post.id ? vm.update() : vm.save()" >
                 <div class="form-group">
                     <label class="control-label" for="post-title">Title</label>
                     <input type="text" class="form-control" ng-model="vm.post.title" id="post-title"/>
@@ -12,8 +12,10 @@
                     <textarea class="form-control" rows="5" ng-model="vm.post.description" id="post-description"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
-                <button type="button" class="btn btn-danger" ng-click="vm.delete()">Delete</button>
+                <span ng-if="vm.post.id">
+                    <button type="button" class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
+                    <button type="button" class="btn btn-danger" ng-click="vm.delete()">Delete</button>
+                </span>
             </form>
         </div>
     </div>
