@@ -19,12 +19,6 @@
   function todayPostsController(postResource) {
     var vm = this;
     vm.posts = [];
-    vm.delete = function(post) {
-      postResource.delete(post, function() {
-        var index = vm.posts.indexOf(post);
-        vm.posts.splice(index,1);
-      });
-    };
 
     postResource.query(function(posts) {
       var today = new Date();
