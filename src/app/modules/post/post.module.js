@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var module = angular.module('app.post', ['ui.router', 'ngResource']);
+  var module = angular.module('app.post', ['ui.router', 'ngResource', 'app.data']);
 
   module.config(appConfig);
 
@@ -22,7 +22,8 @@
             return $stateParams.id ? postResource.get({id: $stateParams.id}).$promise : {};
           }]
         },
-        controller: 'PostController as vm'
+        controller: 'PostController',
+        controllerAs: 'vm'
       });
   }
 })();

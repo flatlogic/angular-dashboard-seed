@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var module = angular.module('app.dashboard', ['ui.router', 'ngResource']);
+  var module = angular.module('app.dashboard', ['ui.router', 'ngResource', 'app.data']);
 
   module.config(appConfig);
 
@@ -12,7 +12,8 @@
       .state('app.dashboard', {
         url: '/dashboard',
         templateUrl: 'app/modules/dashboard/dashboard.html',
-        controller: 'DashboardController as vm'
+        controller: 'DashboardController',
+        controllerAs: 'vm'
       })
   }
 })();

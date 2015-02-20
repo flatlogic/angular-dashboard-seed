@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('app.post')
+  angular.module('app.data')
     .factory('postResource', postResource);
 
   postResource.$inject = ['$resource'];

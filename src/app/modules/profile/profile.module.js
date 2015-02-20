@@ -12,7 +12,8 @@
       .state('login', {
         url: '/login',
         templateUrl: 'app/modules/profile/login/login.html',
-        controller: 'LoginController as vm'
+        controller: 'LoginController',
+        controllerAs: 'vm'
       })
       .state('logout', {
         url: '/logout',
@@ -29,7 +30,8 @@
       .state('app.profile', {
         url: '/profile',
         templateUrl: 'app/modules/profile/profile/profile.html',
-        controller: 'ProfileController as vm'
+        controller: 'ProfileController',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('');
