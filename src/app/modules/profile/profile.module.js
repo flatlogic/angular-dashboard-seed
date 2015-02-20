@@ -21,9 +21,6 @@
           $http.get('/api/logout', this.user)
             .success(function(data) {
               $state.go('login');
-            })
-            .error(function(err) {
-              console.log(err);
             });
         }]
       })

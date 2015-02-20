@@ -17,9 +17,6 @@
         .success(function(data) {
           $scope.setCurrentUser(data);
           $state.go('app.profile');
-        })
-        .error(function(err) {
-          console.log(err);
         });
     };
   };

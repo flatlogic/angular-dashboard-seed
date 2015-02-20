@@ -6,7 +6,9 @@
      * Angular modules
      */
     'ngResource',
-    'ui.router'
+    'ui.router',
+    'ngAnimate',
+    'toastr'
   ]);
 
   core.config(appConfig);
