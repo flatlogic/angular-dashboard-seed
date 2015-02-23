@@ -15,8 +15,11 @@ html, body {
   padding: 15px 20px;
   background: #fff;
   border-radius: 3px;
-}
+  header {
+    margin-bottom: 10px;
+  }
 
+}
 
 .content-wrap{
   position: relative;
@@ -58,4 +61,10 @@ html, body {
   text-align: left;
   padding-right: 0;
 }
+
+.widget-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
 

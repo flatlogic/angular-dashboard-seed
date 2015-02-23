@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="widget edit-post">
-            <h2>{{vm.post.id ? 'Edit' : 'Create new'}} post</h2>
+            <header>
+                <span class="widget-title">{{vm.post.id ? 'Edit' : 'Create new'}} post</span>
+            </header>
             <form role="form" name="PostForm" class="form-horizontal" ng-submit="vm.post.id ? vm.update() : vm.save()" >
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="post-title">Title</label>
@@ -16,11 +18,10 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Save</button>
                     <span ng-if="vm.post.id">
-                        <button type="button" class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
-                        <button type="button" class="btn btn-danger" ng-click="vm.delete()">Delete</button>
+                        <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
                     </span>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

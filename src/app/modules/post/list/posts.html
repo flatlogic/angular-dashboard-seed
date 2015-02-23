@@ -1,18 +1,28 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="widget posts-list">
-            <h2>Posts</h2>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="post in vm.posts">
-                    <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
-                    <span class="pull-right">
-                        <button type="button" class="close" aria-label="Close" ng-click="vm.delete(post)">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </span>
-                </li>
-            </ul>
-            <button type="button" class="btn" ui-sref="app.editPost({id: null})">Create new post</button>
+            <header>
+                <span class="widget-title">Posts</span>
+                <button type="button" class="btn pull-right" ui-sref="app.posts.edit({id: null})">Create new post</button>
+            </header>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Last updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="post in vm.posts">
+                    <td>{{post.title}}</td>
+                    <td><span>{{post.date | date: 'short'}}</span></td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-default" ui-sref="app.editPost({id: post.id})">Edit</button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.delete(post)">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

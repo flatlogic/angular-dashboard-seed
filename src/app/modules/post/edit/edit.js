@@ -20,12 +20,6 @@
       this.post = $.extend(true, {}, defaultPost);
     };
 
-    this.delete = function() {
-      postResource.delete(this.post, function() {
-        $state.go('app.posts');
-      });
-    };
-
     this.save = function() {
       this.post.date = (new Date()).toISOString();
       postResource.save(this.post, function(savedPost) {

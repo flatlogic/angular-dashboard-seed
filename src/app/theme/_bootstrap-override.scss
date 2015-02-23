@@ -145,6 +145,10 @@ legend {
   border-bottom-width: 1px;
 }
 
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
 .table-bordered th{
   background-color: $gray-lighter;
 }
