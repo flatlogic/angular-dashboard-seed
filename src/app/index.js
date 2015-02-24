@@ -6,6 +6,7 @@
         'app.profile',
         'app.post',
         'app.dashboard',
-        'app.data'
+        'app.data',
+        'app.common'
     ]);
 })();

@@ -5,16 +5,10 @@
         .module('app.post')
         .controller('PostListController', postListController);
 
-    postListController.$inject = ['postResource'];
-
-    function postListController(postResource) {
+    postListController.$inject = ['postResource', 'deletePostModal'];
+    function postListController(postResource, deletePostModal) {
       var vm = this;
-      vm.delete = function(post) {
-        postResource.delete(post, function() {
-          var index = vm.posts.indexOf(post);
-          vm.posts.splice(index,1);
-        });
-      };
       vm.posts = postResource.query();
+      vm.delete = deletePostModal.getDeleteMethod(vm.posts);
     }
 })();

@@ -606,27 +606,6 @@ h6, .h6 { &.panel-title{ font-size: $font-size-h6; }}
   padding: 20px;
 }
 
-//
-// Modals
-// --------------------------------------------------
-
-// z-index fix. modal doesn't show up properly when .content-wrap is relative
-.modal-open{
-  &, &.nav-collapsed, &.nav-static{
-    .content-wrap{
-      -webkit-transform: none;
-      -ms-transform: none;
-      transform: none;
-      position: static;
-    }
-
-    .sidebar{
-      z-index: -1;
-    }
-  }
-}
-
-//
 // Pagination
 // --------------------------------------------------
 

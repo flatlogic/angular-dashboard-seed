@@ -53,6 +53,12 @@ html, body {
   }
 }
 
+.small-modal {
+  .modal-dialog {
+    width: $small-modal-width;
+  }
+}
+
 .btn-circle {
   border-radius: 50%;
 }
