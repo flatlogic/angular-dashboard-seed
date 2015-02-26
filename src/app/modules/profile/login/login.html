@@ -7,16 +7,42 @@
                         <h3>Login to your dashboard</h3>
                     </header>
                     <div class="widget-body">
-                        <form class="login-form mt-lg">
+                        <form role="form" novalidate name="loginForm" class="login-form mt-lg" validatable-submit="vm.login()">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" ng-model="vm.user.username" name="username" placeholder="Username">
+                                <input type="text" class="form-control" required ng-minlength=3 ng-maxlength=20
+                                       ng-model="vm.user.username" name="username" placeholder="Username">
+                                <div class="error-container"
+                                     ng-show="loginForm.username.$dirty && loginForm.username.$invalid && loginForm.submitted">
+                                    <small class="error" ng-show="loginForm.username.$error.required">
+                                        Username is required.
+                                    </small>
+                                    <small class="error" ng-show="loginForm.username.$error.minlength">
+                                        Username is required to be at least 3 characters
+                                    </small>
+                                    <small class="error" ng-show="loginForm.username.$error.maxlength">
+                                        Username cannot be longer than 20 characters
+                                    </small>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="pswd" ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
+                                <input class="form-control" required ng-minlength=3 ng-maxlength=20
+                                       ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
+                                <div class="error-container"
+                                     ng-show="loginForm.password.$dirty && loginForm.password.$invalid && loginForm.submitted">
+                                    <small class="error" ng-show="loginForm.password.$error.required">
+                                        Password is required.
+                                    </small>
+                                    <small class="error" ng-show="loginForm.password.$error.minlength">
+                                        Password is required to be at least 3 characters
+                                    </small>
+                                    <small class="error" ng-show="loginForm.password.$error.maxlength">
+                                        Password cannot be longer than 20 characters
+                                    </small>
+                                </div>
                             </div>
                             <div class="clearfix">
                                 <div class="btn-toolbar pull-right">
-                                    <button type="button" class="btn btn-default btn-sm" ng-click="vm.login()">Login</button>
+                                    <button type="submit" class="btn btn-default btn-sm">Login</button>
                                 </div>
                             </div>
                         </form>

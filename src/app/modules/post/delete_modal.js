@@ -12,7 +12,7 @@
       closeButtonText: 'Cancel',
       actionButtonText: 'Delete',
       headerText: 'Confirm post deletion',
-      bodyText: 'The post will be deleted permanently, do you want to continue?',
+      bodyText: 'The post will be deleted permanently, do you want to continue?'
     };
     this.modalDefaults = {
       windowClass: 'small-modal'
