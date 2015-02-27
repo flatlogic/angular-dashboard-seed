@@ -8,11 +8,10 @@
                     </header>
                     <div class="widget-body">
                         <form role="form" novalidate name="loginForm" class="login-form mt-lg" validatable-submit="vm.login()">
-                            <div class="form-group">
+                            <div class="form-group" show-errors>
                                 <input type="text" class="form-control" required ng-minlength=3 ng-maxlength=20
                                        ng-model="vm.user.username" name="username" placeholder="Username">
-                                <div class="error-container"
-                                     ng-show="loginForm.username.$dirty && loginForm.username.$invalid && loginForm.submitted">
+                                <div class="error-container">
                                     <small class="error" ng-show="loginForm.username.$error.required">
                                         Username is required.
                                     </small>
@@ -24,11 +23,10 @@
                                     </small>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" show-errors>
                                 <input class="form-control" required ng-minlength=3 ng-maxlength=20
                                        ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
-                                <div class="error-container"
-                                     ng-show="loginForm.password.$dirty && loginForm.password.$invalid && loginForm.submitted">
+                                <div class="error-container">
                                     <small class="error" ng-show="loginForm.password.$error.required">
                                         Password is required.
                                     </small>

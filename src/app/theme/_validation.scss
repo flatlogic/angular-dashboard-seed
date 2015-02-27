@@ -4,3 +4,11 @@ input.ng-invalid {
 input.ng-valid {
   border: 1px solid green;
 }
+
+.form-group .error-container {
+  display: none;
+}
+
+.form-group.has-error .error-container {
+  display: block;
+}
