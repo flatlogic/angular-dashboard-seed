@@ -5,10 +5,9 @@ input.ng-valid {
   border: 1px solid green;
 }
 
-.form-group .error-container {
+.error-container {
   display: none;
-}
-
-.form-group.has-error .error-container {
-  display: block;
+  &.has-error {
+    display: block;
+  }
 }

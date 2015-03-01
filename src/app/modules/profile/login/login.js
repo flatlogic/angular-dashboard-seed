@@ -13,11 +13,11 @@
     ) {
     this.user = {};
     this.login = function() {
-      $http.post('/api/login', this.user)
+      return $http.post('/api/login', this.user)
         .success(function(data) {
           $scope.setCurrentUser(data);
           $state.go('app.profile');
-        });
+        })
     };
   };
 })();

@@ -3,10 +3,10 @@
 
   var core = angular.module('app.core');
 
-  core.factory('responseErrorInterceptor', responseErrorInterceptor);
-  core.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.interceptors.push('responseErrorInterceptor');
-  }]);
+//  core.factory('responseErrorInterceptor', responseErrorInterceptor);
+//  core.config(['$httpProvider', function($httpProvider) {
+//    $httpProvider.interceptors.push('responseErrorInterceptor');
+//  }]);
 
   core.config(['$provide', function($provide) {
     $provide.decorator('$exceptionHandler', exceptionHandlerDecorator);
@@ -21,7 +21,8 @@
     };
   }
 
-  function responseErrorInterceptor() {
+  responseErrorInterceptor.$inject = ['$q']
+  function responseErrorInterceptor($q) {
     return {
      responseError: function(res) {
        if (res.status == 401) {
