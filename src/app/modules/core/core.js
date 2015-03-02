@@ -5,9 +5,9 @@
     .module('app.core')
     .controller('App', AppController);
 
-  AppController.$inject = ['config', '$scope', '$http'];
+  AppController.$inject = ['config', '$scope', '$http', 'shortHistory'];
 
-  function AppController(config, $scope, $http) {
+  function AppController(config, $scope, $http, shortHistory) {
     /*jshint validthis: true */
     var vm = this;
 
@@ -27,6 +27,7 @@
     activate();
 
     function activate() {
+      shortHistory.init($scope);
       $http.get('/api/profile')
         .success(function(user) {
           $scope.setCurrentUser(user);

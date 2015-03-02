@@ -5,25 +5,23 @@
     .module('app.profile')
     .controller('PostController', postController);
 
-  postController.$inject = ['data', 'postResource', '$state'];
-
-  function postController(data, postResource, $state) {
-    var defaultPost = $.extend(true, {}, data);
+  postController.$inject = ['data', 'postResource', '$state', 'shortHistory'];
+  function postController(data, postResource, $state, shortHistory) {
     this.post = data;
+    this.showReturnBtn = this.post.id && shortHistory.from.state.name;
 
     this.update = function() {
       postResource.update(this.post);
-      defaultPost = $.extend(true, {}, this.post);
     };
 
-    this.cancel = function() {
-      this.post = $.extend(true, {}, defaultPost);
+    this.return = function() {
+        $state.go(shortHistory.from.state.name, shortHistory.from.params);
     };
 
     this.save = function() {
       this.post.date = (new Date()).toISOString();
       postResource.save(this.post, function(savedPost) {
-        $state.go('app.post', {id: savedPost.id});
+        shortHistory.goTo('from');
       });
     };
   }
