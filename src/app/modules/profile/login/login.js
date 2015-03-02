@@ -4,8 +4,7 @@
   angular.module('app.profile')
     .controller('LoginController', loginController);
 
-  loginController.$inject = ['$http', '$state', '$scope']
-
+  loginController.$inject = ['$http', '$state', '$scope'];
   function loginController(
     $http,
     $state,

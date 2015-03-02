@@ -4,34 +4,79 @@
             <header>
                 <span class="widget-title">Profile</span>
             </header>
-            <form role="form" name="ProfileForm" class="form-horizontal" ng-submit="vm.update()">
+            <form role="form" name="profileForm" class="form-horizontal" ng-submit="vm.update()">
+                <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
+                    {{vm.responseErrorMsg}}
+                </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="profile-username">Username</label>
+                    <label class="col-sm-2 control-label" for="username">Username</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="profile-username" name="username" ng-model="vm.user.username" />
+                        <input type="text" class="form-control" name="username" ng-model="vm.user.username"
+                               required ng-minlength=3 ng-maxlength=20 />
+                        <div ng-show="profileForm.username.$invalid && profileForm.username.$dirty">
+                            <small class="error" ng-show="profileForm.username.$error.required">
+                                Username is required.
+                            </small>
+                            <small class="error" ng-show="profileForm.username.$error.minlength">
+                                Username is required to be at least 3 characters
+                            </small>
+                            <small class="error" ng-show="profileForm.username.$error.maxlength">
+                                Username cannot be longer than 20 characters
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="profile-email">Email</label>
+                    <label class="col-sm-2 control-label" for="email">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="profile-email" name="email" ng-model="vm.user.email"/>
+                        <input type="email" class="form-control" name="email" ng-model="vm.user.email"
+                               required />
+                        <div ng-show="profileForm.email.$invalid && profileForm.email.$dirty">
+                            <small class="error" ng-show="profileForm.email.$error.required">
+                                Email is required.
+                            </small>
+                            <small class="error" ng-show="profileForm.email.$error.email">
+                                Email is incorrect
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="profile-password">Password</label>
+                    <label class="col-sm-2 control-label" for="password">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" id="profile-password" class="form-control" ng-model="vm.user.password" />
+                        <input type="password" name="password" class="form-control" ng-model="vm.user.password"
+                               required ng-minlength=3 ng-maxlength=20 />
+                        <div ng-show="profileForm.password.$invalid && profileForm.password.$dirty">
+                            <small class="error" ng-show="profileForm.password.$error.required">
+                                Password is required.
+                            </small>
+                            <small class="error" ng-show="profileForm.password.$error.minlength">
+                                Password is required to be at least 3 characters
+                            </small>
+                            <small class="error" ng-show="profileForm.password.$error.maxlength">
+                                Password cannot be longer than 20 characters
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="new-profile-password">New password</label>
+                    <label class="col-sm-2 control-label" for="newPassword">New password</label>
                     <div class="col-sm-10">
-                        <input type="password" id="new-profile-password" class="form-control" ng-model="vm.user.newPassword" />
+                        <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
+                               ng-minlength=3 ng-maxlength=20 />
+                        <div ng-show="profileForm.newPassword.$invalid && profileForm.newPassword.$dirty">
+                            <small class="error" ng-show="profileForm.newPassword.$error.minlength">
+                                Password is required to be at least 3 characters
+                            </small>
+                            <small class="error" ng-show="profileForm.newPassword.$error.maxlength">
+                                Password cannot be longer than 20 characters
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
+                    <button type="button" class="btn" ng-click="vm.cancel()">Cancel</button>
+                    <button ng-disabled="profileForm.$invalid" type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
