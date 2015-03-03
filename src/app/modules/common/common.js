@@ -1,8 +1,9 @@
 (function() {
   'use strict';
 
-  var module = angular.module('app.common')
-    .service('shortHistory', shortHistory);
+  angular.module('app.common')
+    .service('shortHistory', shortHistory)
+    .service('session', session);
 
   shortHistory.$inject = ['$state'];
   function shortHistory($state) {
@@ -24,6 +25,16 @@
 
     this.goTo = function(where) {
       $state.go(history[where].state.name, history[where].params)
+    };
+  }
+
+  function session() {
+    this.getCurrentUser = function() {
+      return this.user;
+    };
+
+    this.setCurrentUser = function(user) {
+      this.user = user;
     };
   }
 

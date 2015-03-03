@@ -5,19 +5,14 @@
     .module('app.core')
     .controller('App', AppController);
 
-  AppController.$inject = ['config', '$scope', '$http', 'shortHistory'];
-
-  function AppController(config, $scope, $http, shortHistory) {
+  AppController.$inject = ['config', '$scope', '$http', 'shortHistory', 'session'];
+  function AppController(config, $scope, $http, shortHistory, session) {
     /*jshint validthis: true */
     var vm = this;
 
     vm.title = config.appTitle;
 
     $scope.app = config;
-    $scope.currentUser = null;
-    $scope.setCurrentUser = function(user) {
-      $scope.currentUser = user;
-    };
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
       $scope.loginPage = toState.name == 'login';
@@ -30,7 +25,7 @@
       shortHistory.init($scope);
       $http.get('/api/profile')
         .success(function(user) {
-          $scope.setCurrentUser(user);
+          session.setCurrentUser(user);
         });
     }
   }

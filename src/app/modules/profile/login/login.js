@@ -4,11 +4,12 @@
   angular.module('app.profile')
     .controller('LoginController', loginController);
 
-  loginController.$inject = ['$http', '$state', '$scope'];
+  loginController.$inject = ['$http', '$state', '$scope', 'session'];
   function loginController(
     $http,
     $state,
-    $scope
+    $scope,
+    session
     ) {
     var vm = this;
     vm.user = {};
@@ -16,7 +17,7 @@
     this.login = function() {
       return $http.post('/api/login', this.user)
         .success(function(data) {
-          $scope.setCurrentUser(data);
+          session.setCurrentUser(data);
           $state.go('app.profile');
         })
         .error(function(err) {
