@@ -29,7 +29,20 @@
     };
   }
 
-  function session() {
+
+  session.$inject = ['$http'];
+  function session($http) {
+    var session = this;
+
+    this.fetchCurrentUser = function(url) {
+      session.pending = true;
+      return $http.get(url)
+        .success(function(user) {
+          session.setCurrentUser(user);
+          session.pending = false;
+        });
+    };
+
     this.getCurrentUser = function() {
       return this.user;
     };
@@ -39,8 +52,8 @@
     };
   }
 
-  auth.$inject = ['session', '$state'];
-  function auth(session, $state) {
+  auth.$inject = ['session', '$state', '$urlRouter'];
+  function auth(session, $state, $urlRouter) {
     this.stateName = 'login';
 
     this.init = function(stateName) {
@@ -48,11 +61,17 @@
     };
 
     this.checkAccess = function(event, toState) {
+      session.pending && _onSessionPending(event);
       if (!session.getCurrentUser() && !(toState.data && toState.data.noAuth)) {
         event.preventDefault();
         $state.go(this.stateName);
       }
     };
+
+    function _onSessionPending(event) {
+      event.preventDefault();
+      setTimeout($urlRouter.sync, 0);
+    }
   }
 
 })();

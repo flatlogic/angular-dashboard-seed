@@ -3,7 +3,8 @@
 
   angular
     .module('app.core')
-    .controller('App', AppController);
+    .controller('App', AppController)
+    .run(activate);
 
   AppController.$inject = ['config', '$scope', '$http', 'shortHistory', 'session', 'auth'];
   function AppController(config, $scope, $http, shortHistory, session, auth) {
@@ -23,16 +24,13 @@
       $(document).trigger('sn:loaded', [event, toState, toParams, fromState, fromParams]);
     });
 
-    activate();
+    shortHistory.init($scope);
+  }
 
-    function activate() {
-      shortHistory.init($scope);
-      auth.init('login');
-      $http.get('/api/profile')
-        .success(function(user) {
-          session.setCurrentUser(user);
-        });
-    }
+  activate.$inject = ['auth', 'session'];
+  function activate(auth, session) {
+    auth.init('login');
+    session.fetchCurrentUser('/api/profile');
   }
 
 })();
