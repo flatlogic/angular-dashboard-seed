@@ -11,12 +11,18 @@
     $stateProvider
       .state('login', {
         url: '/login',
+        data: {
+          noAuth: true
+        },
         templateUrl: 'app/modules/profile/login/login.html',
         controller: 'LoginController',
         controllerAs: 'vm'
       })
       .state('logout', {
         url: '/logout',
+        data: {
+          noAuth: true
+        },
         onEnter: ['$http', '$state', function($http, $state) {
           $http.get('/api/logout', this.user)
             .success(function(data) {
