@@ -5,9 +5,9 @@
 
   module.config(appConfig);
 
-  appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+  appConfig.$inject = ['$stateProvider'];
 
-  function appConfig($stateProvider, $urlRouterProvider) {
+  function appConfig($stateProvider) {
     $stateProvider
       .state('login', {
         url: '/login',
@@ -36,7 +36,5 @@
         controller: 'ProfileController',
         controllerAs: 'vm'
       });
-
-    $urlRouterProvider.otherwise('');
   }
 })();

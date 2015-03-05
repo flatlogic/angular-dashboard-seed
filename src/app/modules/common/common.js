@@ -29,17 +29,20 @@
     };
   }
 
-  session.$inject = ['$http'];
-  function session($http) {
+  session.$inject = ['$http', '$q'];
+  function session($http, $q) {
     var session = this;
 
     this.fetchCurrentUser = function(url) {
-      session.pending = true;
-      return $http.get(url)
-        .success(function(user) {
-          session.setCurrentUser(user);
-          session.pending = false;
+      var userFetch;
+      if (session.getCurrentUser()) {
+        userFetch = $q(function(resolve) {
+          resolve(session.getCurrentUser());
         });
+      } else {
+        userFetch = $http.get(url);
+      }
+      return userFetch;
     };
 
     this.getCurrentUser = function() {
@@ -51,19 +54,27 @@
     };
   }
 
-  auth.$inject = ['session', '$state', '$urlRouter'];
-  function auth(session, $state, $urlRouter) {
-    this.stateName = 'login';
+  auth.$inject = ['session', '$state', '$urlRouter', '$rootScope'];
+  function auth(session, $state, $rootScope) {
+    var auth = this;
 
-    this.init = function(stateName) {
-      this.stateName = stateName;
+    this.init = function(stateName, profileApi) {
+      this.stateName = stateName || 'login';
+      this.profileApi = profileApi || '/api/profile';
     };
 
-    this.checkAccess = function(event, toState) {
+    this.checkAccess = function(event, toState, toParams) {
       if (!session.getCurrentUser() && !(toState.data && toState.data.noAuth)) {
         event.preventDefault();
-        $state.go(this.stateName);
-      }
+        session.fetchCurrentUser(auth.profileApi)
+          .success(function(user) {
+            session.setCurrentUser(user);
+            $state.go(toState.name, toParams);
+          })
+          .error(function() {
+            $state.go(auth.stateName);
+          });
+        }
     };
   }
 
