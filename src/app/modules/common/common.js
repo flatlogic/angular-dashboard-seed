@@ -29,7 +29,6 @@
     };
   }
 
-
   session.$inject = ['$http'];
   function session($http) {
     var session = this;
@@ -61,17 +60,11 @@
     };
 
     this.checkAccess = function(event, toState) {
-      session.pending && _onSessionPending(event);
       if (!session.getCurrentUser() && !(toState.data && toState.data.noAuth)) {
         event.preventDefault();
         $state.go(this.stateName);
       }
     };
-
-    function _onSessionPending(event) {
-      event.preventDefault();
-      setTimeout($urlRouter.sync, 0);
-    }
   }
 
 })();

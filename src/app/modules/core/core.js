@@ -15,7 +15,7 @@
 
     $scope.app = config;
 
-    $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       auth.checkAccess(event, toState);
     });
 
