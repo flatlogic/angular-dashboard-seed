@@ -11,8 +11,8 @@
     vm.user = $.extend(true, {}, session.getCurrentUser());
     vm.responseErrorMsg = '';
 
-    this.update = function() {
-      $http.put('/api/profile', this.user)
+    vm.update = function() {
+      $http.put('/api/profile', vm.user)
         .success(function(data) {
           session.setCurrentUser(data);
           notificator.success('Profile changes saved')
@@ -22,9 +22,9 @@
         });
     };
 
-    this.cancel = function() {
+    vm.cancel = function() {
       vm.responseErrorMsg = '';
-      this.user = $.extend(true, {}, session.getCurrentUser());
+      vm.user = $.extend(true, {}, session.getCurrentUser());
     };
   }
 
