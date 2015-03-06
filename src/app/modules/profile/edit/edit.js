@@ -5,8 +5,8 @@
     .module('app.profile')
     .controller('ProfileController', profileController);
 
-  profileController.$inject = ['$http', 'session'];
-  function profileController($http, session) {
+  profileController.$inject = ['$http', 'session', 'notificator'];
+  function profileController($http, session, notificator) {
     var vm = this;
     vm.user = $.extend(true, {}, session.getCurrentUser());
     vm.responseErrorMsg = '';
@@ -15,6 +15,7 @@
       $http.put('/api/profile', this.user)
         .success(function(data) {
           session.setCurrentUser(data);
+          notificator.success('Profile changes saved')
         })
         .error(function(err) {
           vm.responseErrorMsg = err.message;

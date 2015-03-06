@@ -5,8 +5,8 @@
 
   module.service('deletePostModal', deletePostModal);
 
-  deletePostModal.$inject = ['postResource', 'commonModal'];
-  function deletePostModal(postResource, commonModal) {
+  deletePostModal.$inject = ['postResource', 'commonModal', 'notificator'];
+  function deletePostModal(postResource, commonModal, notificator) {
     var that = this;
     this.modalOptions = {
       closeButtonText: 'Cancel',
@@ -16,7 +16,7 @@
     };
     this.modalDefaults = {
       windowClass: 'small-modal'
-    }
+    };
 
     this.getDeleteMethod = function(posts) {
       return function(post) {
@@ -24,6 +24,7 @@
           postResource.delete(post, function() {
             var index = posts.indexOf(post);
             posts.splice(index,1);
+            notificator.success('Post was successfully deleted')
           });
         });
       };

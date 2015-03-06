@@ -4,11 +4,11 @@
   angular.module('app.profile')
     .controller('LoginController', loginController);
 
-  loginController.$inject = ['$http', '$state', '$scope', 'session'];
+  loginController.$inject = ['$http', '$state', 'notificator', 'session'];
   function loginController(
     $http,
     $state,
-    $scope,
+    notificator,
     session
     ) {
     var vm = this;
@@ -19,6 +19,7 @@
         .success(function(data) {
           session.setCurrentUser(data);
           $state.go('app.profile');
+          notificator.success('Logged in successfully')
         })
         .error(function(err) {
           vm.responseErrorMsg = err.message;

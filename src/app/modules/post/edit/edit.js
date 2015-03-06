@@ -5,23 +5,28 @@
     .module('app.profile')
     .controller('PostController', postController);
 
-  postController.$inject = ['data', 'postResource', '$state', 'shortHistory'];
-  function postController(data, postResource, $state, shortHistory) {
-    this.post = data;
-    this.showReturnBtn = this.post.id && shortHistory.from.state.name;
+  postController.$inject = ['data', 'postResource', '$state', 'shortHistory', 'notificator'];
+  function postController(data, postResource, $state, shortHistory, notificator) {
+    var vm = this;
+    vm.post = data;
+    vm.showReturnBtn = vm.post.id && shortHistory.from.state.name;
 
-    this.update = function() {
-      postResource.update(this.post);
+    vm.update = function() {
+      vm.post.date = (new Date()).toISOString();
+      postResource.update(vm.post, function(p) {
+        notificator.success('Post was successfully updated')
+      });
     };
 
-    this.return = function() {
+    vm.return = function() {
         $state.go(shortHistory.from.state.name, shortHistory.from.params);
     };
 
-    this.save = function() {
-      this.post.date = (new Date()).toISOString();
+    vm.save = function() {
+      vm.post.date = (new Date()).toISOString();
       postResource.save(this.post, function(savedPost) {
         shortHistory.goTo('from');
+        notificator.success('Post was successfully saved')
       });
     };
   }
