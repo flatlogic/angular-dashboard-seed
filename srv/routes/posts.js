@@ -27,6 +27,7 @@ function update(req) {
     var id = req.params.id;
     var post = {
         id: id,
+        date: req.body.date,
         title: req.body.title,
         description: req.body.description
     };
