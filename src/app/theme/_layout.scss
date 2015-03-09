@@ -22,6 +22,7 @@ html, body {
 }
 
 .content-wrap {
+  overflow: auto;
   position: absolute;
   background-color: #CFD8DC;
   z-index: 1;
