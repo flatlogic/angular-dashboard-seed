@@ -24,9 +24,21 @@
       return postResource.query().$promise;
     }
 
+    function lastEdited() {
+      return postResource.query().$promise
+        .then(function(posts) {
+          var lastEdited = posts[0];
+          posts.forEach(function(post) {
+            lastEdited = lastEdited.date < post.date ? lastEdited : post;
+          });
+          return lastEdited;
+        });
+    }
+
     return {
       today: today,
-      total: total
+      total: total,
+      lastEdited: lastEdited
     }
   }
 })();

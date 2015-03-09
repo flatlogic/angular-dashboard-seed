@@ -4,6 +4,8 @@
   angular.module('app.dashboard')
     .controller('postsTotalCtrl', postsTotalCtrl)
     .controller('postsTodayCtrl', postsTodayCtrl)
+    .controller('lastEditedCtrl', lastEditedCtrl)
+    .directive('lastEdited', lastEdited)
     .directive('postsTotal', postsTotal)
     .directive('postsToday', postsToday);
 
@@ -43,8 +45,8 @@
     }
   }
 
-  postsTodayCtrl.$inject = ['postResource', 'postsUtils'];
-  function postsTodayCtrl(postResource, postsUtils) {
+  postsTodayCtrl.$inject = ['postsUtils'];
+  function postsTodayCtrl(postsUtils) {
     var vm = this;
 
     vm.description = 'Posts today';
@@ -58,6 +60,34 @@
     postsUtils.today().then(function(todayPosts) {
       vm.number = todayPosts.length;
     })
+  }
+
+  function lastEdited() {
+    return {
+      restrict: 'EA',
+      controller: lastEditedCtrl,
+      scope: {},
+      controllerAs: 'vm',
+      templateUrl: 'app/modules/dashboard/top_widget/widget.html'
+    }
+  }
+
+  lastEditedCtrl.$inject = ['postsUtils', '$state'];
+  function lastEditedCtrl(postsUtils, $state) {
+    var vm = this;
+
+    vm.description = 'Last Edited';
+    vm.widgetClass = 'last-edited';
+    vm.number = 0;
+    vm.lastEdited;
+
+    postsUtils.lastEdited().then(function(lastEdited) {
+      vm.lastEdited = lastEdited;
+    });
+
+    vm.action = function() {
+      $state.go('app.editPost', {id: vm.lastEdited.id})
+    }
   }
 
 })();

@@ -29,4 +29,7 @@
   &.posts-today {
     background-color: $dashboard-green;
   }
+  &.last-edited {
+    background-color: $dashboard-yellow;
+  }
 }
