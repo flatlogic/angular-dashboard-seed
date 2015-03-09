@@ -21,17 +21,13 @@ html, body {
 
 }
 
-.content-wrap{
-  position: relative;
-  z-index: 0;
-  height: 100%;
-}
-
 .content-wrap {
   position: absolute;
   background-color: #CFD8DC;
   z-index: 1;
+  height: 100%;
   left: 0;
+  width: 100%;
   @media (min-width: $screen-sm) {
     width: calc(100% - #{$sidebar-width});
     left: $sidebar-width;
