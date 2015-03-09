@@ -5,6 +5,8 @@
     .controller('postsTotalCtrl', postsTotalCtrl)
     .controller('postsTodayCtrl', postsTodayCtrl)
     .controller('lastEditedCtrl', lastEditedCtrl)
+    .controller('postsThisMonthCtrl', postsThisMonthCtrl)
+    .directive('postsThisMonth', postsThisMonth)
     .directive('lastEdited', lastEdited)
     .directive('postsTotal', postsTotal)
     .directive('postsToday', postsToday);
@@ -57,9 +59,36 @@
 
     };
 
-    postsUtils.today().then(function(todayPosts) {
+    postsUtils.postsDuringInterval(1).then(function(todayPosts) {
       vm.number = todayPosts.length;
     })
+  }
+
+  function postsThisMonth() {
+    return {
+      restrict: 'EA',
+      controller: postsThisMonthCtrl,
+      scope: {},
+      controllerAs: 'vm',
+      templateUrl: 'app/modules/dashboard/top_widget/widget.html'
+    }
+  }
+
+  postsThisMonthCtrl.$inject = ['postsUtils'];
+  function postsThisMonthCtrl(postsUtils) {
+    var vm = this;
+
+    vm.description = 'Posts this month';
+    vm.widgetClass = 'posts-this-month';
+    vm.number = 0;
+
+    postsUtils.postsDuringInterval(30).then(function(postsThisMonth) {
+      vm.number = postsThisMonth.length;
+    });
+
+    vm.action = function() {
+
+    }
   }
 
   function lastEdited() {

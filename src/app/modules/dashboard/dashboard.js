@@ -6,17 +6,17 @@
 
   postsUtils.$inject = ['postResource'];
   function postsUtils(postResource) {
-    function today() {
+    function postsDuringInterval(days) {
       return postResource.query().$promise
         .then(function(posts) {
           var today = new Date();
-          var oneDay = 86400000;
-          var postsToday = [];
+          var interval = 86400000*days;
+          var postsDuringInterval = [];
           posts.forEach(function(post) {
             var postDate = new Date(post.date);
-            today - postDate < oneDay && postsToday.push(post);
+            today - postDate < interval && postsDuringInterval.push(post);
           });
-          return postsToday;
+          return postsDuringInterval;
         });
     }
 
@@ -36,7 +36,7 @@
     }
 
     return {
-      today: today,
+      postsDuringInterval: postsDuringInterval,
       total: total,
       lastEdited: lastEdited
     }

@@ -19,9 +19,9 @@
     var vm = this;
     vm.posts = [];
 
-    postsUtils.today().then(function(todayPosts) {
-      vm.posts = todayPosts
-    })
+    postsUtils.postsDuringInterval(1).then(function(todayPosts) {
+      vm.posts = todayPosts;
+    });
   }
 
 })();
