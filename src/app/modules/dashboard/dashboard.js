@@ -1,13 +1,32 @@
 (function() {
   'use strict';
 
-  var dashboard = angular.module('app.dashboard');
+  angular.module('app.dashboard')
+    .factory('postsUtils', postsUtils);
 
-  dashboard.controller('DashboardController', dashboardController);
+  postsUtils.$inject = ['postResource'];
+  function postsUtils(postResource) {
+    function today() {
+      return postResource.query().$promise
+        .then(function(posts) {
+          var today = new Date();
+          var oneDay = 86400000;
+          var postsToday = [];
+          posts.forEach(function(post) {
+            var postDate = new Date(post.date);
+            today - postDate < oneDay && postsToday.push(post);
+          });
+          return postsToday;
+        });
+    }
 
-  dashboardController.$inject = [];
+    function total() {
+      return postResource.query().$promise;
+    }
 
-  function dashboardController() {
-
+    return {
+      today: today,
+      total: total
+    }
   }
 })();

@@ -6,6 +6,9 @@
     text-decoration: none;
     color: white;
   }
+  .widget-action {
+    cursor: pointer;
+  }
   .widget-icon {
     position: absolute;
     font-size: 4em;
@@ -20,7 +23,10 @@
   .huge {
     font-size: 30px;
   }
-  &.total-posts {
-    background-color: #337ab7;
+  &.posts-total {
+    background-color: $dashboard-blue;
+  }
+  &.posts-today {
+    background-color: $dashboard-green;
   }
 }

@@ -6,8 +6,6 @@
   dashboard.directive('todayPosts', todayPosts);
   dashboard.controller('TodayPostsController', todayPostsController);
 
-  todayPostsController.$inject = ['postResource'];
-
   function todayPosts() {
     return {
       restrict: 'EA',
@@ -16,18 +14,14 @@
     };
   }
 
-  function todayPostsController(postResource) {
+  todayPostsController.$inject = ['postsUtils'];
+  function todayPostsController(postsUtils) {
     var vm = this;
     vm.posts = [];
 
-    postResource.query(function(posts) {
-      var today = new Date();
-      var oneDay = 86400000;
-      posts.forEach(function(post) {
-        var postDate = new Date(post.date);
-        today - postDate < oneDay && vm.posts.push(post);
-      });
-    });
+    postsUtils.today().then(function(todayPosts) {
+      vm.posts = todayPosts
+    })
   }
 
 })();
