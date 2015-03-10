@@ -621,3 +621,10 @@ h6, .h6 { &.panel-title{ font-size: $font-size-h6; }}
     }
   }
 }
+
+// Divider
+// --------------------------------------------------
+
+hr {
+  margin: 5px 0;
+}

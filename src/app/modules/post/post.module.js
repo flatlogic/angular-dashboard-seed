@@ -14,7 +14,7 @@
         templateUrl: 'app/modules/post/list/posts.html',
         resolve: {
           posts: ['$stateParams', 'postsUtils', function($stateParams, postsUtils) {
-            return $stateParams.interval ? postsUtils.postsDuringInterval($stateParams.interval): postsUtils.total();
+            return $stateParams.interval ? postsUtils.postsDuringInterval($stateParams.interval) : postsUtils.total();
           }]
         },
         controller: 'PostListController as vm'

@@ -35,7 +35,20 @@
       return postResource.query().$promise;
     }
 
-    function lastEdited() {
+    function recent(postsNum) {
+      return postResource.query().$promise
+        .then(function(posts) {
+          posts.sort(function (a, b) {
+            if (a.date < b.date) return 1;
+            else if (a.date == b.date) return 0;
+            else return -1;
+          });
+          return posts.slice(0, postsNum || 1);
+        });
+    }
+
+
+      function lastEdited() {
       return postResource.query().$promise
         .then(function(posts) {
           var lastEdited = posts[0];
@@ -49,7 +62,8 @@
     return {
       postsDuringInterval: postsDuringInterval,
       total: total,
-      lastEdited: lastEdited
+      lastEdited: lastEdited,
+      recent: recent
     }
   }
 })();

@@ -1,0 +1,11 @@
+<div class="widget activity-widget">
+    <div class="widget-title upper">Activity</div>
+    <hr class="divider">
+    <div class="widget-title bottom">Recently published</div>
+    <div class="row post" ng-repeat="post in vm.posts">
+        <div class="col-xs-5 date">{{post.date | date:'MMM dd, yyyy hh:mma'}}</div>
+        <div class="col-xs-7 title-link">
+            <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
+        </div>
+    </div>
+</div>
