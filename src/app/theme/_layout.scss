@@ -33,7 +33,7 @@ body {
   height: 100%;
   left: 0;
   width: 100%;
-  $transition: left 0.5s;
+  @include transition(left 0.5s);
   @media (min-width: $screen-sm) {
     width: calc(100% - #{$sidebar-width});
     left: $sidebar-width;
