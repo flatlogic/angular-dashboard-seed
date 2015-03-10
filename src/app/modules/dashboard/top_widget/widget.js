@@ -47,8 +47,8 @@
     }
   }
 
-  postsTodayCtrl.$inject = ['postsUtils'];
-  function postsTodayCtrl(postsUtils) {
+  postsTodayCtrl.$inject = ['postsUtils', '$state'];
+  function postsTodayCtrl(postsUtils, $state) {
     var vm = this;
 
     vm.description = 'Posts today';
@@ -56,7 +56,7 @@
     vm.number = 0;
 
     vm.action = function() {
-
+      $state.go('app.posts', {interval: 1});
     };
 
     postsUtils.postsDuringInterval(1).then(function(todayPosts) {
@@ -74,8 +74,8 @@
     }
   }
 
-  postsThisMonthCtrl.$inject = ['postsUtils'];
-  function postsThisMonthCtrl(postsUtils) {
+  postsThisMonthCtrl.$inject = ['postsUtils', '$state'];
+  function postsThisMonthCtrl(postsUtils, $state) {
     var vm = this;
 
     vm.description = 'Posts this month';
@@ -87,7 +87,7 @@
     });
 
     vm.action = function() {
-
+      $state.go('app.posts', {interval: 30});
     }
   }
 

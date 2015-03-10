@@ -10,8 +10,13 @@
   function appConfig($stateProvider) {
     $stateProvider
       .state('app.posts', {
-        url: '/posts',
+        url: '/posts/:interval',
         templateUrl: 'app/modules/post/list/posts.html',
+        resolve: {
+          posts: ['$stateParams', 'postsUtils', function($stateParams, postsUtils) {
+            return $stateParams.interval ? postsUtils.postsDuringInterval($stateParams.interval): postsUtils.total();
+          }]
+        },
         controller: 'PostListController as vm'
       })
       .state('app.editPost', {
