@@ -4,6 +4,10 @@ html, body {
   color: $text-muted;
 }
 
+body {
+  overflow: hidden;
+}
+
 .app {
   height: 100%;
   color: $text-color;
@@ -29,6 +33,7 @@ html, body {
   height: 100%;
   left: 0;
   width: 100%;
+  $transition: left 0.5s;
   @media (min-width: $screen-sm) {
     width: calc(100% - #{$sidebar-width});
     left: $sidebar-width;
@@ -47,12 +52,6 @@ html, body {
   position: relative;
   .nav-dropdown-item {
     position: absolute;
-  }
-}
-
-.small-modal {
-  .modal-dialog {
-    width: $small-modal-width;
   }
 }
 

@@ -10,7 +10,7 @@
       return postResource.query().$promise
         .then(function(posts) {
           var today = new Date();
-          var interval = 86400000*days;
+          var interval = 86400000 * days;
           var postsDuringInterval = [];
           posts.forEach(function(post) {
             var postDate = new Date(post.date);

@@ -3,29 +3,40 @@
 
   var app = angular.module('app.core');
 
-  app.directive('navAction', navActions);
+  app.directive('navCollapseToggler', navCollapseToggler);
 
-  function navActions() {
-    var navActions = {
-      'toggle-navigation-collapse-state': function(e, scope){
-        $('body').toggleClass('nav-shown');
+  function navCollapseToggler() {
+    var toggleListeners = {
+      'click': function($el){
+        $el.on('click', function(e) {
+          $('body').toggleClass('nav-shown');
+          e.preventDefault();
+        });
+      },
+
+      'swipe': function($el) {
+        $el.swipe({
+          swipeLeft: function() {
+            if ($('body').hasClass('nav-shown')) {
+              $('body').toggleClass('nav-shown', false);
+            }
+          },
+          swipeRight: function() {
+            if (!$('body').hasClass('nav-shown')) {
+              $('body').toggleClass('nav-shown', true);
+            }
+          }
+        });
       }
     };
+
     return {
       restrict: 'A',
+      scope: {
+        type: '@'
+      },
       link: function(scope, $el, attrs){
-        if (angular.isDefined(attrs.navAction) && attrs.navAction != '') {
-          $el.on('click', function(e) {
-            scope.$apply(function(){
-              navActions[attrs.navAction].call($el[0], e, scope);
-            });
-            e.preventDefault();
-          });
-        }
-
-        if (angular.isDefined(attrs.tooltip) && attrs.navAction != ''){
-          $el.tooltip();
-        }
+        toggleListeners[scope.type]($el, scope);
       }
     }
   }
