@@ -18,7 +18,7 @@
       return $http.post('/api/login', this.user)
         .success(function(data) {
           session.setCurrentUser(data);
-          $state.go('app.profile');
+          $state.go('app.dashboard');
           notificator.success('Logged in successfully')
         })
         .error(function(err) {
