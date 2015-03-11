@@ -25,8 +25,9 @@
   function postsTotalCtrl(postResource, $state) {
     var vm = this;
 
-    vm.description = 'Posts total';
+    vm.description = 'total';
     vm.widgetClass = 'posts-total';
+    vm.iconClass = 'glyphicon glyphicon-globe';
 
     postResource.query(function(posts) {
       vm.number = posts.length;
@@ -51,8 +52,9 @@
   function postsTodayCtrl(postsUtils, $state) {
     var vm = this;
 
-    vm.description = 'Posts today';
+    vm.description = 'today';
     vm.widgetClass = 'posts-today';
+    vm.iconClass = 'glyphicon glyphicon-hourglass';
     vm.number = 0;
 
     vm.action = function() {
@@ -78,8 +80,9 @@
   function postsThisMonthCtrl(postsUtils, $state) {
     var vm = this;
 
-    vm.description = 'Posts this month';
+    vm.description = 'this month';
     vm.widgetClass = 'posts-this-month';
+    vm.iconClass = 'glyphicon glyphicon-calendar';
     vm.number = 0;
 
     postsUtils.postsDuringInterval(30).then(function(postsThisMonth) {
@@ -105,8 +108,9 @@
   function lastEditedCtrl(postsUtils, $state) {
     var vm = this;
 
-    vm.description = 'Last Edited';
+    vm.description = 'last edited';
     vm.widgetClass = 'last-edited';
+    vm.iconClass = 'glyphicon glyphicon-pencil';
     vm.number = 0;
     vm.lastEdited;
 

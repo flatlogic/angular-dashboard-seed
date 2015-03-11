@@ -11,17 +11,24 @@
   }
   .widget-icon {
     position: absolute;
-    font-size: 4em;
+    font-size: 3em;
   }
   .widget-info {
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
   .widget-text {
-    margin-left: 80px;
+    margin-left: 60px;
+    line-height: 1;
   }
   .huge {
     font-size: 30px;
+  }
+  .tiny {
+    font-size: 15px;
+  }
+  .large {
+    font-size: 23px;
   }
   &.posts-total {
     background-color: $dashboard-blue;
