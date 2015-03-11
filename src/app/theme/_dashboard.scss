@@ -40,10 +40,8 @@
 .activity-widget {
   .widget-title {
     font-size: 15px;
-    &.bottom {
-      font-weight: normal;
-      margin-bottom: 10px;
-    }
+    font-weight: normal;
+    margin-bottom: 10px;
   }
   .date {
     color: $gray-semi-light;
