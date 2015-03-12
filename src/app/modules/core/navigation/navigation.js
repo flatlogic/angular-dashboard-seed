@@ -1,30 +1,30 @@
 (function() {
   'use strict';
 
-  var app = angular.module('app.core');
-
-  app.directive('navCollapseToggler', navCollapseToggler);
+  angular.module('app.core')
+    .directive('navCollapseToggler', navCollapseToggler);
 
   function navCollapseToggler() {
+
+    function toggleNav(show) {
+      $('body').toggleClass('nav-shown', show);
+    }
+
     var toggleListeners = {
       'click': function($el){
-        $el.on('click', function(e) {
-          $('body').toggleClass('nav-shown');
-          e.preventDefault();
+        $el.on('click', function(evt) {
+          toggleNav();
+          evt.preventDefault();
         });
       },
 
       'swipe': function($el) {
         $el.swipe({
           swipeLeft: function() {
-            if ($('body').hasClass('nav-shown')) {
-              $('body').toggleClass('nav-shown', false);
-            }
+             toggleNav(false);
           },
           swipeRight: function() {
-            if (!$('body').hasClass('nav-shown')) {
-              $('body').toggleClass('nav-shown', true);
-            }
+              toggleNav(true);
           }
         });
       }
