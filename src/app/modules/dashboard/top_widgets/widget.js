@@ -2,50 +2,46 @@
   'use strict';
 
   angular.module('app.dashboard')
-    .directive('postsListDashWidget', postsListDashWidget)
-    .directive('lastEditedDashWidget', lastEditedDashWidget);
+    .directive('dashTopWidget', dashTopWidget);
 
-  function lastEditedDashWidget() {
-    return {
-      restrict: 'EA',
-      scope: {},
-      controller: ['$scope', '$state', 'postsUtils', function ($scope, $state, postsUtils) {
-        $scope.lastEdited;
+  dashTopWidget.$inject = ['postsUtils'];
+  function dashTopWidget(postsUtils) {
 
-        postsUtils.lastEdited().then(function(lastEdited) {
-          $scope.lastEdited = lastEdited;
-        });
-
-        vm.action = function() {
-          $state.go('app.editPost', {id: vm.lastEdited.id})
-        }
-      }],
-      templateUrl: 'app/modules/dashboard/top_widgets/last_edited.html'
+    function list($scope) {
+      var utilsMethod = $scope.interval ? 'postsDuringInterval' : 'total';
+      postsUtils[utilsMethod]($scope.interval).then(function(posts) {
+        $scope.postsNumber = $scope.descriptionTop = posts.length;
+      });
     }
-  }
 
-  function postsListDashWidget() {
+    function lastEdited($scope) {
+      postsUtils.lastEdited().then(function(lastEdited) {
+        $scope.postsNumber = 1;
+        $scope.lastEdited = lastEdited;
+      });
+    }
+
+    var types = {
+      lastEdited: lastEdited,
+      list: list
+    };
+
     return {
       restrict: 'EA',
       scope: {
         'widgetClass': '@',
         'iconClass': '@',
-        'description': '@',
-        'interval': '@'
+        'descriptionTop': '@',
+        'descriptionBottom': '@',
+        'widgetSref': '@',
+        'type': '@',
+        'interval': '@',
+        'linkMsg': '@'
       },
-      controller: ['$scope', '$state', 'postsUtils', function($scope, $state, postsUtils) {
-        var utilsMethod = $scope.interval ? 'postsDuringInterval' : 'total';
-
-        postsUtils[utilsMethod]($scope.interval).then(function(posts) {
-          $scope.number = posts.length;
-        });
-
-        $scope.action = function() {
-          $state.go('app.posts', {interval: $scope.interval})
-        }
-
+      controller: ['$scope', '$state', function($scope, $state) {
+        types[$scope.type || 'list']($scope);
       }],
-      templateUrl: 'app/modules/dashboard/top_widgets/posts_list_widget.html'
+      templateUrl: 'app/modules/dashboard/top_widgets/dash_top_widget.html'
     }
   }
 
