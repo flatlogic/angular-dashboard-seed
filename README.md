@@ -1,5 +1,6 @@
 # angular-dashboard-demo
 Angular dashboard demo with REST integration
+
 1. npm install
 2. bower install
 3. gulp build
