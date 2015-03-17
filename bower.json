@@ -1,7 +1,7 @@
 {
-  "name": "angular-dashboard-demo",
+  "name": "angular-dashboard-seed",
   "version": "0.1.0",
-  "description": "Angular dashboard demo",
+  "description": "Angular Dashboard Seed",
   "ignore": [
     "**/.*",
     "node_modules",
