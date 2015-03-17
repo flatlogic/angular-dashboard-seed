@@ -9,7 +9,7 @@ var wiredep = require('wiredep');
 function runTests(singleRun, done) {
     var bowerDeps = wiredep({
         directory: 'bower_components',
-        exclude: ['bootstrap-sass-official'],
+        exclude: ['bootstrap-sass'],
         dependencies: true,
         devDependencies: true
     });
