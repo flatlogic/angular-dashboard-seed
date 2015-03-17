@@ -25,6 +25,7 @@
     "passport-local": "1.0.0"
   },
   "devDependencies": {
+    "bower": "^1.3.12",
     "browser-sync": "~1.7.1",
     "chalk": "~0.5.1",
     "del": "~0.1.3",
