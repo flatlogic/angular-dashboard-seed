@@ -1,18 +1,18 @@
-# angular-dashboard-demo
-Angular dashboard demo with nodejs REST backend integration. 
+# angular-dashboard-seed
+Angular dashboard sample application with nodejs REST backend integration. 
 
-Check out the [Demo](http://angular-dashboard-demo.flatlogic.com). Use following credentials: <b>user1</b>/<b>user1pass</b>.
+Check out the [Live Demo](http://angular-dashboard-seed.flatlogic.com). Use following credentials: <b>user1</b>/<b>user1pass</b>.
 
 ## Features
-* Responsive dashboard
-* Basic Nodejs backend inegration 
-* Authentication and authorization
-* Gulp build
-* Browsersync for the ease of development
-* Sass styles
-* Bootstrap3
 * AngularJS
-* express.js
+* Bootstrap3
+* Nodejs backend inegration
+* Sass styles
+* Gulp build
+* Clean responsive layout
+* Authentication and authorization
+* CRUD operations examples
+* Browsersync for the ease of development
 
 ## Setup
 
@@ -22,7 +22,7 @@ Check out the [Demo](http://angular-dashboard-demo.flatlogic.com). Use following
 * [Gulp](http://gulpjs.com)
 
 ### Installation
-0. Clone project `git clone https://github.com/flatlogic/angular-dashboard-demo.git`
+0. Clone project `git clone https://github.com/flatlogic/angular-dashboard-seed.git`
 1. Install node and bower dependencies: `npm install`
 2. Run the application: `gulp serve`
 3. go to [http://localhost:3000](http://localhost:3000)
