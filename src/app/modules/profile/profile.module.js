@@ -14,7 +14,7 @@
         data: {
           noAuth: true
         },
-        templateUrl: 'app/modules/profile/login/login.html',
+        templateUrl: 'app/modules/profile/auth/login.html',
         controller: 'LoginController',
         controllerAs: 'vm'
       })
@@ -23,10 +23,11 @@
         data: {
           noAuth: true
         },
-        onEnter: ['$http', '$state', 'notificator', function($http, $state, notificator) {
+        onEnter: ['$http', '$state', 'notificator', 'session', function($http, $state, notificator, session) {
           $http.get('/api/logout', this.user)
             .success(function(data) {
               $state.go('login');
+              session.setCurrentUser(null);
               notificator.success('Logged out successfully')
             });
         }]

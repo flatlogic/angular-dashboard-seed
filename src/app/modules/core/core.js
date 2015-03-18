@@ -6,8 +6,8 @@
     .controller('App', AppController)
     .run(activate);
 
-  AppController.$inject = ['config', '$scope', '$rootScope', 'shortHistory', 'session', 'auth'];
-  function AppController(config, $scope, $rootScope, shortHistory, session, auth) {
+  AppController.$inject = ['config', '$scope', '$rootScope', 'shortHistory', 'authorize'];
+  function AppController(config, $scope, $rootScope, shortHistory, authorize) {
     /*jshint validthis: true */
     var vm = this;
 
@@ -16,7 +16,7 @@
     $scope.app = config;
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      auth.checkAccess(event, toState, toParams);
+      authorize.checkAccess(event, toState, toParams);
     });
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
@@ -28,9 +28,9 @@
     shortHistory.init($scope);
   }
 
-  activate.$inject = ['auth'];
-  function activate(auth) {
-    auth.init('login', '/api/profile');
+  activate.$inject = ['authorize'];
+  function activate(authorize) {
+    authorize.init('login', '/api/profile');
   }
 
 })();

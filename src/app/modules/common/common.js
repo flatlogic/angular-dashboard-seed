@@ -4,7 +4,7 @@
   angular.module('app.common')
     .service('shortHistory', shortHistory)
     .service('session', session)
-    .service('auth', auth);
+    .service('authorize', authorize);
 
   shortHistory.$inject = ['$state'];
   function shortHistory($state) {
@@ -54,9 +54,9 @@
     };
   }
 
-  auth.$inject = ['session', '$state', '$urlRouter', '$rootScope'];
-  function auth(session, $state, $rootScope) {
-    var auth = this;
+  authorize.$inject = ['session', '$state', '$urlRouter', '$rootScope'];
+  function authorize(session, $state, $rootScope) {
+    var authorize = this;
 
     this.init = function(stateName, profileApi) {
       this.stateName = stateName || 'login';
@@ -66,13 +66,13 @@
     this.checkAccess = function(event, toState, toParams) {
       if (!session.getCurrentUser() && !(toState.data && toState.data.noAuth)) {
         event.preventDefault();
-        session.fetchCurrentUser(auth.profileApi)
+        session.fetchCurrentUser(authorize.profileApi)
           .success(function(user) {
             session.setCurrentUser(user);
             $state.go(toState.name, toParams);
           })
           .error(function() {
-            $state.go(auth.stateName);
+            $state.go(authorize.stateName);
           });
         }
     };
