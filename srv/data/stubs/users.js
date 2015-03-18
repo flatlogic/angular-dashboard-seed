@@ -38,6 +38,8 @@ var stubs = [
     }
 ];
 
+var lastStubIndex = stubs.length;
+
 function getAll() {
     return q(stubs);
 }
@@ -58,7 +60,7 @@ function getOneBy(queryProperty) {
 }
 
 function save(user) {
-    user.id = stubs.length + 1;
+    user.id = ++lastStubIndex;
     stubs.push(user);
     return q(user);
 }
@@ -73,7 +75,7 @@ function remove(id) {
     var stubToDeleteIndex = _getStubIndexById(id);
     stubToDeleteIndex != -1 && stubs.splice(stubToDeleteIndex,1);
     return q(stubToDeleteIndex != -1 && id);
-};
+}
 
 function _getStubIndexById(id) {
     var stubIndex = -1;
@@ -83,7 +85,7 @@ function _getStubIndexById(id) {
         return isFound;
     });
     return stubIndex;
-};
+}
 
 exports.getOne = getOne;
 exports.getOneBy = getOneBy;

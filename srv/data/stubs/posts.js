@@ -38,9 +38,11 @@ var stubs = [
     }
 ];
 
+var lastStubIndex = stubs.length;
+
 function getAll() {
     return q(stubs);
-};
+}
 
 function getOne(id) {
     var post = null;
@@ -49,10 +51,10 @@ function getOne(id) {
         return post;
     });
     return q(post);
-};
+}
 
 function save(post) {
-    post.id = stubs.length + 1;
+    post.id = ++lastStubIndex;
     stubs.push(post);
     return q(post);
 }
@@ -67,7 +69,7 @@ function remove(id) {
     var stubToDeleteIndex = _getStubIndexById(id);
     stubToDeleteIndex != -1 && stubs.splice(stubToDeleteIndex,1);
     return q(stubToDeleteIndex != -1 && id);
-};
+}
 
 function _getStubIndexById(id) {
     var stubIndex = -1;
@@ -77,7 +79,7 @@ function _getStubIndexById(id) {
         return isFound;
     });
     return stubIndex;
-};
+}
 
 exports.getAll =  getAll;
 exports.getOne = getOne;
