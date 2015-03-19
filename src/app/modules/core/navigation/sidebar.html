@@ -4,20 +4,20 @@
     </header>
     <ul class="sidebar-nav">
         <li>
-            <a ui-sref="app.dashboard">Dashboard</a>
+            <a ui-sref="app.dashboard" ui-sref-active="active">Dashboard</a>
         </li>
         <li>
-            <a class="collapsed" data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar">
+            <a data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar">
                 Posts
                 <b class="caret"></b>
             </a>
-            <ul id="sidebar-dashboard" class="collapse">
-                <li><a ui-sref="app.posts">Show all</a></li>
-                <li><a ui-sref="app.editPost({id: null})">Create new</a></li>
+            <ul id="sidebar-dashboard" class="collapse in">
+                <li><a ui-sref="app.posts" ui-sref-active="active">Show all</a></li>
+                <li><a ui-sref="app.editPost({id: null})" ui-sref-active="active">Create new</a></li>
             </ul>
         </li>
         <li>
-            <a ui-sref="app.profile">Profile</a>
+            <a ui-sref="app.profile" ui-sref-active="active">Profile</a>
         </li>
         <li class="hidden-md hidden-lg">
             <a href="#" ng-click="logout()">Logout</a>

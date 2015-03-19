@@ -56,6 +56,9 @@
     color: $sidebar-color;
     text-decoration: none;
     cursor: pointer;
+    &.active {
+      color: white;
+    }
   }
 
   > li > a{
