@@ -3,7 +3,8 @@
 
   angular.module('app.common')
     .config(notificatorConfig)
-    .factory('notificator', notificator);
+    .factory('notificator', notificator)
+    .run(notificationsRun);
 
   notificator.$inject = ['toastr'];
   function notificator(toastr) {
@@ -21,6 +22,16 @@
         toastr.info(msg, title);
       }
     }
+  }
+
+  notificationsRun.$inject = ['$rootScope', 'notificator'];
+  function notificationsRun($rootScope, notificator) {
+    $rootScope.$on('$userLoggedIn', function() {
+      notificator.success('Logged in successfully')
+    });
+    $rootScope.$on('$userLoggedOut', function() {
+      notificator.success('Logged out successfully');
+    });
   }
 
   notificatorConfig.$inject = ['toastrConfig'];

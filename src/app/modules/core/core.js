@@ -3,8 +3,7 @@
 
   angular
     .module('app.core')
-    .controller('App', AppController)
-    .run(activate);
+    .controller('App', AppController);
 
   AppController.$inject = ['config', '$scope', '$rootScope', 'shortHistory', 'authorize'];
   function AppController(config, $scope, $rootScope, shortHistory, authorize) {
@@ -26,11 +25,6 @@
     });
 
     shortHistory.init($scope);
-  }
-
-  activate.$inject = ['authorize'];
-  function activate(authorize) {
-    authorize.init('login', '/api/profile');
   }
 
 })();

@@ -2,28 +2,33 @@
   'use strict';
 
   angular.module('app.profile')
-    .controller('LoginController', loginController);
+    .controller('LoginController', loginController)
+    .run(runAuth);
 
-  loginController.$inject = ['$http', '$state', 'notificator', 'session'];
+  loginController.$inject = ['authenticationService'];
   function loginController(
-    $http,
-    $state,
-    notificator,
-    session
+    authenticationService
     ) {
     var vm = this;
     vm.user = {};
     vm.responseErrorMsg = '';
+
     this.login = function() {
-      return $http.post('/api/login', this.user)
-        .success(function(data) {
-          session.setCurrentUser(data);
-          $state.go('app.dashboard');
-          notificator.success('Logged in successfully')
-        })
-        .error(function(err) {
-          vm.responseErrorMsg = err.message;
+      authenticationService.login(vm.user)
+        .then(null, function(err) {
+          vm.responseErrorMsg = err.data.message;
         });
-    };
-  };
+    }
+  }
+
+  runAuth.$inject = ['$rootScope', '$state', 'authenticationService'];
+  function runAuth($rootScope, $state, authenticationService) {
+    $rootScope.logout = authenticationService.logout;
+    $rootScope.$on('$userLoggedIn', function() {
+      $state.go('app.dashboard');
+    });
+    $rootScope.$on('$userLoggedOut', function() {
+      $state.go('login');
+    });
+  }
 })();

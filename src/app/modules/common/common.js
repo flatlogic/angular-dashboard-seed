@@ -4,7 +4,8 @@
   angular.module('app.common')
     .service('shortHistory', shortHistory)
     .service('session', session)
-    .service('authorize', authorize);
+    .service('authorize', authorize)
+    .service('authenticationService', authenticationService);
 
   shortHistory.$inject = ['$state'];
   function shortHistory($state) {
@@ -56,26 +57,39 @@
 
   authorize.$inject = ['session', '$state', '$urlRouter', '$rootScope'];
   function authorize(session, $state, $rootScope) {
-    var authorize = this;
-
-    this.init = function(stateName, profileApi) {
-      this.stateName = stateName || 'login';
-      this.profileApi = profileApi || '/api/profile';
-    };
-
     this.checkAccess = function(event, toState, toParams) {
       if (!session.getCurrentUser() && !(toState.data && toState.data.noAuth)) {
         event.preventDefault();
-        session.fetchCurrentUser(authorize.profileApi)
+        session.fetchCurrentUser('/api/profile')
           .success(function(user) {
             session.setCurrentUser(user);
             $state.go(toState.name, toParams);
           })
           .error(function() {
-            $state.go(authorize.stateName);
+            $state.go('login');
           });
         }
     };
+  }
+
+  authenticationService.$inject = ['$http', '$rootScope', 'session'];
+  function authenticationService($http, $rootScope, session) {
+
+    this.login = function(user) {
+      return $http.post('/api/login', user)
+        .success(function(data) {
+          session.setCurrentUser(data);
+          $rootScope.$broadcast('$userLoggedIn');
+        });
+    };
+
+    this.logout = function() {
+      return $http.get('/api/logout')
+        .success(function(data) {
+          session.setCurrentUser(null);
+          $rootScope.$broadcast('$userLoggedOut');
+        });
+    }
   }
 
 })();
