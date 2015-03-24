@@ -4,13 +4,13 @@
             <header>
                 <span class="widget-title">{{vm.post.id ? 'Edit' : 'Create new'}} post</span>
             </header>
-            <form novalidate role="form" name="postForm" class="form-horizontal" ng-submit="vm.post.id ? vm.update() : vm.save()" >
+            <form novalidate role="form" name="postForm" class="form-horizontal" ng-submit="postForm.$valid && (vm.post.id ? vm.update() : vm.save())" >
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="title">Title</label>
                     <div class="col-sm-10">
                         <input type="text" name="title" class="form-control" ng-model="vm.post.title"
                                required ng-minlength=3 ng-maxlength=100 />
-                        <div ng-show="postForm.title.$invalid && postForm.title.$dirty">
+                        <div ng-show="postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted)">
                             <small class="error" ng-show="postForm.title.$error.required">
                                 Title is required.
                             </small>
@@ -28,7 +28,7 @@
                     <div class="col-sm-10">
                         <textarea name="description" class="form-control" rows="5" ng-model="vm.post.description"
                                   required ng-minlength=3 />
-                        <div ng-show="postForm.description.$invalid && postForm.description.$dirty">
+                        <div ng-show="postForm.description.$invalid && (postForm.description.$dirty  || postForm.$submitted)">
                             <small class="error" ng-show="postForm.description.$error.required">
                                 Description is required.
                             </small>
@@ -42,7 +42,7 @@
                     <span ng-if="vm.showReturnBtn">
                         <button type="button" class="btn" ng-click="vm.return()">Return</button>
                     </span>
-                    <button ng-disabled="postForm.$invalid" type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

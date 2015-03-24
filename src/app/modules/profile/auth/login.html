@@ -7,14 +7,14 @@
                         <h3>Dashboard login</h3>
                     </header>
                     <div class="widget-body">
-                        <form role="form" novalidate name="loginForm" class="login-form mt-lg" ng-submit="vm.login()">
+                        <form role="form" novalidate name="loginForm" class="login-form mt-lg" ng-submit="loginForm.$valid && vm.login()">
                             <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
                                 {{vm.responseErrorMsg}}
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" required ng-minlength=3 ng-maxlength=20
                                        ng-model="vm.user.username" name="username" placeholder="Username">
-                                <div ng-show="loginForm.username.$invalid && loginForm.username.$dirty">
+                                <div ng-show="loginForm.username.$invalid && (loginForm.username.$dirty || loginForm.$submitted)">
                                     <small class="error" ng-show="loginForm.username.$error.required">
                                         Username is required.
                                     </small>
@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <input class="form-control" required ng-minlength=3 ng-maxlength=20
                                        ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
-                                <div ng-show="loginForm.password.$invalid && loginForm.password.$dirty">
+                                <div ng-show="loginForm.password.$invalid && (loginForm.password.$dirty || loginForm.$submitted)">
                                     <small class="error" ng-show="loginForm.password.$error.required">
                                         Password is required.
                                     </small>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="clearfix">
                                 <div class="btn-toolbar pull-right">
-                                    <button ng-disabled="loginForm.$invalid" type="submit" class="btn btn-default btn-sm">Login</button>
+                                    <button type="submit" class="btn btn-default btn-sm">Login</button>
                                 </div>
                             </div>
                         </form>
