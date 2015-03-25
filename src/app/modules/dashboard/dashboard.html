@@ -1,16 +1,16 @@
 <div class="row">
-    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12"
+    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" posts="posts"
             description-bottom="total" widget-class="posts-total"
             icon-class="glyphicon glyphicon-globe" widget-sref="app.posts">
     </div>
-    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12"
+    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" posts="posts"
             description-bottom="today" widget-class="posts-today" icon-class="glyphicon glyphicon-hourglass"
             interval="1" widget-sref="app.posts({interval: interval})"></div>
-    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12"
+    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" posts="posts"
             description-bottom="this month" widget-class="posts-this-month" icon-class="glyphicon glyphicon-calendar"
             interval="30" widget-sref="app.posts({interval: interval})">
     </div>
-    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" widget-class="last-edited"
+    <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" widget-class="last-edited" posts="posts"
             type="lastEdited" icon-class="glyphicon glyphicon-pencil" description-top="fresh"
             description-bottom="last edited" link-msg="Show" widget-sref="app.editPost({id: lastEdited.id})">
     </div>
@@ -18,6 +18,6 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6" recently-published></div>
+    <div class="col-md-6" recently-published posts="posts"></div>
     <div class="col-md-6" ng-include="'app/modules/dashboard/dash_users/dash_users.html'"></div>
 </div>

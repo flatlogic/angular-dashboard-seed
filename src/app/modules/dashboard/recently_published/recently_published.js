@@ -9,18 +9,18 @@
   function recentlyPublished() {
     return {
       restrict: 'A',
-      scope: {},
+      scope: {
+        'allPosts': '=posts'
+      },
       controller: recentlyPublishedCtrl,
       controllerAs: 'vm',
       templateUrl: 'app/modules/dashboard/recently_published/recently_published.html'
     }
   }
 
-  recentlyPublishedCtrl.$inject = ['postsUtils'];
-  function recentlyPublishedCtrl(postsUtils) {
+  recentlyPublishedCtrl.$inject = ['$scope','postsUtils'];
+  function recentlyPublishedCtrl($scope, postsUtils) {
     var vm = this;
-    postsUtils.recent(5).then(function(posts) {
-      vm.posts = posts;
-    })
+    vm.posts = postsUtils.recent($scope.allPosts, 5);
   }
 })();

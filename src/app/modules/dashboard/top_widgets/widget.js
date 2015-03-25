@@ -8,17 +8,16 @@
   function dashTopWidget(postsUtils) {
 
     function list($scope) {
-      var utilsMethod = $scope.interval ? 'postsDuringInterval' : 'total';
-      postsUtils[utilsMethod]($scope.interval).then(function(posts) {
-        $scope.postsNumber = $scope.descriptionTop = posts.length;
-      });
+      if ($scope.interval) {
+        $scope.postsNumber = $scope.descriptionTop = postsUtils.postsDuringInterval($scope.allPosts, $scope.interval).length;
+      } else {
+        $scope.postsNumber = $scope.descriptionTop = $scope.allPosts.length;
+      }
     }
 
     function lastEdited($scope) {
-      postsUtils.lastEdited().then(function(lastEdited) {
         $scope.postsNumber = 1;
-        $scope.lastEdited = lastEdited;
-      });
+        $scope.lastEdited = postsUtils.lastEdited($scope.allPosts);
     }
 
     var types = {
@@ -36,7 +35,8 @@
         'widgetSref': '@',
         'type': '@',
         'interval': '@',
-        'linkMsg': '@'
+        'linkMsg': '@',
+        'allPosts': '=posts'
       },
       controller: ['$scope', '$state', function($scope, $state) {
         types[$scope.type || 'list']($scope);

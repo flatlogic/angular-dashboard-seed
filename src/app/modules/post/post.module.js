@@ -13,8 +13,10 @@
         url: '/posts/:interval',
         templateUrl: 'app/modules/post/list/posts.html',
         resolve: {
-          posts: ['$stateParams', 'postsUtils', function($stateParams, postsUtils) {
-            return $stateParams.interval ? postsUtils.postsDuringInterval($stateParams.interval) : postsUtils.total();
+          posts: ['$stateParams', 'postsUtils', 'postResource', function($stateParams, postsUtils, postResource) {
+            return postResource.query().$promise.then(function(allPosts) {
+              return $stateParams.interval ? postsUtils.postsDuringInterval(allPosts, $stateParams.interval) : allPosts;
+            });
           }]
         },
         controller: 'PostListController as vm'
