@@ -7,13 +7,18 @@
             <a ui-sref="app.dashboard" ui-sref-active="active">Dashboard</a>
         </li>
         <li>
-            <a data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar">
+            <a data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar"
+               ng-class="$state.includes('app.posts') || $state.includes('app.editPost') ? 'active' : ''">
                 Posts
                 <b class="caret"></b>
             </a>
             <ul id="sidebar-dashboard" class="collapse in">
                 <li><a ui-sref="app.posts" ui-sref-active="active">Show all</a></li>
-                <li><a ui-sref="app.editPost({id: null})" ui-sref-active="active">Create new</a></li>
+                <li>
+                    <a ui-sref="app.editPost" ui-sref-active="active">
+                        {{$state.includes('app.editPost') && $state.params.id ? 'Post editing' : 'Create new'}}
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

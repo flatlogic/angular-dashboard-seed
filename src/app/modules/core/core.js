@@ -5,14 +5,15 @@
     .module('app.core')
     .controller('App', AppController);
 
-  AppController.$inject = ['config', '$scope', '$rootScope', 'shortHistory', 'authorize'];
-  function AppController(config, $scope, $rootScope, shortHistory, authorize) {
+  AppController.$inject = ['config', '$scope', '$state', '$rootScope', 'shortHistory', 'authorize'];
+  function AppController(config, $scope, $state, $rootScope, shortHistory, authorize) {
     /*jshint validthis: true */
     var vm = this;
 
     vm.title = config.appTitle;
 
     $scope.app = config;
+    $scope.$state = $state;
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       authorize.checkAccess(event, toState, toParams);
