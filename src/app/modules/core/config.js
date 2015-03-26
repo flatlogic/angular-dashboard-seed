@@ -5,7 +5,7 @@
 
   var config = {
     name: 'Angular dashboard demo',
-    appTitle: 'Angular dashboard demo',
+    appTitle: 'ADD',
     version: '0.0.1'
   };
 

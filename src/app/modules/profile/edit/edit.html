@@ -1,10 +1,8 @@
 <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-8">
         <div class="widget edit-profile">
-            <header>
-                <span class="widget-title">Profile</span>
-            </header>
-            <form novalidate role="form" name="profileForm" class="form-horizontal" ng-submit="profileForm.$valid && vm.update()">
+            <h4 class="mt-0">Profile</h4>
+            <form novalidate role="form" name="profileForm" class="form-horizontal mt" ng-submit="profileForm.$valid && vm.update()">
                 <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
                     {{vm.responseErrorMsg}}
                 </div>

@@ -10,6 +10,7 @@ Check out the [Live Demo](http://angular-dashboard-seed.flatlogic.com). Use foll
 * Sass styles
 * Gulp build
 * Clean responsive layout
+* Lots of utility css classes for rapid development (flatlogic css set)
 * Authentication and authorization
 * CRUD operations examples
 * Browsersync for the ease of development

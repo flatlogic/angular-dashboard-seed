@@ -1,7 +1,5 @@
 html, body {
   height: 100%;
-  font-size: $font-size-mini;
-  color: $text-muted;
 }
 
 body {
@@ -28,7 +26,6 @@ body {
 .content-wrap {
   overflow: auto;
   position: absolute;
-  background-color: #CFD8DC;
   z-index: 1;
   height: 100%;
   left: 0;
@@ -45,7 +42,8 @@ body {
 
 .content {
   min-height: 100%;
-  padding: 20px;
+  padding: 40px 30px;
+  background-color: $body-bg;
 }
 
 .dropdown-link-container {
@@ -59,14 +57,6 @@ body {
   border-radius: 50%;
 }
 
-.widget .form-horizontal .control-label {
-  text-align: left;
-  padding-right: 0;
+form .error {
+  color: $brand-danger;
 }
-
-.widget-title {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-

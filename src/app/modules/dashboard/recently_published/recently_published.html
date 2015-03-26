@@ -1,9 +1,12 @@
 <div class="widget activity-widget">
-    <div class="widget-title">Recently published</div>
-    <div class="row post" ng-repeat="post in vm.posts">
-        <div class="col-xs-5 date">{{post.date | date:'MMM dd, yyyy hh:mma'}}</div>
-        <div class="col-xs-7 title-link">
-            <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
-        </div>
-    </div>
+    <small class="pull-right"><a class="td-underline text-muted" href="#"><span class="text-muted">Options</span></a></small>
+    <h5 class="mt-0"><i class="glyphicon glyphicon-list mr-xs"></i><strong>Recently published</strong></h5>
+    <table class="table table-no-border table-sm mb-0">
+      <tr ng-repeat="post in vm.posts">
+        <td>{{post.date | date:' MMM dd, hh:mm'}}</td>
+        <td>
+          <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
+        </td>
+      </tr>
+    </table>
 </div>

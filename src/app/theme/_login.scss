@@ -1,5 +1,7 @@
+$login-page-bg: #ddd;
+
 .login-page{
-  background-color: $gray-semi-lighter;
+  background-color: $login-page-bg;
 }
 
 .widget-login-container{
@@ -14,7 +16,7 @@
 }
 
 .widget-login-info{
-  font-size: $font-size-mini;
+  font-size: 13px;
   color: #888;
   margin-top: 1px;
   margin-bottom: 0;
@@ -22,11 +24,11 @@
 
 .login-form{
   .form-control{
-    font-size: $font-size-mini;
+    font-size: 13px;
     border: none;
     background-color: $gray-lighter;
     &:focus{
-      background-color: $gray-semi-lighter;
+      background-color: $login-page-bg;
     }
   }
 }

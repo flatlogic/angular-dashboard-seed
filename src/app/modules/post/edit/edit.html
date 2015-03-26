@@ -1,14 +1,12 @@
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="widget edit-post">
-            <header>
-                <span class="widget-title">{{vm.post.id ? 'Edit' : 'Create new'}} post</span>
-            </header>
-            <form novalidate role="form" name="postForm" class="form-horizontal" ng-submit="postForm.$valid && (vm.post.id ? vm.update() : vm.save())" >
+    <div class="col-md-8">
+        <div class="widget">
+            <h4 class="mt-0">{{vm.post.id ? 'Edit' : 'Create new'}} post</h4>
+            <form novalidate role="form" name="postForm" class="form-horizontal mt" ng-submit="postForm.$valid && (vm.post.id ? vm.update() : vm.save())" >
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="title">Title</label>
                     <div class="col-sm-10">
-                        <input type="text" name="title" class="form-control" ng-model="vm.post.title"
+                        <input type="text" id="title" name="title" class="form-control" ng-model="vm.post.title"
                                required ng-minlength=3 ng-maxlength=100 />
                         <div ng-show="postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted)">
                             <small class="error" ng-show="postForm.title.$error.required">

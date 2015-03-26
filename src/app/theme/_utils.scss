@@ -1,5 +1,40 @@
-@mixin transition($transition...) {
-  -webkit-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
+// Generates single property classes
+// -------------------------
+@mixin property-variants($base, $property, $variants: ()){
+  @each $size, $value in $variants {
+    @if $size == 'md'{
+      #{$base} {
+        #{$property}: $value;
+      }
+      #{$base}-n {
+        #{$property}: $value;
+      }
+    }
+    #{$base}-#{$size} {
+      #{$property}: $value;
+    }
+    #{$base}-n-#{$size} {
+      #{$property}: -$value;
+    }
+  }
 }
+
+
+@include text-emphasis-variant('.text-gray', $gray);
+@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+@include text-emphasis-variant('.text-gray-darker', $gray-darker);
+@include text-emphasis-variant('.text-gray-light', $gray-light);
+
+
+$margin-vertical-variants: (xlg: 40px, lg: $line-height-computed*3/2, md: $line-height-computed, sm: $line-height-computed/2, xs: $line-height-computed/4, 0: 0);
+$margin-horizontal-variants: (lg: 20px, md: 15px, sm: 10px, xs: 5px, 0: 0);
+
+@include property-variants('.mt', 'margin-top', $margin-vertical-variants);
+@include property-variants('.mb', 'margin-bottom', $margin-vertical-variants);
+@include property-variants('.ml', 'margin-left', $margin-horizontal-variants);
+@include property-variants('.mr', 'margin-right', $margin-horizontal-variants);
+
+
+$text-decoration-variants: (none: none, underline: underline);
+
+@include property-variants('.td', 'text-decoration', $text-decoration-variants);

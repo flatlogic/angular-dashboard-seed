@@ -43,20 +43,3 @@
     background-color: $dashboard-yellow;
   }
 }
-
-.activity-widget {
-  .widget-title {
-    font-size: 15px;
-    font-weight: normal;
-    margin-bottom: 10px;
-  }
-  .date {
-    color: $gray-semi-light;
-  }
-  .post {
-    margin-bottom: 5px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
