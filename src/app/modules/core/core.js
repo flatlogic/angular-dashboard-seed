@@ -20,9 +20,7 @@
     });
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-      $scope.loginPage = toState.name == 'login';
       $('body').toggleClass('nav-shown', false); //TODO: shitty, change later (all the callback, by the way :) )
-      $(document).trigger('sn:loaded', [event, toState, toParams, fromState, fromParams]);
     });
 
     shortHistory.init($scope);

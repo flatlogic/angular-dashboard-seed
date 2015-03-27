@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('styles', ['wiredep', 'injector:css:preprocessor'], function () {
-    return gulp.src(['src/app/index.scss', 'src/app/vendor.scss'])
+    return gulp.src(['src/app/index.scss'])
         .pipe($.plumber())
         .pipe($.rubySass({
             style: 'expanded',
@@ -26,7 +26,6 @@ gulp.task('injector:css:preprocessor', function () {
         .pipe($.inject(gulp.src([
             'src/{app,components}/**/*.scss',
             '!src/app/index.scss',
-            '!src/app/vendor.scss',
             '!src/app/theme/*.scss'
         ], {read: true}), {
             transform: function (filePath) {
@@ -47,7 +46,6 @@ gulp.task('injector:css', ['styles'], function () {
         .pipe($.inject(gulp.src([
             '.tmp/{app,components}/**/*.css',
             '!.tmp/app/index.css',
-            '!.tmp/app/vendor.css',
             '!.tmp/app/theme/*.css'
         ], {read: false}), {
             ignorePath: '.tmp',

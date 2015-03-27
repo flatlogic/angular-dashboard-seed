@@ -4,6 +4,11 @@ html, body {
 
 body {
   overflow: hidden;
+  font-weight: $font-weight-thin;
+}
+
+th {
+  font-weight: $font-weight-semi-bold;
 }
 
 .app {
@@ -17,10 +22,16 @@ body {
   padding: 15px 20px;
   background: #fff;
   border-radius: 3px;
+  border: 1px solid $widget-border;
+
   header {
     margin-bottom: 10px;
   }
+}
 
+.widget-title {
+  margin-top: 0;
+  color: $gray-light;
 }
 
 .content-wrap {
@@ -44,6 +55,13 @@ body {
   min-height: 100%;
   padding: 40px 30px;
   background-color: $body-bg;
+}
+
+.content > .breadcrumb {
+  margin-top: -15px;
+  padding-left: 0;
+  padding-right: 0;
+  background: none;
 }
 
 .dropdown-link-container {

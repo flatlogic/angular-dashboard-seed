@@ -1,32 +1,40 @@
-<div>
-    <header class="logo hidden-xs">
-        <a>ngDashboard</a>
-    </header>
-    <ul class="sidebar-nav">
-        <li>
-            <a ui-sref="app.dashboard" ui-sref-active="active">Dashboard</a>
-        </li>
-        <li>
-            <a data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar"
-               ng-class="$state.includes('app.posts') || $state.includes('app.editPost') ? 'active' : ''">
-                Posts
-                <b class="caret"></b>
-            </a>
-            <ul id="sidebar-dashboard" class="collapse in">
-                <li><a ui-sref="app.posts" ui-sref-active="active">Show all</a></li>
-                <li>
-                    <a ui-sref="app.editPost" ui-sref-active="active">
-                        {{$state.includes('app.editPost') && $state.params.id ? 'Post editing' : 'Create new'}}
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a ui-sref="app.profile" ui-sref-active="active">Profile</a>
-        </li>
-        <li class="hidden-md hidden-lg">
-            <a href="#" ng-click="logout()">Logout</a>
-        </li>
+<header class="logo hidden-xs">
+  <a>ngDashboard</a>
+</header>
+<ul class="sidebar-nav">
+  <li>
+    <a ui-sref="app.dashboard" ui-sref-active="active"><i class="glyphicon glyphicon-tree-conifer mr-xs"></i> Dashboard</a>
+  </li>
+  <li>
+    <a data-target="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar"
+       ng-class="$state.includes('app.posts') || $state.includes('app.editPost') ? 'active' : ''">
+      <i class="glyphicon glyphicon-list-alt mr-xs"></i>
+      Posts
+      <b class="caret"></b>
+    </a>
+    <ul id="sidebar-dashboard" class="collapse in">
+      <li><a ui-sref="app.posts" ui-sref-active="active">Show all</a></li>
+      <li>
+        <a ui-sref="app.editPost" ui-sref-active="active">
+          {{$state.includes('app.editPost') && $state.params.id ? 'Post editing' : 'Create new'}}
+        </a>
+      </li>
     </ul>
+  </li>
+  <li>
+    <a ui-sref="app.profile" ui-sref-active="active">
+      <i class="glyphicon glyphicon-user mr-xs"></i>
+      Profile
+    </a>
+  </li>
+  <li class="hidden-md hidden-lg">
+    <a href="#" ng-click="logout()">Logout</a>
+  </li>
+</ul>
 
-</div>
+<footer class="sidebar-footer">
+  <p class="small text-gray-lighter opacity-60 ml-xs mr-xs mb-xs">58% ready</p>
+  <div class="progress progress-xs">
+    <div class="progress-bar" style="width: 58%"></div>
+  </div>
+</footer>

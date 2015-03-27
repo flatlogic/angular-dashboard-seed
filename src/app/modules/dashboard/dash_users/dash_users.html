@@ -1,10 +1,13 @@
 <div class="widget">
-    <table class="table">
+    <div class="pull-right mt-n-xs"><input class="form-control input-sm" type="search" placeholder="Search..."/></div>
+  <h5 class="widget-title"><i class="glyphicon glyphicon-user mr-xs"></i>Users</h5>
+    <table class="table mb-0">
         <thead>
         <tr>
-            <th>#</th>
-            <th>username</th>
-            <th>email</th>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -14,6 +17,7 @@
             <td>
                 alice@email.com
             </td>
+          <td><span class="label label-success">active</span></td>
         </tr>
         <tr>
             <td>2</td>
@@ -21,6 +25,7 @@
             <td>
                 bob@email.com
             </td>
+          <td><span class="label label-warning text-gray-dark">delayed</span></td>
         </tr>
         <tr>
             <td>3</td>
@@ -28,6 +33,7 @@
             <td >
                 duck@email.com
             </td>
+            <td><span class="label label-success">active</span></td>
         </tr>
         <tr>
             <td>4</td>
@@ -35,6 +41,7 @@
             <td>
                 shepherd@email.com
             </td>
+            <td><span class="label label-danger">removed</span></td>
         </tr>
         </tbody>
     </table>

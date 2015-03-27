@@ -1,27 +1,15 @@
-<div class="widget dash-top-widget {{widgetClass}}">
-    <div class="row">
-        <div class="col-xs-12 widget-info">
-            <i class="widget-icon {{iconClass}}"></i>
-            <div class="text-right widget-text">
-                <div>
-                    <span class="huge">{{descriptionTop}}</span>
-                    <span class="tiny">
-                        <ng-pluralize count="postsNumber"
-                                when="{
-                                '1': 'post',
-                                'other' : 'posts'
-                                }">
-                        </ng-pluralize>
-                    </span>
-                </div>
-                <div>
-                    <span class="large">{{descriptionBottom}}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-        <span class="widget-action" ui-sref="{{widgetSref}}">
-            {{linkMsg || 'View all'}}
-            <span class="glyphicon glyphicon-menu-right"></span>
-        </span>
+<div class="widget dash-top-widget widget-info text-center {{widgetClass}}">
+  <p><i class="widget-icon {{iconClass}}"></i></p>
+  <div>
+    <span class="huge">{{descriptionTop}}</span>
+                <span class="tiny">
+                    <ng-pluralize count="postsNumber"
+                                  when="{
+                            '1': 'post',
+                            'other' : 'posts'
+                            }">
+                    </ng-pluralize>
+                </span>
+    <span class="large">{{descriptionBottom}}</span>
+  </div>
 </div>

@@ -2,14 +2,14 @@
 // -------------------------
 // -------------------------
 
-$body-bg: #ddd;
+$body-bg: #E5E9EC;
 $text-color: #555;
 
 $sidebar-width: 200px;
-$sidebar-bg: #fff !default;
-$sidebar-color: #666 !default;
-$sidebar-item-border-color: lighten($body-bg, 5%) !default;
-$sidebar-item-hover-bg-color: #f7f7f7 !default;
+$sidebar-bg: #50585A !default;
+$sidebar-color: #f8f8f8 !default;
+$sidebar-item-border-color: transparent !default;
+$sidebar-item-hover-bg-color: #596163 !default;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
@@ -26,6 +26,7 @@ $content-padding-horizontal: 40px !default;
 $widget-padding-vertical: 15px !default;
 $widget-padding-horizontal: 20px !default;
 $widget-bg-color: #fff;
+$widget-border: transparent;
 
 
 //-- Dashboard
@@ -41,5 +42,15 @@ $dashboard-red: #d9534f;
 
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/" !default;
 
+//-- Bootstrap variables
+//
 
 $navbar-border-radius: 0;
+$breadcrumb-separator:          ">" !default;
+$font-family-sans-serif:  "Open Sans", sans-serif !default;
+
+
+//-- Open Sans variables
+//
+
+$open-sans-path: "../../bower_components/open-sans/fonts" !default;

@@ -2,8 +2,7 @@
   z-index: 1;
   margin-bottom: 0;
   border: 0;
-  border-left: 1px solid $body-bg;
-  background-color: $sidebar-bg;
+  border-bottom: 1px solid $widget-border;
 
   @media (max-width: $screen-xs-max) {
     font-size: 16px;
@@ -35,6 +34,7 @@
   width: $sidebar-width;
   background-color: $sidebar-bg;
   color: $sidebar-color;
+  border-right: 1px solid $widget-border;
 }
 
 .logo {
@@ -43,10 +43,11 @@
   width: 100%;
   text-align: center;
   vertical-align: middle;
-  font-weight: $font-weight-thin;
+  font-weight: $font-weight-bold;
 
   a{
     text-decoration: none;
+    color: #fff;
   }
 
 }
@@ -99,4 +100,13 @@
       }
     }
   }
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: lighten($sidebar-bg, 4%);
 }

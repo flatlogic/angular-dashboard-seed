@@ -1,7 +1,11 @@
+<ol class="breadcrumb">
+  <li><span class="text-muted">YOU ARE HERE</span></li>
+  <li class="active">{{vm.post.id ? 'Edit post' : 'Create new'}}</li>
+</ol>
 <div class="row">
     <div class="col-md-8">
         <div class="widget">
-            <h4 class="mt-0">{{vm.post.id ? 'Edit' : 'Create new'}} post</h4>
+            <h4 class="mt-0">{{vm.post.id ? 'Edit post' : 'Create new'}} post</h4>
             <form novalidate role="form" name="postForm" class="form-horizontal mt" ng-submit="postForm.$valid && (vm.post.id ? vm.update() : vm.save())" >
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="title">Title</label>

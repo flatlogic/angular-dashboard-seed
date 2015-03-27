@@ -38,3 +38,55 @@ $margin-horizontal-variants: (lg: 20px, md: 15px, sm: 10px, xs: 5px, 0: 0);
 $text-decoration-variants: (none: none, underline: underline);
 
 @include property-variants('.td', 'text-decoration', $text-decoration-variants);
+
+
+/**
+ * .circle & .rounded are pretty cool way to add a bit of beauty to raw data.
+ * should be used with bg-* and text-* classes for colors.
+ */
+.circle, .rounded{
+  display: inline-block;
+  width: #{$line-height-base}em;
+  height: #{$line-height-base}em;
+  line-height: #{$line-height-base}em;
+  text-align: center;
+}
+
+.circle, .circle-o{
+  border-radius: 50%;
+}
+
+.rounded{
+  border-radius: 5px;
+}
+
+.circle-lg, .rounded-lg{
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 2.2em;
+}
+
+$width-variants: (50: 50px, 100: 100px, 150: 150px, 200: 200px);
+
+@include property-variants('.width', 'width', $width-variants);
+
+
+.fw-semi-bold{
+  font-weight: $font-weight-semi-bold;
+}
+
+.fw-normal{
+  font-weight: $font-weight-normal;
+}
+
+.fw-bold{
+  font-weight: $font-weight-bold;
+}
+
+.fw-thin{
+  font-weight: $font-weight-thin;
+}
+
+$opacity-variants: (10: .1, 20: .2, 30: .3, 40: .4, 50: .5, 60: .6, 70: .7, 80: .8, 90: .9);
+
+@include property-variants('.opacity', 'opacity', $opacity-variants);
