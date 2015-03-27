@@ -63,6 +63,13 @@ label {
   margin-bottom: $line-height-computed/2;
 }
 
-.breadcrumb > .active {
-  font-weight: $font-weight-semi-bold;
+.breadcrumb {
+
+  > .active {
+    font-weight: $font-weight-semi-bold;
+  }
+
+  > li + li:before {
+    color: $gray-light;
+  }
 }
