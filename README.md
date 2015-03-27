@@ -1,5 +1,8 @@
 # angular-dashboard-seed
-Angular dashboard sample application with nodejs REST backend integration. 
+Angular dashboard sample application with nodejs REST backend integration built using latest angular best practices. 
+
+This seed is a sort of free version of a template that may be found [here](http://bootstrapbay.com/) or [here](http://themeforest.net/category/site-templates/admin-templates) with **working backend integrating**. 
+You may use it to bootstrap the development of your next web app. Ok, so basically, this project is a hack ;)
 
 Check out the [Live Demo](http://angular-dashboard-seed.flatlogic.com). Use following credentials: <b>user1</b>/<b>user1pass</b>.
 
@@ -9,11 +12,12 @@ Check out the [Live Demo](http://angular-dashboard-seed.flatlogic.com). Use foll
 * Nodejs backend inegration
 * Sass styles
 * Gulp build
-* Clean responsive layout
+* Stylish, clean, responsive layout
 * Lots of utility css classes for rapid development (flatlogic css set)
 * Authentication and authorization
 * CRUD operations examples
 * Browsersync for the ease of development
+* Toastr notifications
 
 ## Setup
 
@@ -34,3 +38,7 @@ Project structure based on [this yeoman generator](https://github.com/Swiip/gene
 
 ## Support
 For any additional information please refer to [Flatlogic homepage](http://flatlogic.com). 
+
+## License
+
+[MIT](https://github.com/flatlogic/angular-dashboard-seed/blob/master/LICENSE), hell yeah.
