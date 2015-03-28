@@ -4,9 +4,9 @@
   var core = angular.module('app.core');
 
   var config = {
-    name: 'Angular dashboard demo',
+    name: 'Angular dashboard seed',
     appTitle: 'ADD',
-    version: '0.0.1'
+    version: '0.1.1'
   };
 
   core.value('config', config);

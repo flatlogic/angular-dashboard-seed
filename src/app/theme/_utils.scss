@@ -90,3 +90,19 @@ $width-variants: (50: 50px, 100: 100px, 150: 150px, 200: 200px);
 $opacity-variants: (10: .1, 20: .2, 30: .3, 40: .4, 50: .5, 60: .6, 70: .7, 80: .8, 90: .9);
 
 @include property-variants('.opacity', 'opacity', $opacity-variants);
+
+@include bg-variant('.bg-primary', $brand-primary);
+@include bg-variant('.bg-success', $brand-success);
+@include bg-variant('.bg-info', $brand-info);
+@include bg-variant('.bg-warning', $brand-warning);
+@include bg-variant('.bg-danger', $brand-danger);
+
+@include bg-variant('.bg-body', $body-bg);
+@include bg-variant('.bg-gray', $gray);
+@include bg-variant('.bg-gray-transparent', rgba($gray, .6));
+@include bg-variant('.bg-gray-dark', $gray-dark);
+@include bg-variant('.bg-black', #000);
+@include bg-variant('.bg-gray-light', $gray-light);
+@include bg-variant('.bg-gray-lighter', $gray-lighter);
+@include bg-variant('.bg-transparent', rgba(0,0,0,0));
+@include bg-variant('.bg-white', #fff);

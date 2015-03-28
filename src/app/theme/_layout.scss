@@ -24,8 +24,25 @@ th {
   border-radius: 3px;
   border: 1px solid $widget-border;
 
-  header {
+  > header {
     margin-bottom: 10px;
+  }
+
+  .loader{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .spinner{
+      position: absolute;
+      top: 50%;
+      width: 100%; //ie fix
+      margin-top: -10px;
+      font-size: 20px;
+      text-align: center;
+    }
   }
 }
 

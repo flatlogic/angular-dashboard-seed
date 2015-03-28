@@ -73,3 +73,36 @@ label {
     color: $gray-light;
   }
 }
+
+.alert-sm{
+  padding: 10px 12px;
+  font-size: 13px;
+
+  .close{
+    font-size: 18px;
+  }
+}
+
+.alert-dismissable .close{
+  position: static;
+  color: $close-color;
+}
+
+
+.list-group-item > .fa-chevron-right.pull-right {
+  margin-top: 4px;
+}
+
+
+.list-group-item {
+  border-left: 0;
+  border-right: 0;
+
+  // Round the first and last items
+  &:first-child {
+    border-top: 0;
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+}

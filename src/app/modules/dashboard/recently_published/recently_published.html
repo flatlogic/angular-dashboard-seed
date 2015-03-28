@@ -1,12 +1,16 @@
 <div class="widget activity-widget">
-    <small class="pull-right"><a class="td-underline text-muted" href="#"><span class="text-muted">Options</span></a></small>
-    <h5 class="widget-title"><i class="glyphicon glyphicon-list mr-xs"></i>Recently <span class="fw-semi-bold">Published</span></h5>
-    <table class="table table-no-border table-sm mb-0">
-      <tr ng-repeat="post in vm.posts">
-        <td>{{post.date | date:' MMM dd, hh:mm'}}</td>
-        <td>
-          <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
-        </td>
-      </tr>
-    </table>
+  <small class="pull-right"><a class="td-underline text-muted" href="#"><span class="text-muted">Options</span></a></small>
+  <h5 class="widget-title">
+    Recently <span class="fw-semi-bold">Published</span>
+    <span class="badge bg-success">17</span>
+  </h5>
+  <p class="text-muted mt-n-sm small">posts, that have been created recently</p>
+  <table class="table table-no-border table-sm mb-0">
+    <tr ng-repeat="post in vm.posts">
+      <td>{{post.date | date:' MMM dd, hh:mm'}}</td>
+      <td>
+        <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
+      </td>
+    </tr>
+  </table>
 </div>

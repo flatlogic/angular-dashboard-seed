@@ -19,9 +19,38 @@
           description-bottom="last edited" link-msg="Show" widget-sref="app.editPost({id: lastEdited.id})">
   </div>
 </div>
-</div>
 
 <div class="row">
   <div class="col-md-6" ng-include="'app/modules/dashboard/dash_users/dash_users.html'"></div>
+  <div class="col-md-6">
+    <div data-alert data-ng-repeat="alert in alerts" data-type="{{alert.type}} alert-sm" data-close="closeAlert($index)">
+      <div data-ng-bind-html="alert.msg"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-6" recently-published posts="posts"></div>
+  <div class="col-md-6">
+    <div class="list-group no-border">
+      <a href="#" class="list-group-item"><i class="glyphicon glyphicon-phone mr-xs opacity-70"></i> Incoming calls <span class="badge bg-danger">3</span></a>
+      <a href="#" class="list-group-item"><i class="glyphicon glyphicon-bell mr-xs opacity-70"></i> Notifications <span class="badge bg-warning">6</span></a>
+      <a href="#" class="list-group-item"><i class="glyphicon glyphicon-comment mr-xs opacity-70"></i> Messages <span class="badge bg-success">18</span></a>
+      <a href="#" class="list-group-item"><i class="glyphicon glyphicon-eye-open mr-xs opacity-70"></i> Visits total</a>
+      <a href="#" class="list-group-item"><i class="glyphicon glyphicon-cloud mr-xs opacity-70"></i> Inbox <i class="fa fa-chevron-right pull-right text-gray-light"></i></a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <section class="widget">
+      <h5 class="widget-title"><i class="glyphicon glyphicon-cog mr-xs"></i> Custom <span class="fw-semi-bold">Loader</span></h5>
+      <div class="widget-body" style="min-height: 157px">
+        <div class="loader">
+          <span class="spinner">
+              <i class="fa fa-circle-o-notch fa-spin"></i>
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

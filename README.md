@@ -8,6 +8,7 @@ Check out the [Live Demo](http://angular-dashboard-seed.flatlogic.com). Use foll
 
 ## Features
 * AngularJS
+* Angular UI Router
 * Bootstrap3
 * Nodejs backend inegration
 * Sass styles
