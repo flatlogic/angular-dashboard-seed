@@ -1,37 +1,131 @@
 <div class="container-fluid">
-    <!-- .navbar-header contains links seen on xs & sm screens -->
-    <div class="navbar-header">
-        <ul class="nav navbar-nav">
-            <li>
-                <!-- shown on xs & sm screen. collapses and expands navigation -->
-                <a class="visible-xs navbar-toggle toggle-navigation-collapse" nav-collapse-toggler type="click" href="#" title="Show/hide sidebar" data-placement="bottom" data-tooltip>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-            </li>
-        </ul>
-         <!--xs & sm screen logo -->
-        <a class="navbar-brand visible-xs">
-            {{app.name}}
+  <!-- .navbar-header contains links seen on xs & sm screens -->
+  <div class="navbar-header">
+    <ul class="nav navbar-nav">
+      <li>
+        <!-- shown on xs & sm screen. collapses and expands navigation -->
+        <a class="visible-xs navbar-toggle toggle-navigation-collapse" nav-collapse-toggler type="click" href="#" title="Show/hide sidebar" data-placement="bottom" data-tooltip>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </a>
-    </div>
+      </li>
+    </ul>
+    <!--xs & sm screen logo -->
+    <a class="navbar-brand visible-xs">
+      {{app.name}}
+    </a>
+  </div>
 
-    <!-- this part is hidden for xs screens -->
-    <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a ui-sref="app.profile">
-              <i class="glyphicon glyphicon-user mr-xs"></i>
-              Jessica Willington
-            </a>
-          </li>
-          <li class=""></li>
-          <li>
-            <a href ng-click="logout()">
-              Logout
-            </a>
-          </li>
-        </ul>
-    </div>
+  <!-- this part is hidden for xs screens -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown" dropdown>
+        <a href="#"  dropdown-toggle>
+          <i class="glyphicon glyphicon-user mr-xs"></i>
+          {{vm.currentUser.firstName}}
+              <span class="fw-semi-bold">
+                {{vm.currentUser.lastName}}
+              </span>
+
+          <span class="badge bg-warning ml-xs">6</span>
+        </a>
+        <div class="dropdown-menu animated fadeInUp" data-sn-notifications-menu>
+          <section class="panel notifications">
+            <header class="panel-heading">
+              <h6 class="text-center mt-xs mb-xs">
+                <strong>You have 13 notifications</strong>
+              </h6>
+            </header>
+            <div id="notifications-list" class="list-group thin-scroll">
+              <div class="list-group-item">
+                <span class="thumb-sm pull-left mr">
+                    <i class="glyphicon glyphicon-upload fa-lg"></i>
+                </span>
+                <p class="no-margin overflow-hidden">
+                  1 new user just signed up! Check out
+                  <a href="#">Monica Smith</a>'s account.
+                  <time class="help-block no-margin">
+                    2 mins ago
+                  </time>
+                </p>
+              </div>
+              <a class="list-group-item" href="#">
+                <span class="thumb-sm pull-left mr">
+                    <i class="fa fa-bolt fa-lg"></i>
+                </span>
+                <p class="text-ellipsis no-margin">
+                  Server load limited. </p>
+                <time class="help-block no-margin">
+                  7h ago
+                </time>
+              </a>
+              <div class="list-group-item">
+                <span class="thumb-sm pull-left mr">
+                    <i class="glyphicon glyphicon-user fa-lg"></i>
+                </span>
+                <p class="no-margin overflow-hidden">
+                  User <a href="#">Jeff</a> registered
+                  &nbsp;&nbsp;
+                  <button class="btn btn-xs btn-success">Allow</button>
+                  <button class="btn btn-xs btn-danger">Deny</button>
+                  <time class="help-block no-margin">
+                    12:18 AM
+                  </time>
+                </p>
+              </div>
+              <div class="list-group-item">
+                <span class="thumb-sm pull-left mr">
+                    <i class="fa fa-shield fa-lg"></i>
+                </span>
+                <p class="no-margin overflow-hidden">
+                  Instructions for changing your Account password. Please
+                  check your account <a href="#">security page</a>.
+                  <time class="help-block no-margin">
+                    12:18 AM
+                  </time>
+                </p>
+              </div>
+              <a class="list-group-item" href="#">
+                <span class="thumb-sm pull-left mr">
+                    <span class="rounded bg-primary rounded-lg">
+                        <i class="fa fa-facebook text-white"></i>
+                    </span>
+                </span>
+                <p class="text-ellipsis no-margin">
+                  New <strong>76</strong> facebook likes received.</p>
+                <time class="help-block no-margin">
+                  15 Apr 2014
+                </time>
+              </a>
+              <a class="list-group-item" href="#">
+                <span class="thumb-sm pull-left mr">
+                  <span class="circle circle-lg bg-gray-dark">
+                      <i class="fa fa-circle-o text-white"></i>
+                  </span>
+                </span>
+                <p class="text-ellipsis no-margin">
+                  Dark matter detected.</p>
+                <time class="help-block no-margin">
+                  15 Apr 2014
+                </time>
+              </a>
+            </div>
+            <footer class="panel-footer text-sm">
+              <button class="btn btn-xs btn-link pull-right">
+                <i class="fa fa-refresh"></i>
+              </button>
+              <small>Synced at: 21 Apr 2015 18:36</small>
+            </footer>
+          </section>
+        </div>
+      </li>
+      <li class=""></li>
+      <li>
+        <a href ng-click="logout()">
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

@@ -19,12 +19,29 @@
   }
 }
 
+// Common thumbnail properties
+// -------------------------
+@mixin thumb($parent, $size){
+  #{$parent} {
+    width: $size;
+
+    > .glyphicon,
+    > .fa{
+      line-height: $size;
+    }
+  }
+}
+
 
 @include text-emphasis-variant('.text-gray', $gray);
 @include text-emphasis-variant('.text-gray-dark', $gray-dark);
 @include text-emphasis-variant('.text-gray-darker', $gray-darker);
 @include text-emphasis-variant('.text-gray-light', $gray-light);
 
+
+.no-margin {
+  margin: 0;
+}
 
 $margin-vertical-variants: (xlg: 40px, lg: $line-height-computed*3/2, md: $line-height-computed, sm: $line-height-computed/2, xs: $line-height-computed/4, 0: 0);
 $margin-horizontal-variants: (lg: 20px, md: 15px, sm: 10px, xs: 5px, 0: 0);
@@ -87,9 +104,41 @@ $width-variants: (50: 50px, 100: 100px, 150: 150px, 200: 200px);
   font-weight: $font-weight-thin;
 }
 
+.text-ellipsis {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
 $opacity-variants: (10: .1, 20: .2, 30: .3, 40: .4, 50: .5, 60: .6, 70: .7, 80: .8, 90: .9);
 
 @include property-variants('.opacity', 'opacity', $opacity-variants);
+
+// Text & Background Variations
+// ----------------------------
+
+//override bs .text-* classes so they use $brand-* variables
+
+@include text-emphasis-variant('.text-primary', $brand-primary);
+
+@include text-emphasis-variant('.text-success', $brand-success);
+
+@include text-emphasis-variant('.text-info', $brand-info);
+
+@include text-emphasis-variant('.text-warning', $brand-warning);
+
+@include text-emphasis-variant('.text-danger', $brand-danger);
+
+@include text-emphasis-variant('.text-link', $link-color);
+
+@include text-emphasis-variant('.text-white', #fff);
+
+//copy bg classes after bootstrap so it's possible to overload other bootstrap classes
 
 @include bg-variant('.bg-primary', $brand-primary);
 @include bg-variant('.bg-success', $brand-success);
@@ -106,3 +155,24 @@ $opacity-variants: (10: .1, 20: .2, 30: .3, 40: .4, 50: .5, 60: .6, 70: .7, 80: 
 @include bg-variant('.bg-gray-lighter', $gray-lighter);
 @include bg-variant('.bg-transparent', rgba(0,0,0,0));
 @include bg-variant('.bg-white', #fff);
+
+
+@include thumb('.thumb-lg', 60px);
+@include thumb('.thumb', 48px);
+@include thumb('.thumb-sm', 34px);
+@include thumb('.thumb-xs', 28px);
+
+.thumb-xs,
+.thumb-sm,
+.thumb-lg,
+.thumb{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+
+  img{
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+}

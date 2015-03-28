@@ -106,3 +106,14 @@ label {
     border-bottom: 0;
   }
 }
+
+.panel{
+  .dropdown-menu > &{
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+}
+
+.panel-heading{
+  border-color: $panel-inner-border;
+}

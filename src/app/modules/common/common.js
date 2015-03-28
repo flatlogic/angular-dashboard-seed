@@ -30,8 +30,8 @@
     };
   }
 
-  session.$inject = ['$http', '$q'];
-  function session($http, $q) {
+  session.$inject = ['$http', '$q', '$rootScope'];
+  function session($http, $q, $rootScope) {
     var session = this;
 
     this.fetchCurrentUser = function(url) {
@@ -52,6 +52,7 @@
 
     this.setCurrentUser = function(user) {
       this.user = user;
+      $rootScope.$broadcast('$userSet', this.user);
     };
   }
 

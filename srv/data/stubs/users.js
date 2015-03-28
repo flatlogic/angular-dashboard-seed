@@ -4,7 +4,9 @@ var stubs = [
         id: 1,
         username: 'user1',
         email: 'user1@email.com',
-        password: 'user1pass'
+        password: 'user1pass',
+        firstName: 'Jessica',
+        lastName: 'Willington'
     },
     {
         id: 2,

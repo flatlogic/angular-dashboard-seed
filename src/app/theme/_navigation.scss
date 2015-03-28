@@ -114,3 +114,22 @@
   padding: 10px;
   background-color: lighten($sidebar-bg, 4%);
 }
+
+.notifications{
+  font-size: 13px;
+
+  @media (min-width: $screen-sm-min) {
+    width: 333px;
+  }
+  .list-group{
+    height: 320px;
+    overflow-y: scroll;
+  }
+  .list-group-item{
+    @include transition(background-color .15s ease-in-out);
+    &:hover{
+      background-color: $list-group-hover-bg;
+    }
+  }
+
+}
