@@ -1,55 +1,66 @@
 <div class="container">
-    <main id="content" class="widget-login-container" role="main">
-        <div class="row">
-            <div class="col-lg-4 col-sm-6 col-xs-10 col-lg-offset-4 col-sm-offset-3 col-xs-offset-1">
-                <section class="widget widget-login">
-                    <header>
-                        <h3>Dashboard login</h3>
-                    </header>
-                    <div class="widget-body">
-                        <form role="form" novalidate name="loginForm" class="login-form mt-lg" ng-submit="loginForm.$valid && vm.login()">
-                            <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
-                                {{vm.responseErrorMsg}}
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" required ng-minlength=3 ng-maxlength=20
-                                       ng-model="vm.user.username" name="username" placeholder="Username">
-                                <div ng-show="loginForm.username.$invalid && (loginForm.username.$dirty || loginForm.$submitted)">
-                                    <small class="error" ng-show="loginForm.username.$error.required">
-                                        Username is required.
-                                    </small>
-                                    <small class="error" ng-show="loginForm.username.$error.minlength">
-                                        Username is required to be at least 3 characters
-                                    </small>
-                                    <small class="error" ng-show="loginForm.username.$error.maxlength">
-                                        Username cannot be longer than 20 characters
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" required ng-minlength=3 ng-maxlength=20
-                                       ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
-                                <div ng-show="loginForm.password.$invalid && (loginForm.password.$dirty || loginForm.$submitted)">
-                                    <small class="error" ng-show="loginForm.password.$error.required">
-                                        Password is required.
-                                    </small>
-                                    <small class="error" ng-show="loginForm.password.$error.minlength">
-                                        Password is required to be at least 3 characters
-                                    </small>
-                                    <small class="error" ng-show="loginForm.password.$error.maxlength">
-                                        Password cannot be longer than 20 characters
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="clearfix">
-                                <div class="btn-toolbar pull-right">
-                                    <button type="submit" class="btn btn-danger btn-sm">Login</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </main>
+  <main id="content" class="widget-login-container" role="main">
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 col-xs-10 col-lg-offset-4 col-sm-offset-3 col-xs-offset-1">
+        <h5 class="text-center text-muted">ngDashboard <sup class="fw-semi-bold text-warning">beta</sup></h5>
+        <widget class="widget-login">
+          <header>
+            <h3 class="mt-0">Login to your Web App</h3>
+          </header>
+          <div class="widget-body">
+            <p class="fs-mini text-muted">
+              User your username and password to sign in <br/>
+              Don't have an account? Sign up now!
+            </p>
+            <form role="form" novalidate name="loginForm" class="login-form mt-lg" ng-submit="loginForm.$valid && vm.login()">
+              <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
+                {{vm.responseErrorMsg}}
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" required ng-minlength=3 ng-maxlength=20
+                       ng-model="vm.user.username" name="username" placeholder="Username">
+                <div ng-show="loginForm.username.$invalid && (loginForm.username.$dirty || loginForm.$submitted)">
+                  <small class="error" ng-show="loginForm.username.$error.required">
+                    Username is required.
+                  </small>
+                  <small class="error" ng-show="loginForm.username.$error.minlength">
+                    Username is required to be at least 3 characters
+                  </small>
+                  <small class="error" ng-show="loginForm.username.$error.maxlength">
+                    Username cannot be longer than 20 characters
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" required ng-minlength=3 ng-maxlength=20
+                       ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
+                <div ng-show="loginForm.password.$invalid && (loginForm.password.$dirty || loginForm.$submitted)">
+                  <small class="error" ng-show="loginForm.password.$error.required">
+                    Password is required.
+                  </small>
+                  <small class="error" ng-show="loginForm.password.$error.minlength">
+                    Password is required to be at least 3 characters
+                  </small>
+                  <small class="error" ng-show="loginForm.password.$error.maxlength">
+                    Password cannot be longer than 20 characters
+                  </small>
+                </div>
+              </div>
+              <div class="clearfix">
+                <div class="btn-toolbar pull-right">
+                  <button type="reset" class="btn btn-default btn-sm">Create an account</button>
+                  <button type="submit" class="btn btn-sidebar btn-sm">Login</button>
+                </div>
+                <a class="mt-sm pull-right fs-mini" href="#">Trouble with account?</a>
+              </div>
+
+            </form>
+          </div>
+        </widget>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    2015 &copy; Flatlogic. Angular Dashboard Seed Project
+  </footer>
 </div>

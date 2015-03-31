@@ -9,6 +9,7 @@
     $scope.posts = posts;
     $scope.postsLastMonth = postsUtils.postsDuringInterval(posts, 30);
     $scope.lastEditedPost = postsUtils.lastEdited(posts);
+    $scope.postsRecently = postsUtils.recent(posts, 5);
     $scope.alerts = [
       { type: 'warning', msg: $sce.trustAsHtml('<span class="fw-semi-bold">Warning:</span> Best check yo self, you\'re not looking too good.') },
       { type: 'success', msg: $sce.trustAsHtml('<span class="fw-semi-bold">Success:</span> You successfully read this important alert message.') },

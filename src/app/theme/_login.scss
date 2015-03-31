@@ -6,9 +6,6 @@ $login-page-bg: #ddd;
 
 .widget-login-container{
   padding-top: 10%;
-  header {
-    color: $text-muted;
-  }
 }
 
 .widget-login{
@@ -30,5 +27,19 @@ $login-page-bg: #ddd;
     &:focus{
       background-color: $login-page-bg;
     }
+  }
+}
+
+.widget-login-container + .page-footer {
+  margin-bottom: 30px;
+  font-size: 13px;
+  color: $text-muted;
+  text-align: center;
+
+  @media (min-height: 600px) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }

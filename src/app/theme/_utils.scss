@@ -104,6 +104,10 @@ $width-variants: (50: 50px, 100: 100px, 150: 150px, 200: 200px);
   font-weight: $font-weight-thin;
 }
 
+.fs-mini {
+  font-size: 13px;
+}
+
 .text-ellipsis {
   display: block;
   white-space: nowrap;

@@ -4,7 +4,7 @@
 </ol>
 <div class="row">
     <div class="col-md-8">
-        <div class="widget">
+        <widget>
             <h4 class="mt-0">{{vm.post.id ? 'Edit post' : 'Create new'}} post</h4>
             <form novalidate role="form" name="postForm" class="form-horizontal mt" ng-submit="postForm.$valid && (vm.post.id ? vm.update() : vm.save())" >
                 <div class="form-group">
@@ -47,6 +47,6 @@
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
-        </div>
+        </widget>
     </div>
 </div>

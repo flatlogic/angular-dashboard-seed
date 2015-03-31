@@ -16,6 +16,10 @@ label {
   @include button-variant($text-color, #ddd, darken(#ddd, 5%));
 }
 
+.btn-sidebar{
+  @include button-variant(#fff, $sidebar-bg, darken($sidebar-bg, 5%));
+}
+
 
 .table-no-border {
   margin-left: -$table-cell-padding;

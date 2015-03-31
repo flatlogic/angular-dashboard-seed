@@ -33,7 +33,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6" ng-include="'app/modules/dashboard/dash_users/dash_users.html'"></div>
+  <div class="col-md-6">
+    <widget ng-include="'app/modules/dashboard/dash_users/dash_users.html'">
+    </widget>
+  </div>
   <div class="col-md-6">
     <alert data-ng-repeat="alert in alerts" data-type="{{alert.type}} alert-sm" data-close="closeAlert($index)">
       <div data-ng-bind-html="alert.msg"></div>
@@ -41,7 +44,24 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6" recently-published posts="posts"></div>
+  <div class="col-md-6">
+    <widget>
+      <small class="pull-right"><a class="td-underline text-muted" href="#"><span class="text-muted">Options</span></a></small>
+      <h5 class="widget-title">
+        Recently <span class="fw-semi-bold">Published</span>
+        <span class="badge bg-success">17</span>
+      </h5>
+      <p class="text-muted mt-n-sm small">posts, that have been created recently</p>
+      <table class="table table-no-border table-sm mb-0">
+        <tr ng-repeat="post in postsRecently">
+          <td>{{post.date | date:' MMM dd, hh:mm'}}</td>
+          <td>
+            <a ui-sref="app.editPost({id: post.id})">{{post.title}}</a>
+          </td>
+        </tr>
+      </table>
+    </widget>
+  </div>
   <div class="col-md-6">
     <div class="list-group no-border">
       <a href="#" class="list-group-item"><i class="glyphicon glyphicon-phone mr-xs opacity-70"></i> Incoming calls <span class="badge bg-danger">3</span></a>
@@ -54,7 +74,7 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-    <section class="widget">
+    <widget>
       <h5 class="widget-title"><i class="glyphicon glyphicon-cog mr-xs"></i> Custom <span class="fw-semi-bold">Loader</span></h5>
       <div class="widget-body" style="min-height: 157px">
         <div class="loader">
@@ -63,6 +83,6 @@
           </span>
         </div>
       </div>
-    </section>
+    </widget>
   </div>
 </div>
