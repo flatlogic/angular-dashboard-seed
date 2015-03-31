@@ -45,7 +45,6 @@ gulp.task('injector:css', ['styles'], function () {
     return gulp.src('src/index.html')
         .pipe($.inject(gulp.src([
             '.tmp/{app,components}/**/*.css',
-            '!.tmp/app/index.css',
             '!.tmp/app/theme/*.css'
         ], {read: false}), {
             ignorePath: '.tmp',
