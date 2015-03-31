@@ -3,21 +3,25 @@
   <li class="active">Dashboard</li>
 </ol>
 <div class="row">
-  <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" posts="posts"
-          description-bottom="total" widget-class="posts-total"
-          icon-class="glyphicon glyphicon-globe" widget-sref="app.posts">
-  </div>
-  <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" posts="posts"
-          description-bottom="today" widget-classbr="posts-today" icon-class="glyphicon glyphicon-hourglass"
-          interval="1" widget-sref="app.posts({interval: interval})"></div>
-  <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" posts="posts"
-          description-bottom="this month" widget-class="posts-this-month" icon-class="glyphicon glyphicon-calendar"
-          interval="30" widget-sref="app.posts({interval: interval})">
-  </div>
-  <div    dash-top-widget class="col-md-3 col-sm-6 col-xs-12" widget-class="last-edited" posts="posts"
-          type="lastEdited" icon-class="glyphicon glyphicon-pencil" description-top="fresh"
-          description-bottom="last edited" link-msg="Show" widget-sref="app.editPost({id: lastEdited.id})">
-  </div>
+  <widget-stat class="col-md-3 col-sm-6" widget-class="bg-sidebar"
+                   ui-sref="app.posts"
+          icon-text="{{posts.length}}" icon-class="text-success">
+    posts total
+  </widget-stat>
+  <widget-stat class="col-md-3 col-sm-6" widget-class="bg-sidebar"
+          icon-class="fa fa-shopping-cart mt-n-xs text-white">
+    new orders
+  </widget-stat>
+  <widget-stat class="col-md-3 col-sm-6" widget-class="bg-sidebar"
+                   ui-sref="app.editPost({id: lastEditedPost.id})"
+          icon-class="fa fa-calendar text-white">
+    last edited
+  </widget-stat>
+  <widget-stat class="col-md-3 col-sm-6" widget-class="bg-sidebar"
+                   ui-sref="app.posts"
+          icon-text="{{postsLastMonth.length}}" icon-class="text-warning">
+    posts last month
+  </widget-stat>
 </div>
 
 <div class="row">

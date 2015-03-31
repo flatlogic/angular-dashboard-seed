@@ -95,3 +95,8 @@ th {
 form .error {
   color: $brand-danger;
 }
+
+
+[ui-sref] {
+  cursor: pointer;
+}

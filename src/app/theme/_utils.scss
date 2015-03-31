@@ -155,6 +155,7 @@ $opacity-variants: (10: .1, 20: .2, 30: .3, 40: .4, 50: .5, 60: .6, 70: .7, 80: 
 @include bg-variant('.bg-gray-lighter', $gray-lighter);
 @include bg-variant('.bg-transparent', rgba(0,0,0,0));
 @include bg-variant('.bg-white', #fff);
+@include bg-variant('.bg-sidebar', $sidebar-bg);
 
 
 @include thumb('.thumb-lg', 60px);
