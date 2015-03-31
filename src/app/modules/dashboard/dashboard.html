@@ -35,9 +35,9 @@
 <div class="row">
   <div class="col-md-6" ng-include="'app/modules/dashboard/dash_users/dash_users.html'"></div>
   <div class="col-md-6">
-    <div data-alert data-ng-repeat="alert in alerts" data-type="{{alert.type}} alert-sm" data-close="closeAlert($index)">
+    <alert data-ng-repeat="alert in alerts" data-type="{{alert.type}} alert-sm" data-close="closeAlert($index)">
       <div data-ng-bind-html="alert.msg"></div>
-    </div>
+    </alert>
   </div>
 </div>
 <div class="row">

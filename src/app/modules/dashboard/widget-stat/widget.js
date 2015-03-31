@@ -14,7 +14,7 @@
         'iconClass': '@',
         'iconText': '@'
       },
-      templateUrl: 'app/modules/dashboard/top_widgets/widget_stat.html'
+      templateUrl: 'app/modules/dashboard/widget-stat/widget_stat.html'
     }
   }
 
