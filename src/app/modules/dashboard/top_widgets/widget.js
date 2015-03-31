@@ -8,6 +8,7 @@
     return {
       restrict: 'EA',
       transclude: true,
+      replace: true,
       scope: {
         'widgetClass': '@',
         'iconClass': '@',
