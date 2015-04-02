@@ -6,7 +6,7 @@
   "scripts": {
     "init": "npm install",
     "install": "bower install",
-    "start": "node src/server/app.js"
+    "start": "node srv/app.js"
   },
   "dependencies": {
     "compression": "^1.1.0",

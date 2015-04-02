@@ -8,6 +8,8 @@ var auth = require('./routes/auth');
 var posts = require('./routes/posts');
 var profiles = require('./routes/profiles');
 var session = require('./session');
+var path = require('path');
+
 
 var app = express();
 
@@ -23,10 +25,11 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use(express.static('../src')); //TODO: just a stub for experiments, should be changed later
-//app.get('/', function(req,res) {
-//  res.sendfile('../src/index.html');
-//});
+app.use(express.static('dist'));
+app.use('/bower_components',  express.static('bower_components'));
+app.get('/', function(req,res) {
+  res.sendFile('index.html', {'root': 'dist/'});
+});
 
 session.configure();
 auth.configure(app);
