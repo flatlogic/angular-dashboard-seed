@@ -40,6 +40,12 @@ Project structure based on [this yeoman generator](https://github.com/Swiip/gene
 ## Support
 For any additional information please refer to [Flatlogic homepage](http://flatlogic.com). 
 
+## Community
+- [Tweet about it](https://twitter.com/intent/tweet?text=Amazing%20dashboard%20built%20with%20NodeJS,%20Angular%20and%20Bootstrap!&url=https://github.com/flatlogic/angular-dashboard-seed&via=flatlogicinc) to support revolution in classic paid templates market.
+- Follow [@flatlogicinc on Twitter](https://twitter.com/flatlogicinc).
+- Subscribe to Flatlogic newsletter at [flatlogic.com](http://flatlogic.com/)
+- Let's discuss: [![Join the chat at https://gitter.im/flatlogic/angular-dashboard-seed](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/flatlogic/angular-dashboard-seed)
+
 ## License
 
 [MIT](https://github.com/flatlogic/angular-dashboard-seed/blob/master/LICENSE), hell yeah.
