@@ -7,6 +7,7 @@
         'app.post',
         'app.dashboard',
         'app.data',
-        'app.common'
+        'app.common',
+        'app.flickr'
     ]);
 })();
