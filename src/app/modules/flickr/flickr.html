@@ -1,0 +1,17 @@
+<ol class="breadcrumb">
+  <li><span class="text-muted">YOU ARE HERE</span></li>
+  <li class="active">Flickr</li>
+</ol>
+
+<div class="widget" ng-controller="flickrController">
+  <h4 class="mt-0"><a href="{{ link }}">{{ title }}</a></h4>
+  <input class="form-control input-sm" type="search" placeholder="Type a tag to filter..." />
+  <div class="row">
+    <div ng-repeat="item in items">
+      <div class="col-md-12">
+        <p>{{ item.title }}</p>
+        <a href="{{ item.link }}" target="_blank"><img src="{{ item.media.m }}"></a>
+      </div>
+    </div>
+  </div>
+</div>

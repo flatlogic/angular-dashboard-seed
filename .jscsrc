@@ -34,7 +34,7 @@
     "afterConsequent": true,
     "beforeAlternate": true
   },
-  "validateLineBreaks": "LF",
+  "validateLineBreaks": "CRLF",
   "validateParameterSeparator": ", ",
   "validateJSDoc": {
     "checkParamNames": true,
