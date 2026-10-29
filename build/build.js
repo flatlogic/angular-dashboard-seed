@@ -2,12 +2,15 @@
 
 var gulp = require('gulp');
 var path = require('path');
+var fs = require('node:fs');
+var annotate = require('ng-annotate-patched');
+var through = require('through2');
+var htmlmin = require('gulp-html-minifier-terser');
+var ESLint = require('eslint').ESLint;
 
 var sass = require('gulp-sass')(require('sass'));
 
-var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
-});
+var $ = require('gulp-load-plugins')();
 
 function styles() {
     return gulp.src(['src/app/index.scss'])
@@ -52,15 +55,17 @@ function injectCss() {
         .pipe(gulp.dest('src/'));
 }
 
-function jshint() {
-    return gulp.src('src/{app,components}/**/*.js')
-        .pipe($.jshint('./.jshintrc'))
-        .pipe($.jshint.reporter('jshint-stylish'));
-}
-
-function jscs() {
-    return gulp.src('src/{app,components}/**/*.js')
-        .pipe($.jscs('./.jscsrc'));
+async function analyze() {
+    var eslint = new ESLint();
+    var results = await eslint.lintFiles(['src/**/*.js']);
+    var formatter = await eslint.loadFormatter('stylish');
+    var output = formatter.format(results);
+    if (output) {
+        console.log(output);
+    }
+    if (results.some(function(result) { return result.errorCount > 0; })) {
+        throw new Error('ESLint found errors');
+    }
 }
 
 
@@ -81,10 +86,9 @@ function injectJs() {
 
 function partials() {
     return gulp.src('src/{app,components}/**/*.html')
-        .pipe($.minifyHtml({
-            empty: true,
-            spare: true,
-            quotes: true
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
         }))
         .pipe($.angularTemplatecache('templateCacheHtml.js', {
             module: 'app',
@@ -94,10 +98,10 @@ function partials() {
 }
 
 function html() {
-    var htmlFilter = $.filter('*.html');
-    var jsFilter = $.filter('**/*.js');
-    var cssFilter = $.filter('**/*.css');
-    var assetsFilter = $.filter(['**/*.js', '**/*.css']);
+    var htmlFilter = $.filter('*.html', {restore: true});
+    var jsFilter = $.filter('**/*.js', {restore: true});
+    var cssFilter = $.filter('**/*.css', {restore: true});
+    var assetsFilter = $.filter(['**/*.js', '**/*.css'], {restore: true});
 
     return gulp.src('src/*.html')
         .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
@@ -109,36 +113,34 @@ function html() {
         .pipe(assetsFilter)
         .pipe($.rev())
         .pipe(jsFilter)
-        .pipe($.ngAnnotate({
-            add: true,
-            single_quotes: true
+        .pipe(through.obj(function(file, encoding, done) {
+            var result = annotate(file.contents.toString(), {add: true, single_quotes: true});
+            if (result.errors) {
+                done(new Error(result.errors.join('\n')));
+                return;
+            }
+            file.contents = Buffer.from(result.src);
+            done(null, file);
         }))
-          .pipe($.uglify({output: {comments: $.uglifySaveLicense}}))
-        .pipe(jsFilter.restore())
+        .pipe($.uglify({output: {comments: /^!|@license|@preserve|@cc_on/i}}))
+        .pipe(jsFilter.restore)
         .pipe(cssFilter)
         .pipe($.replace(/\.\.\/\.\.\/bower_components\/(?:bootstrap-sass\/assets\/fonts\/bootstrap|font-awesome\/fonts|open-sans\/fonts\/[^/]+)\//g, '../fonts/'))
         .pipe($.csso())
-        .pipe(cssFilter.restore())
-        .pipe(assetsFilter.restore())
+        .pipe(cssFilter.restore)
+        .pipe(assetsFilter.restore)
         .pipe($.revReplace())
         .pipe(htmlFilter)
-        .pipe($.minifyHtml({
-            empty: true,
-            spare: true,
-            quotes: true
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
         }))
-        .pipe(htmlFilter.restore())
-        .pipe(gulp.dest('dist/'))
-        .pipe($.size({title: 'dist/', showFiles: true}));
+        .pipe(htmlFilter.restore)
+        .pipe(gulp.dest('dist/'));
 }
 
 function images() {
-    return gulp.src('src/assets/images/**/*')
-        .pipe($.imagemin({
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
-        }))
+    return gulp.src('src/assets/images/**/*', {encoding: false})
         .pipe(gulp.dest('dist/assets/images/'));
 }
 
@@ -147,28 +149,28 @@ function fonts() {
         'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
         'bower_components/font-awesome/fonts/*',
         'bower_components/open-sans/fonts/**/*.{eot,svg,ttf,woff,woff2}'
-    ])
+    ], {encoding: false})
         .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts/'));
 }
 
 function misc() {
-    return gulp.src('src/**/*.ico')
+    return gulp.src('src/**/*.ico', {encoding: false})
         .pipe(gulp.dest('dist/'));
 }
 
-function clean(done) {
-    $.del(['dist/', '.tmp/'], done);
+function clean() {
+    return Promise.all(['dist', '.tmp'].map(function(directory) {
+        return fs.promises.rm(directory, {recursive: true, force: true});
+    }));
 }
 
 
 gulp.task('injector:css:preprocessor', injectScss);
 gulp.task('styles', gulp.series('wiredep', injectScss, styles));
 gulp.task('injector:css', gulp.series('styles', injectCss));
-gulp.task('jshint', jshint);
-gulp.task('jscs', jscs);
-gulp.task('analyze', gulp.parallel('jshint', 'jscs'));
+gulp.task('analyze', analyze);
 gulp.task('injector:js', gulp.series('analyze', 'injector:css', injectJs));
 gulp.task('partials', partials);
 gulp.task('html', gulp.series('injector:js', 'partials', html));

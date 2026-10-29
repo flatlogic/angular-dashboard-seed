@@ -23,11 +23,11 @@ Check out the [Live Demo](http://angular-dashboard-seed.flatlogic.com). Use foll
 ## Setup
 
 ### Required tools
-* [Node.js 22 or later and npm](https://nodejs.org)
+* [Node.js 22.13 or later and npm](https://nodejs.org)
 * [Bower](http://bower.io)
 * Chrome or Chromium for the browser unit tests (set `CHROME_BIN` if needed)
 
-Gulp and Dart Sass are installed locally by npm; Ruby Sass and node-sass are no longer required.
+Gulp 5 and Dart Sass are installed locally by npm; Ruby Sass and node-sass are no longer required.
 
 ### Installation
 ```sh
@@ -51,7 +51,9 @@ npm test                 # HTTP login/logout, session rotation, parser limits an
 npm run test:client      # AngularJS unit tests in ChromeHeadless
 npm run build
 npm run test:build       # Template-cache URLs and generated asset references
-npm audit --omit=dev
+npm run test:e2e         # Built app login, navigation and logout in local Chrome
+npm run lint            # ESLint checks for browser source files
+npm audit               # Runtime and development dependencies
 ```
 
 ### Security dependency update (2026-10-29)
@@ -60,9 +62,11 @@ The backend uses Express 4.22.3, body-parser 1.20.9 and Passport 0.7.0. Logout w
 
 Sources: [Express 4.22.3 release](https://github.com/expressjs/express/releases/tag/v4.22.3), [body-parser 1.20.9 security advisory](https://github.com/expressjs/body-parser/security/advisories/GHSA-27r3-jxmh-p828), [Passport migration notes](https://github.com/jaredhanson/passport/blob/master/CHANGELOG.md), [Gulp task composition](https://gulpjs.com/docs/en/api/series/), [gulp-sass compiler setup](https://github.com/dlmanning/gulp-sass#basic-usage).
 
-Verified with Node.js 22.23.0 and npm 10.9.8: clean `npm ci`, Bower installation, Gulp build, 4 HTTP tests, 2 browser unit tests and 4 build checks. The built app's login, dashboard and logout were also checked in Chrome.
+Verified with Node.js 22.23.0 and npm 10.9.8: clean `npm ci`, Bower installation, Gulp build, ESLint, 4 HTTP tests, 2 browser unit tests, 6 build checks and a Playwright end-to-end test in local Chrome. Run `npm run build` before the build and end-to-end tests.
 
-At verification time, `npm audit --omit=dev` reported **0 vulnerabilities**. The full development graph still reports **111** (1 low, 36 moderate, 66 high, 8 critical), including old Gulp plugins, ng-annotate, image optimizers and Protractor. These are not installed by `--omit=dev`; the build toolchain is not fully security-modernized. The historical Protractor example references a missing `main.po` and obsolete Yeoman markup, so end-to-end Protractor coverage is not claimed. The former placeholder unit test was replaced with tests of the actual `postsUtils` service.
+At verification time, the full `npm audit` reported **0 vulnerabilities**, including development dependencies. Gulp and its plugins were updated, JSCS/JSHint were replaced with ESLint, and the broken Protractor example was replaced with a real Playwright test. Angular dependency annotation now uses `ng-annotate-patched` directly, avoiding the vulnerable old Gulp wrapper. Gulp's `deploy` task uses `gh-pages`; running it builds and publishes `dist/` to the remote `gh-pages` branch.
+
+The obsolete binary image optimizers were removed. The build copies image assets unchanged, without optimization; fonts and other binary assets are also preserved byte for byte. Optimize images separately before adding them to the application. The npm graph still contains deprecated AngularJS-era tooling; a clean audit describes known advisories at verification time and does not imply ongoing support for those packages.
 
 This remains a demonstration application with hardcoded sample users, plaintext in-memory passwords, a public demo session secret and Express MemoryStore. Dependency updates do not make that authentication setup suitable for production. AngularJS 1.3, jQuery 2 and Bootstrap 3 remain unchanged and outside npm's audit coverage. Dart Sass emits deprecation warnings for the existing Bootstrap/Sass sources.
 

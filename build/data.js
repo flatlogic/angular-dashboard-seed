@@ -7,11 +7,11 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('data', function () {
-    var jsonFilter = $.filter('*.json');
+    var jsonFilter = $.filter('*.json', {restore: true});
 
-    return gulp.src(['data/**/*.*'])
+    return gulp.src(['data/**/*.*'], {encoding: false})
         .pipe(jsonFilter)
         .pipe($.jsonminify())
-        .pipe(jsonFilter.restore())
+        .pipe(jsonFilter.restore)
         .pipe(gulp.dest('dist/data'));
 });
