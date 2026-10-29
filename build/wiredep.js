@@ -9,6 +9,9 @@ gulp.task('wiredep', function () {
     return gulp.src('src/index.html')
         .pipe(wiredep({
             directory: 'bower_components',
+            overrides: {
+                angular: {dependencies: {jquery: '*'}}
+            },
             exclude: [/bootstrap\.css/],
             dependencies: true,
             devDependencies: true

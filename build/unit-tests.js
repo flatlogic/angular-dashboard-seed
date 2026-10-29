@@ -1,38 +1,20 @@
 'use strict';
 
 var gulp = require('gulp');
-
-var $ = require('gulp-load-plugins')();
-
-var wiredep = require('wiredep');
+var Server = require('karma').Server;
+var path = require('path');
 
 function runTests(singleRun, done) {
-    var bowerDeps = wiredep({
-        directory: 'bower_components',
-        exclude: ['bootstrap-sass'],
-        dependencies: true,
-        devDependencies: true
-    });
-
-    var testFiles = bowerDeps.js.concat([
-        'src/tests/spec/**/*.js'
-    ]);
-
-    gulp.src(testFiles)
-        .pipe($.karma({
-            configFile: 'karma.conf.js',
-            action: (singleRun) ? 'run' : 'watch'
-        }))
-        .on('error', function (err) {
-            // Make sure failed tests cause gulp to exit non-zero
-            throw err;
-        });
+    new Server({
+        configFile: path.resolve('karma.conf.js'),
+        singleRun: singleRun
+    }, function(exitCode) {
+        if (exitCode !== 0) {
+            return done(new Error('Karma exited with status ' + exitCode));
+        }
+        done();
+    }).start();
 }
 
-gulp.task('test', function (done) {
-    runTests(true /* singleRun */, done)
-});
-
-gulp.task('autotest', function (done) {
-    runTests(false /* singleRun */, done)
-});
+gulp.task('test', function(done) { runTests(true, done); });
+gulp.task('autotest', function(done) { runTests(false, done); });

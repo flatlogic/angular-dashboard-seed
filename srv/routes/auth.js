@@ -22,10 +22,14 @@ function _login(req, res, next) {
     })(req, res, next);
 }
 
-function _logout(req, res) {
+function _logout(req, res, next) {
     var id = req.user && req.user.id;
-    req.logout();
-    res.send({id: id});
+    req.logout(function(err) {
+        if (err) {
+            return next(err);
+        }
+        res.send({id: id});
+    });
 }
 
 
