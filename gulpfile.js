@@ -3,10 +3,10 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-require('require-dir')('./build');
-
-gulp.task('default', ['clean'], function () {
-    gulp.start('build');
+['wiredep', 'data', 'build', 'watch', 'server', 'e2e-tests', 'unit-tests', 'deploy'].forEach(function(taskFile) {
+    require('./build/' + taskFile);
 });
+
+gulp.task('default', gulp.series('clean', 'build'));
 
 gulp.task('help', $.taskListing);

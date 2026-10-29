@@ -3,14 +3,14 @@
 var gulp = require('gulp');
 var deploy = require('gulp-gh-pages');
 
-gulp.task('deploy', ['build'], function () {
+gulp.task('deploy', gulp.series('build', function () {
     var options = {
         message: "Update [timestamp] --skip-ci"
     }
 
     return gulp.src('./dist/**/*')
         .pipe(deploy(options));
-});
+}));
 
 
 /*
