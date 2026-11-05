@@ -93,8 +93,9 @@ Build checks assert fingerprints, resolved CSS URLs, and source-identical bytes
 instead of accepting stale files from the historical `dist` directory.
 Scoped Minimatch 11 resolutions cover ESLint/config-array and nodemon's existing
 named APIs; lint and watch/ignore regression checks verify compatibility. No
-advisories are ignored. The checked-in historical `dist` is not regenerated;
-run `npm run build` before serving or testing the built application.
+advisories are ignored. The browser dependency followup regenerates the tracked production `dist`
+from the verified build and removes obsolete bundle hashes. Rebuild after
+source changes before serving or testing the built application.
 
 ### Browser dependency followup (2026-11-05)
 
@@ -108,8 +109,8 @@ and minified bundles are patched, without fabricating an upstream version.
 The production browser checks exercise malicious loading text and tooltip DOM
 clobbering against the actual fingerprinted vendor bundle, real Chrome touch
 input through TouchSwipe, and login/profile/navigation/logout. The build checks
-also reject modified patch inputs and verify idempotence. The checked-in
-historical `dist` is still not regenerated; build before serving.
+also reject modified patch inputs and verify idempotence. The tracked production `dist` is regenerated from this verified build, with
+obsolete bundle hashes removed; rebuild after source changes.
 
 These changes preserve the AngularJS 1.3 API, including existing `$http.success`
 consumers. They do not resolve AngularJS's separate upstream advisories; those
