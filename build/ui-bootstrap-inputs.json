@@ -1,0 +1,10 @@
+{
+  "ui-bootstrap": {
+    ".js": "ea5165b121240e88ddb7a245b4759960b136b1e3fd371d4e54e14c9e29f453a7",
+    ".min.js": "f444d34c526e7b8d8b2fe4686befbca046e4c7afa8380d178eda4baa1d113243"
+  },
+  "ui-bootstrap-tpls": {
+    ".js": "70f2ed084aeacfe620ead83f6d14537a79e13eba2ce319a5539e99e3d06dc540",
+    ".min.js": "390e12a57f4ff47bc24866532dc585354b8240a678cfaaf17e885ec7e71f5c18"
+  }
+}

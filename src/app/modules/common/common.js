@@ -62,11 +62,10 @@
       if (!session.getCurrentUser() && !(toState.data && toState.data.noAuth)) {
         event.preventDefault();
         session.fetchCurrentUser('/api/profile')
-          .success(function(user) {
-            session.setCurrentUser(user);
+          .then(function(response) {
+            session.setCurrentUser(response.data);
             $state.go(toState.name, toParams);
-          })
-          .error(function() {
+          }, function() {
             $state.go('login');
           });
         }
@@ -78,17 +77,19 @@
 
     this.login = function(user) {
       return $http.post('/api/login', user)
-        .success(function(data) {
-          session.setCurrentUser(data);
+        .then(function(response) {
+          session.setCurrentUser(response.data);
           $rootScope.$broadcast('$userLoggedIn');
+          return response;
         });
     };
 
     this.logout = function() {
       return $http.get('/api/logout')
-        .success(function(data) {
+        .then(function(response) {
           session.setCurrentUser(null);
           $rootScope.$broadcast('$userLoggedOut');
+          return response;
         });
     }
   }

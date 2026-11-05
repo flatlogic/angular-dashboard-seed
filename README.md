@@ -112,7 +112,14 @@ input through TouchSwipe, and login/profile/navigation/logout. The build checks
 also reject modified patch inputs and verify idempotence. The tracked production `dist` is regenerated from this verified build, with
 obsolete bundle hashes removed; rebuild after source changes.
 
-These changes preserve the AngularJS 1.3 API, including existing `$http.success`
-consumers. They do not resolve AngularJS's separate upstream advisories; those
-require compatible, individually verified security backports. Bootstrap 3 and
-AngularJS remain end of life despite the explicit local Bootstrap fixes.
+The subsequent runtime update below replaces AngularJS 1.3 with 1.8.3 and
+reviewed security backports. Bootstrap 3 and AngularJS remain end of life.
+
+
+### AngularJS runtime update (2026-11-05)
+
+AngularJS, ngResource, ngAnimate and browser mocks now use 1.8.3. The reviewed Debian/core/resource patches in [the backport manifest](build/angularjs-patches/README.md) apply at client installation and every build. Both source and minified output are verified, and the tracked production `dist/` is refreshed; old vulnerable bundle hashes are removed.
+
+Own HTTP callbacks use `.then` with the original response/data contract and visible profile errors. The existing UI Bootstrap typeahead receives a bounded, checksummed promise-API adaptation. UI-Router uses the official npm-published 1.1.2 archive because the old Bower mirror stops at 1.0.30; the bundled core 6.1.2 includes the publisher's URL-matcher ReDoS fix. Its official state-events module preserves authentication guards and navigation events. `hashPrefix('')` preserves the existing `#/...` URLs. See [publisher release](https://github.com/angular-ui/ui-router/releases/tag/1.1.2) and [state-events migration](https://ui-router.github.io/guide/ng1/migrate-to-1_0#state-change-events).
+
+Validation: clean strict `npm ci`, client installation, full npm audit 0, build, 4 HTTP tests, 10 build checks, 2 Chrome unit tests and 13 Chrome scenarios. The browser regression includes login/logout/protected routing, wrong-password feedback, real profile PUT/save/restore, modal open/close, typeahead, actual touch gestures, Bootstrap and Angular security policies, large-input checks and router regex parameters. Internet Explorer is outside the tested boundary; its remaining AngularJS issue is not claimed fixed. No deployment.
