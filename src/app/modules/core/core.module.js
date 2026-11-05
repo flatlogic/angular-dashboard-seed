@@ -7,14 +7,16 @@
      */
     'ngResource',
     'ui.router',
+    'ui.router.state.events',
     'ngAnimate',
     'toastr'
   ]);
 
   core.config(appConfig);
 
-  appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-  function appConfig($stateProvider, $urlRouterProvider) {
+  appConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+  function appConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+    $locationProvider.hashPrefix('');
     $stateProvider
       .state('app', {
         url: '/app',

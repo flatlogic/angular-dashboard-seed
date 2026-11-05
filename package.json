@@ -9,7 +9,7 @@
   "scripts": {
     "init": "npm install",
     "start": "node srv/app.js",
-    "install:client": "bower install && node build/patch-bootstrap.cjs",
+    "install:client": "bower install && node build/patch-bootstrap.cjs && node build/patch-angularjs.cjs && node build/patch-ui-bootstrap.cjs",
     "test": "node --test tests/server/*.test.js",
     "build": "gulp",
     "test:client": "gulp test",

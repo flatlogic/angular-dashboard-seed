@@ -13,12 +13,11 @@
 
     vm.update = function() {
       $http.put('/api/profile', vm.user)
-        .success(function(data) {
-          session.setCurrentUser(data);
+        .then(function(response) {
+          session.setCurrentUser(response.data);
           notificator.success('Profile changes saved')
-        })
-        .error(function(err) {
-          vm.responseErrorMsg = err.message;
+        }, function(response) {
+          vm.responseErrorMsg = response.data.message;
         });
     };
 
