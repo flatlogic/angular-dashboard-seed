@@ -1,0 +1,25 @@
+{
+  "package": "bootstrap-sass",
+  "version": "3.4.3",
+  "embeddedBootstrap": "3.4.1",
+  "upstreamRepository": "https://github.com/twbs/bootstrap-sass.git",
+  "upstreamCommit": "ccc01a34b1789a903d34cfe190a561bda746a984",
+  "debianSource": "https://deb.debian.org/debian/pool/main/t/twitter-bootstrap3/twitter-bootstrap3_3.4.1+dfsg-7.debian.tar.xz",
+  "debianArchiveSha256": "1972e68d055cbdbba2455a80cdfa7389d5ac80a488c63c729a36b40d48cd82e9",
+  "bundleSha256": "dbd2a35e72edc7d6bde483481a912f1c38aa57fab2747d9b071d317339ee03a2",
+  "minifiedSha256": "9ee2fcff6709e4d0d24b09ca0fc56aade12b4961ed9c43fd13b03248bfb57afe",
+  "plugins": [
+    {
+      "name": "button",
+      "patch": "0003-CVE-2024-6485.patch",
+      "sourceSha256": "fa31bcbae72f8f82c2b25ec0421917b1c3a9cd60e7c03baca7429f44ec693f04",
+      "patchSha256": "6cee60253467d54aec90804d07eed9333244bd4fed6a3a5415c86ea7fe423abc"
+    },
+    {
+      "name": "tooltip",
+      "patch": "CVE-2025-1647.patch",
+      "sourceSha256": "efef210198a75adacd0d3e726500fde192fc94320e4acbf90eb3a4d877215a2d",
+      "patchSha256": "38b097ec409ca28e8ef9b8cf965a89237610014c250d9fc18652a47f1ab7b780"
+    }
+  ]
+}
