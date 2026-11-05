@@ -81,3 +81,19 @@ test('copies binary image assets without changing their bytes', function(context
     execFileSync(process.execPath, ['node_modules/gulp/bin/gulp.js', 'images']);
     assert.deepEqual(fs.readFileSync(target), bytes);
 });
+
+test('a clean build fingerprints every emitted local script and stylesheet', function() {
+    var html = fs.readFileSync('dist/index.html', 'utf8');
+    var assets = Array.from(html.matchAll(/(?:src|href)="([^"#?]+\.(?:js|css))"/g), function(match) { return match[1]; });
+    assert.ok(assets.length >= 3);
+    assets.forEach(function(asset) {
+        assert.match(asset, /-[a-f0-9]{10}\.(?:js|css)$/, 'Asset bypassed revision processing: ' + asset);
+        assert.ok(fs.statSync(path.join('dist', asset)).size > 0);
+    });
+});
+
+test('the scoped minimatch update preserves nodemon watch and ignore matching', function() {
+    var match = require('nodemon/lib/monitor/match');
+    assert.deepEqual(match(['src/app/main.js'], ['**/*.js'], 'js').result, [path.resolve('src/app/main.js')]);
+    assert.deepEqual(match(['src/app/main.js'], ['**/*.js', '!**/main.js'], 'js').result, []);
+});

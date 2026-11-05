@@ -62,7 +62,7 @@ The backend uses Express 4.22.3, body-parser 1.20.9 and Passport 0.7.0. Logout w
 
 Sources: [Express 4.22.3 release](https://github.com/expressjs/express/releases/tag/v4.22.3), [body-parser 1.20.9 security advisory](https://github.com/expressjs/body-parser/security/advisories/GHSA-27r3-jxmh-p828), [Passport migration notes](https://github.com/jaredhanson/passport/blob/master/CHANGELOG.md), [Gulp task composition](https://gulpjs.com/docs/en/api/series/), [gulp-sass compiler setup](https://github.com/dlmanning/gulp-sass#basic-usage).
 
-Verified with Node.js 22.23.0 and npm 10.9.8: clean `npm ci`, Bower installation, Gulp build, ESLint, 4 HTTP tests, 2 browser unit tests, 6 build checks and a Playwright end-to-end test in local Chrome. Run `npm run build` before the build and end-to-end tests.
+Verified with Node.js 22.23.0 and npm 10.9.8: clean `npm ci`, Bower installation, Gulp build, ESLint, 4 HTTP tests, 2 browser unit tests, 8 build checks and a Playwright end-to-end test in local Chrome. Run `npm run build` before the build and end-to-end tests.
 
 At verification time, the full `npm audit` reported **0 vulnerabilities**, including development dependencies. Gulp and its plugins were updated, JSCS/JSHint were replaced with ESLint, and the broken Protractor example was replaced with a real Playwright test. Angular dependency annotation now uses `ng-annotate-patched` directly, avoiding the vulnerable old Gulp wrapper. Gulp's `deploy` task uses `gh-pages`; running it builds and publishes `dist/` to the remote `gh-pages` branch.
 
@@ -85,3 +85,13 @@ For any additional information please refer to [Flatlogic homepage](http://flatl
 ## License
 
 [MIT](https://github.com/flatlogic/angular-dashboard-seed/blob/master/LICENSE), hell yeah.
+
+The November 2026 build correction explicitly includes dot directories in Gulp
+filters. This is required when a checkout lives beneath `.codex`: a fresh build
+must fingerprint/minify its assets, rewrite CSS font URLs, and copy binary fonts.
+Build checks assert fingerprints, resolved CSS URLs, and source-identical bytes
+instead of accepting stale files from the historical `dist` directory.
+Scoped Minimatch 11 resolutions cover ESLint/config-array and nodemon's existing
+named APIs; lint and watch/ignore regression checks verify compatibility. No
+advisories are ignored. The checked-in historical `dist` is not regenerated;
+run `npm run build` before serving or testing the built application.

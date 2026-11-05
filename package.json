@@ -65,5 +65,16 @@
     "sass": "^1.107.0",
     "through2": "^4.0.2",
     "wiredep": "^4.0.0"
+  },
+  "overrides": {
+    "@eslint/config-array": {
+      "minimatch": "^11.0.4"
+    },
+    "eslint": {
+      "minimatch": "^11.0.4"
+    },
+    "nodemon": {
+      "minimatch": "^11.0.4"
+    }
   }
 }

@@ -98,10 +98,10 @@ function partials() {
 }
 
 function html() {
-    var htmlFilter = $.filter('*.html', {restore: true});
-    var jsFilter = $.filter('**/*.js', {restore: true});
-    var cssFilter = $.filter('**/*.css', {restore: true});
-    var assetsFilter = $.filter(['**/*.js', '**/*.css'], {restore: true});
+    var htmlFilter = $.filter('*.html', {restore: true, dot: true});
+    var jsFilter = $.filter('**/*.js', {restore: true, dot: true});
+    var cssFilter = $.filter('**/*.css', {restore: true, dot: true});
+    var assetsFilter = $.filter(['**/*.js', '**/*.css'], {restore: true, dot: true});
 
     return gulp.src('src/*.html')
         .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
@@ -150,7 +150,7 @@ function fonts() {
         'bower_components/font-awesome/fonts/*',
         'bower_components/open-sans/fonts/**/*.{eot,svg,ttf,woff,woff2}'
     ], {encoding: false})
-        .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+        .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}', {dot: true}))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts/'));
 }
