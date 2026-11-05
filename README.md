@@ -68,7 +68,7 @@ At verification time, the full `npm audit` reported **0 vulnerabilities**, inclu
 
 The obsolete binary image optimizers were removed. The build copies image assets unchanged, without optimization; fonts and other binary assets are also preserved byte for byte. Optimize images separately before adding them to the application. The npm graph still contains deprecated AngularJS-era tooling; a clean audit describes known advisories at verification time and does not imply ongoing support for those packages.
 
-This remains a demonstration application with hardcoded sample users, plaintext in-memory passwords, a public demo session secret and Express MemoryStore. Dependency updates do not make that authentication setup suitable for production. AngularJS 1.3, jQuery 2 and Bootstrap 3 remain unchanged and outside npm's audit coverage. Dart Sass emits deprecation warnings for the existing Bootstrap/Sass sources.
+This remains a demonstration application with hardcoded sample users, plaintext in-memory passwords, a public demo session secret and Express MemoryStore. Dependency updates do not make that authentication setup suitable for production. AngularJS 1.3 remains outside npm's audit coverage; the browser dependency followup below updates jQuery and patches Bootstrap 3. Dart Sass emits deprecation warnings for the existing Bootstrap/Sass sources.
 
 ## Project structure
 Project structure based on [this yeoman generator](https://github.com/Swiip/generator-gulp-angular). If you have any questions about the build or project structure please check out their documentation.
@@ -95,3 +95,23 @@ Scoped Minimatch 11 resolutions cover ESLint/config-array and nodemon's existing
 named APIs; lint and watch/ignore regression checks verify compatibility. No
 advisories are ignored. The checked-in historical `dist` is not regenerated;
 run `npm run build` before serving or testing the built application.
+
+### Browser dependency followup (2026-11-05)
+
+jQuery is pinned to 3.7.1, TouchSwipe to 1.6.19, and Bootstrap Sass to 3.4.3.
+The last package embeds Bootstrap JavaScript 3.4.1, so installation and every
+build apply the official Debian CVE-2024-6485 / CVE-2025-1647 backports.
+[Patch provenance and exact source/patch checksums](build/bootstrap-patches/README.md)
+are checked before zero-fuzz application; unknown inputs fail loudly. Both raw
+and minified bundles are patched, without fabricating an upstream version.
+
+The production browser checks exercise malicious loading text and tooltip DOM
+clobbering against the actual fingerprinted vendor bundle, real Chrome touch
+input through TouchSwipe, and login/profile/navigation/logout. The build checks
+also reject modified patch inputs and verify idempotence. The checked-in
+historical `dist` is still not regenerated; build before serving.
+
+These changes preserve the AngularJS 1.3 API, including existing `$http.success`
+consumers. They do not resolve AngularJS's separate upstream advisories; those
+require compatible, individually verified security backports. Bootstrap 3 and
+AngularJS remain end of life despite the explicit local Bootstrap fixes.

@@ -1,9 +1,10 @@
 'use strict';
 
 var gulp = require('gulp');
+var patchInstalledBootstrap = require('./patch-bootstrap.cjs').patchInstalledBootstrap;
 
 // inject bower components
-gulp.task('wiredep', function () {
+gulp.task('wiredep', gulp.series(patchInstalledBootstrap, function () {
     var wiredep = require('wiredep').stream;
 
     return gulp.src('src/index.html')
@@ -17,4 +18,4 @@ gulp.task('wiredep', function () {
             devDependencies: true
         }))
         .pipe(gulp.dest('src'));
-});
+}));

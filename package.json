@@ -9,7 +9,7 @@
   "scripts": {
     "init": "npm install",
     "start": "node srv/app.js",
-    "install:client": "bower install",
+    "install:client": "bower install && node build/patch-bootstrap.cjs",
     "test": "node --test tests/server/*.test.js",
     "build": "gulp",
     "test:client": "gulp test",
@@ -64,7 +64,9 @@
     "nodemon": "^3.1.14",
     "sass": "^1.107.0",
     "through2": "^4.0.2",
-    "wiredep": "^4.0.0"
+    "wiredep": "^4.0.0",
+    "diff": "^8.0.4",
+    "terser": "^5.44.0"
   },
   "overrides": {
     "@eslint/config-array": {
