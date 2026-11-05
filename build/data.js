@@ -7,7 +7,7 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('data', function () {
-    var jsonFilter = $.filter('*.json', {restore: true});
+    var jsonFilter = $.filter('*.json', {restore: true, dot: true});
 
     return gulp.src(['data/**/*.*'], {encoding: false})
         .pipe(jsonFilter)
